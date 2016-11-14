@@ -1,0 +1,21 @@
+<form class="c-minheight wx-form_m3foRJ" data-c_e_id="wx_form_30c9f6c5">
+    <view class="c-minheight wx-view_TokXq5" data-c_e_id="wx_view_52a522ca">
+        <view class="c-minheight wx-view_N9YFCX" data-c_e_id="wx_view_aca3b00b">
+            <text class="c-block wx-text_gin1mW" data-c_e_id="wx_text_c6ca259a">事件时间:</text>
+            <input class="c-block c-fullwidth wx-input_4oSHFL" data-c_e_id="wx_input_166d8c7f" name="input1" placeholder="请输入时间" type="data"/>
+        </view>
+        <view class="c-minheight wx-view_3bKcZe" data-c_e_id="wx_view_28639aef">
+            <text class="c-block wx-text_DD8VXD" data-c_e_id="wx_text_fa1825fd">事件内容:</text>
+            <textarea class="c-block c-fullwidth wx-textarea_EjpJYT" data-c_e_id="wx_textarea_bd7f2187" name="textarea1" placeholder="This is a textarea" type="textarea"/>
+        </view>
+        <view class="c-minheight wx-view_SGgymE" data-c_e_id="wx_view_23d4b2d8">
+            <image class="wx-image_aQZsaV" data-c_e_id="wx_image_b0075983" mode="scaleToFill" src="http://qty83k.creatby.com/materials/origin/df21b6b57b113018ce4e17dc775927c0_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/df21b6b57b113018ce4e17dc775927c0_origin.jpg); "/>
+            <image class="wx-image_aQZsaV" data-c_e_id="wx_imageef8db71b" mode="scaleToFill" src="http://qty83k.creatby.com/materials/origin/ae6d11a247ae0c6ee89fd70a86b225c9_origin.png" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/ae6d11a247ae0c6ee89fd70a86b225c9_origin.png); "/>
+        </view>
+    </view>
+    <view class="c-minheight wx-view_85NAQS" data-c_e_id="wx_view_8d510ded">
+        <button class="wx-button_Is0zdo" data-c_e_id="wx_button_8c41c80b" formType="submit" hover-class="button-hover" loading="True" size="default" type="default">
+            保存
+        </button>
+    </view>
+</form>

@@ -1,0 +1,17 @@
+<form class="c-minheight wx-form_aMKpgB" data-c_e_id="wx_form_31c6751b">
+    <view class="c-minheight wx-view_fT56rt" data-c_e_id="wx_view_9cb9e8f4">
+        <view class="c-minheight wx-view_obxshV" data-c_e_id="wx_view_0caa0fa6">
+            <text class="c-block wx-text_U1kAKp" data-c_e_id="wx_text_56aa4133">用户名</text>
+            <input class="c-block c-fullwidth wx-input_vXfszy" data-c_e_id="wx_input_bfd83b90" name="input1" placeholder="This is a input" type="text"/>
+        </view>
+        <view class="c-minheight wx-view_pYdcjH" data-c_e_id="wx_view_02d4eec0">
+            <text class="c-block wx-text_pZECo4" data-c_e_id="wx_text_3b9ef73f">邮箱</text>
+            <input class="c-block c-fullwidth wx-input_ahA4bi" data-c_e_id="wx_input_2b6960de" name="input1" password="True" placeholder="This is a input" type="text"/>
+        </view>
+    </view>
+    <view class="c-minheight wx-view_SaVWIt" data-c_e_id="wx_view_84398a43">
+        <button class="wx-button_zuGKqo" data-c_e_id="wx_button_3438ce4c" formType="submit" hover-class="button-hover" size="default" type="default">
+            登陆
+        </button>
+    </view>
+</form>

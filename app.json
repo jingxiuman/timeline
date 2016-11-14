@@ -1,0 +1,57 @@
+{
+  "debug": true, 
+  "window": {
+    "navigationBarTextStyle": "white", 
+    "navigationBarBackgroundColor": "#fa7298", 
+    "navigationBarTitleText": "\u65e7\u65f6\u5149", 
+    "backgroundColor": "#ebebeb", 
+    "enablePullDownRefresh": true, 
+    "backgroundTextStyle": "dark"
+  }, 
+  "pages": [
+    "pages/all/all", 
+    "pages/box/box", 
+    "pages/addBox/addBox", 
+    "pages/profile/profile", 
+    "pages/detail/detail", 
+    "pages/login/login"
+  ], 
+  "tabBar": {
+    "color": "#ffffff", 
+    "selectedColor": "#d9d7d7", 
+    "borderStyle": "white", 
+    "list": [
+      {
+        "text": "\u793e\u533a", 
+        "pagePath": "pages/all/all", 
+        "iconPath": "resources/4ade2d1472a6c8216c8ba04982b9b8b0.png", 
+        "selectedIconPath": "resources/bd932b6abda28858618329b73fa33b6d.png"
+      }, 
+      {
+        "text": "\u65f6\u5149\u673a", 
+        "pagePath": "pages/box/box", 
+        "iconPath": "resources/89f878aaea5d6995dd89edb5f6182a65.png", 
+        "selectedIconPath": "resources/5c10afa53647d31a6008a91f4e202ca1.png"
+      }, 
+      {
+        "text": "\u65b0\u5efa", 
+        "pagePath": "pages/addBox/addBox", 
+        "iconPath": "resources/ff9d02c0abb87d602cbf221184ef1496.png", 
+        "selectedIconPath": "resources/224cad7ae5b117e46cf293e5fd79a010.png"
+      }, 
+      {
+        "text": "\u6211\u7684\u8d26\u53f7", 
+        "pagePath": "pages/profile/profile", 
+        "iconPath": "resources/ccedf72997873d5eb5e1fb186dcfde95.png", 
+        "selectedIconPath": "resources/99c2c92126dc2ac3a1454162e2f70208.png"
+      }
+    ], 
+    "backgroundColor": "#fa7298"
+  }, 
+  "networkTimeout": {
+    "connectSocket": "10000", 
+    "request": "10000", 
+    "downloadFile": "10000", 
+    "uploadFile": "10000"
+  }
+}
