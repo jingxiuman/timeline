@@ -10,8 +10,8 @@
     <view class="wx-view_JbWxfk"  wx:for="{{allList}}" wx:for-item="item" wx:key="id" >
         <view class="carditem01">
             <view class="wx-view_QvvUkU">
-            <navigator class="wx-navigator_rv4BGW" hover-class="navigator-hover">
-                <image class="wx-image_tBcdCT" mode="aspectFill" src="{{item.img}}"/>
+            <navigator class="wx-navigator_rv4BGW" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">
+                <image class="wx-image_tBcdCT" mode="aspectFill" src="{{item.pic}}"/>
                 <view class="wx-view_cPj0ok">
                     <text class="c-block wx-text_TvHPc9">{{item.eventTimeStr}}</text>
                     <text class="c-block wx-text_LS2Jup">{{item.eventName}}</text>
@@ -19,7 +19,7 @@
             </navigator>
                 
             </view>
-            <navigator class="wx-navigator_PNd8QQ" hover-class="navigator-hover">
+            <navigator class="wx-navigator_PNd8QQ" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">
                 <image class="wx-image_BEjy38" mode="aspectFill" src="{{item.img}}" />
                 <view class="wx-view_KedDbI" >
                     <text class="c-block wx-text_6zTs4l" >{{item.eventContent == null?item.eventName:item.eventContent}}</text>

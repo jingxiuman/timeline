@@ -1,8 +1,8 @@
-<view class="c-minheight wx-view_FhhAKO" data-c_e_id="wx_view_86db7491">
-    <view class="c-minheight wx-view_JjAvLE" data-c_e_id="wx_view7c4714c4">
-        <image class="wx-image_V5q0cS" data-c_e_id="wx_image_29ed0690" mode="scaleToFill" src="{{ userInfo.avatarUrl}}"
+<view class="c-minheight wx-view_FhhAKO" >
+    <view class="c-minheight wx-view_JjAvLE">
+        <image class="wx-image_V5q0cS" mode="scaleToFill" src="{{ userInfo.avatarUrl}}"
          style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://o3bnyc.creatby.com/diazo/images/image-placeholder.svg);"/>
-        <text class="c-block wx-text_zYvEQG" data-c_e_id="wx_text_102e55eb">{{userInfo.nickName}}</text>
+        <text class="c-block wx-text_zYvEQG">{{userInfo.nickName}}</text>
     </view>
     <!--<view class="c-minheight wx-view_fsAYm3" data-c_e_id="wx_view_427e9c56">
         <navigator class="wx-navigator_91rIxS" data-c_e_id="wx_navigator_f466d04e" hover-class="navigator-hover" url="../login/login">

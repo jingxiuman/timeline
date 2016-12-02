@@ -1,10 +1,15 @@
-<view class="wx-view_KHAWVZ" data-c_e_id="wx_viewb7dbd52e">
-    <image class="wx-image_Z7Ayms" data-c_e_id="wx_image_8513600e" mode="scaleToFill" src="http://qty83k.creatby.com/materials/origin/df21b6b57b113018ce4e17dc775927c0_origin.jpg" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://o3bnyc.creatby.com/diazo/images/image-placeholder.svg);"/>
-    <text class="c-block wx-text_V55JEt" data-c_e_id="wx_textbf43d609">1年28天</text>
-    <text class="c-block wx-text_6P0UgX" data-c_e_id="wx_text_41928e96">你好nihasdasdasdasd你好nihasdasdasdasd你好nihasdasdasdasd你好nihasdasdasdasd你好nihasdasdasdasd你好nihasdasdasdasd</text>
-    <view class="wx-view_Ipiy3Y" data-c_e_id="wx_viewa6f000ae">
-        <view class="wx-view_q8yXI9" data-c_e_id="wx_view904ff1ed">
-            <image class="wx-image_YAG40m" data-c_e_id="wx_image419ab42e" mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/c5656ef00d38d89eae437c5a9102f8fa_origin.png" style="background-image: url(http://qty83k.creatby.com/materials/origin/c5656ef00d38d89eae437c5a9102f8fa_origin.png); background-size: contain; background-position: center center; background-repeat: no-repeat; "/>
+<view class="wx-view_KHAWVZ" >
+    <image class="wx-image_Z7Ayms" mode="aspectFill" src="{{detail.img}}"/>
+    <text class="c-block wx-text_V55JEt" >{{detail.timeStr}}</text>
+    <text class="c-block title" >
+    {{detail.eventName?detail.eventName:'暂无内容'}}
+    </text>
+    <text class="c-block wx-text_6P0UgX" >
+    {{detail.eventContent?detail.eventContent:'暂无内容'}}
+    </text>
+    <view class="wx-view_Ipiy3Y" >
+        <view class="wx-view_q8yXI9">
+            <image class="wx-image_YAG40m" data-c_e_id="wx_image419ab42e" mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/c5656ef00d38d89eae437c5a9102f8fa_origin.png" />
         </view>
     </view>
     <view class="likelist" data-c_e_id="wx_view_4cc0358a">

@@ -1,14 +1,12 @@
 //app.js
-require('./coolsite/index.js');
 var common = require('utils/util.js');
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
-  
     this.userLogin();
   },
   getUserInfo:function(){
-      var that =this;
+      var that =this; 
       wx.getUserInfo({
           success: function (res) {
               console.log('wx user info',res);
@@ -23,7 +21,6 @@ App({
                 },
                 context:that
               })
-            
           }
       })
   },
@@ -51,7 +48,7 @@ App({
                   })
             }
           })
-         
+
         }else{
           if(wx.getStorageInfoSync('userInfo')==''){
             common.getWxUser({},{
@@ -65,10 +62,11 @@ App({
              that.globalData.userInfo =wx.getStorageSync('userInfo');
           }
         }
-      
-    
+
+
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    imgUrl:''
   }
 })

@@ -1,6 +1,4 @@
 
-// 引入coolsite360交互配置设定
-require('coolsite.config.js');
 
 // 获取全局应用程序实例对象
 const app = getApp();

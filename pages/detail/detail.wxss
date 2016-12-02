@@ -1,3 +1,6 @@
 page { 
     position: relative;  
 }
+.title{
+    text-align:center;
+}

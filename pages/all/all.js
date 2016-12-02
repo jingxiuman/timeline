@@ -38,13 +38,12 @@ Page({
   makeData:function(response){
     var that =this,tempArr =[];
      var nowTime = new Date().getTime(), interval, type, year, day, dateStr,timeStr;
-    if ( response.list.length> 0) {
+    if ( response && response.list && response.list.length> 0) {
     
       response.list.forEach(function (item) {
           item.eventTime *=1000;
           if (item.eventTime > nowTime) {
               type = '未来';
-
           } else {
               type = '过去';
           }
@@ -77,6 +76,7 @@ Page({
               eventTimeStr:timeStr,
               createStr:item.createStr,
               eventType: type,
+              pic:item.pic,
               img: (img_t == undefined || img_t == '')? 'assets/img/index_temp.jpg' : (img_t + "?imageView2/0/w/300")
 
           });
