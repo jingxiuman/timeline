@@ -143,7 +143,7 @@ var commonFunc = {
     this.ajaxFunc('/box/all',data,callback)
   },
   getAllBox:function(data,callback){
-    this.ajaxFunc('/box/ownAndOther',data,callback)
+    this.ajaxFunc('/box/ownAndOther',data,callback,'GET')
   },
   getBoxDetailByOwn:function(data,callback){
     this.ajaxFunc('/box/getOne',data,callback)
@@ -185,7 +185,13 @@ var commonFunc = {
   },
   addBoxDetail:function(data,callback){
     this.ajaxFunc('/box/addWxBox',data,callback)
+  },
+  getBoxComment:function(data,callback){
+    this.ajaxFunc('/comment/boxDetail/'+data.id,{},callback,'GET')
+  },
+  addBoxComment:function(data,callback){
+    this.ajaxFunc('/comment/add',data,callback)
   }
-}
+};
 
-module.exports = commonFunc
+module.exports = commonFunc;

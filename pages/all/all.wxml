@@ -11,7 +11,7 @@
         <view class="carditem01">
             <view class="wx-view_QvvUkU">
             <navigator class="wx-navigator_rv4BGW" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">
-                <image class="wx-image_tBcdCT" mode="aspectFill" src="{{item.pic}}"/>
+                <image class="wx-image_tBcdCT" mode="aspectFill" src="{{item.pic}}" />
                 <view class="wx-view_cPj0ok">
                     <text class="c-block wx-text_TvHPc9">{{item.eventTimeStr}}</text>
                     <text class="c-block wx-text_LS2Jup">{{item.eventName}}</text>
@@ -20,7 +20,7 @@
                 
             </view>
             <navigator class="wx-navigator_PNd8QQ" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">
-                <image class="wx-image_BEjy38" mode="aspectFill" src="{{item.img}}" />
+                <image class="wx-image_BEjy38" mode="aspectFill" src="{{item.img}}" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/893425158b4095f6502bea071a09ffdc_origin.jpg); " />
                 <view class="wx-view_KedDbI" >
                     <text class="c-block wx-text_6zTs4l" >{{item.eventContent == null?item.eventName:item.eventContent}}</text>
                 </view>
@@ -29,11 +29,11 @@
                 <view class="wx-view_2gazUr" >
                     <view class="wx-view_DKe6UT" >
                         <image class="wx-image_6E2A1o" mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/a67f2e79e6ed8ae5bf46237d4f88a4e7_origin.png" />
-                        <text class="c-block wx-text_id0VJj" >235</text>
+                        <text class="c-block wx-text_id0VJj" >{{item.zanNum}}</text>
                     </view>
                     <view class="wx-view_DKe6UT" >
                         <image class="wx-image_6E2A1o"  mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png" />
-                        <text class="c-block wx-text_id0VJj" >143</text>
+                        <text class="c-block wx-text_id0VJj" >{{item.commentNum}}</text>
                     </view>
                 </view>
                 <text class="c-block wx-text_9Wn0Di" >{{item.createStr}}</text>

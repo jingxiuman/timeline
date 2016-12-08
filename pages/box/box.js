@@ -88,6 +88,8 @@ Page({
                     eventTimeStr: timeStr,
                     createStr: item.createStr,
                     eventType: type,
+                    zanNum: item.zanNum,
+                    commentNum:item.commentNum,
                     img: img_t
                 });
 

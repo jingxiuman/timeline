@@ -1,8 +1,4 @@
 var common = require('../../utils/util.js');
-
-// 获取全局应用程序实例对象
-const app = getApp();
-
 // 创建页面实例对象
 Page({
     /**
@@ -14,7 +10,10 @@ Page({
      */
 
     data: {
-        detail: {}
+        detail: {},
+        zanList:[],
+        commentList:[],
+        id:0
 
     },
 
@@ -23,8 +22,9 @@ Page({
      */
     onLoad (e) {
         var that = this;
-        // 注册coolsite360交互模块
-        console.log('detail的参数', e);
+        this.setData({
+            id:e.id
+        });
         common.getBoxDetailByOwn({
             id: e.id
         }, {
@@ -32,7 +32,7 @@ Page({
                 var timeAll = common.formatDate(response.eventTime)
                 that.setData({
                     detail: {
-                        img: common.imgUrl() + response.img,
+                        img: common.imgUrl() + (response.img == ''?'bg_1.jpg':response.img),
                         eventName: response.eventName,
                         eventTime: "1472398615",
                         type: timeAll.type,
@@ -45,71 +45,41 @@ Page({
                 })
             },
             context: that
+        });
+        common.getBoxComment({
+            id:e.id
+        },{
+            func:function(response){
+                console.log(response);
+                response && response.list &&response.list.forEach(function(item){
+                    let time = new Date(item.time * 1000);
+                    item.time = time.getFullYear() +'-'+(time.getMonth()+1)+'-'+time.getDate()
+                }) ;
+                that.setData({
+                    zanLength:response && response.zan && response.zan.length,
+                    zanList:response && response.zan,
+                    commentList:response && response.list,
+                    commentLength:response && response.list && response.list.length
+                })
+            },
+            context:that
         })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh () {
-
-    },
-
-
-    //以下为自定义点击事件
-
-    tap_3013baf2: function (e) {
-        //触发coolsite360交互事件
-        coolsite360.fireEvent(e, this);
-    },
-
-    tap_d6c84484: function (e) {
-        //触发coolsite360交互事件
-        coolsite360.fireEvent(e, this);
-    },
-
-    tap_e2bd485d: function (e) {
-        //触发coolsite360交互事件
-        coolsite360.fireEvent(e, this);
-    },
-
-    tap_3ec69114: function (e) {
-        //触发coolsite360交互事件
-        coolsite360.fireEvent(e, this);
-    },
-
-    tap_22930b74: function (e) {
-        //触发coolsite360交互事件
-        coolsite360.fireEvent(e, this);
-    },
-
-})
+    addFavor:function () {
+        var that =this;
+        common.addBoxComment({
+            type:0,
+            id:that.data.id,
+        },{
+            func:function (re) {
+                wx.showToast({
+                    title: '点赞成功',
+                    icon: 'success',
+                    duration: 1500
+                })
+            },
+            context:that
+        })
+    }
+});
 

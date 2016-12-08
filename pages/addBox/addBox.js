@@ -39,7 +39,7 @@ Page({
         img:that.data.imgUrl
       },{
         func:function(response){
-            wx.redirectTo({
+            wx.navigateTo({
               url:'../box/box'
             })
         },
@@ -75,7 +75,6 @@ Page({
         that.setData({
           imgList:tempFilePaths[0]
         });
-        console.log( common.addPic)
         common.addPic(tempFilePaths,{
           func:function(response){
               console.log(response);

@@ -77,7 +77,9 @@ Page({
               createStr:item.createStr,
               eventType: type,
               pic:item.pic,
-              img: (img_t == undefined || img_t == '')? 'assets/img/index_temp.jpg' : (img_t + "?imageView2/0/w/300")
+              zanNum:item.zanNum,
+              commentNum:item.commentNum,
+              img: ((img_t == undefined || img_t == '')? 'bg_1.jpg' : img_t )+ "?imageView2/0/w/300"
 
           });
         
