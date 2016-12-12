@@ -13,7 +13,8 @@ Page({
         detail: {},
         zanList:[],
         commentList:[],
-        id:0
+        id:0,
+        addCommentFlag:false
 
     },
 
@@ -39,6 +40,7 @@ Page({
                         timeStr: timeAll.timeStr,
                         dateStr: timeAll.dateStr,
                         id: response.id,
+                        hasZan: response.hasZan,
                         created_at: response.created_at,
                         eventContent: response.eventContent
                     }
@@ -46,8 +48,12 @@ Page({
             },
             context: that
         });
+        that.getComment(e.id);
+    },
+    getComment:function (id) {
+        var that =this;
         common.getBoxComment({
-            id:e.id
+            id:id
         },{
             func:function(response){
                 console.log(response);
@@ -65,6 +71,44 @@ Page({
             context:that
         })
     },
+    addCommentFunc:function (e) {
+        this.setData({'addCommentFlag':true})
+
+    },
+    addComment:function (e) {
+        console.log(e);
+        var value = e.detail.value.main;
+        var that =this;
+        if(value.trim() != ''){
+            common.addBoxComment({
+                type:1,
+                id:that.data.id,
+                content:value,
+            },{
+                func:function (re) {
+                    this.setData({
+                        'addCommentFlag': false
+                    });
+                    that.getComment(that.data.id);
+                    wx.showToast({
+                        title: '评论成功',
+                        icon: 'success',
+                        duration: 1500
+                    })
+                },
+                context:that
+            })
+        }else{
+            wx.showModal({
+                title:'警告',
+                content:'内容必填哦～',
+                showCancel:false
+            })
+        }
+    },
+    closeComment:function () {
+        this.setData({'addCommentFlag':false})
+    },
     addFavor:function () {
         var that =this;
         common.addBoxComment({
@@ -72,6 +116,10 @@ Page({
             id:that.data.id,
         },{
             func:function (re) {
+                this.setData({
+                    'detail.hasZan': 1
+                });
+                that.getComment(that.data.id)
                 wx.showToast({
                     title: '点赞成功',
                     icon: 'success',

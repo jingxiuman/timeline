@@ -10,7 +10,8 @@
     </text>
     <view class="wx-view_Ipiy3Y" >
         <view class="wx-view_q8yXI9" bindtap="addFavor">
-            <image class="wx-image_YAG40m" mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/c5656ef00d38d89eae437c5a9102f8fa_origin.png" />
+            <image class="wx-image_YAG40m" mode="aspectFit" wx:if="{{detail.hasZan > 0}}" src="../../resources/hasZan.png" />
+            <image class="wx-image_YAG40m" mode="aspectFit"  wx:if="{{detail.hasZan == 0}}" src="../../resources/noZan.png" />
         </view>
     </view>
     <view class="likelist"  wx:if="{{zanLength > 0}}">
@@ -41,40 +42,44 @@
                     <navigator class="wx-navigator_wTcTS2" hover-class="navigator-hover">
                         <text class="wx-text_71u3gA">{{item.name}}</text>
                     </navigator>
-                    <view class="wx-view_wrkAD7">
-                        <image class="wx-image_YoXk15" src="http://qty83k.creatby.com/materials/origin/53a095f5786a4f0e1e50eea5ec5c84bc_origin.png"/>
-                    </view>
+                    <!--<view class="wx-view_wrkAD7">-->
+                        <!--<image class="wx-image_YoXk15" src="http://qty83k.creatby.com/materials/origin/53a095f5786a4f0e1e50eea5ec5c84bc_origin.png"/>-->
+                    <!--</view>-->
                 </view>
                 <text class="c-block wx-text_kGXxsa">{{item.content}}</text>
                 <view class="comment_operate">
-                    <view class="wx-view_h6iSr9" >
-                        <view class="commentlikebtn">
-                            <image class="wx-image_YoXk15" src="http://qty83k.creatby.com/materials/origin/2459ad45d8071985f1cf7f91f3b3df66_origin.png"/>
-                        </view>
-                        <view class="commentreplybtn" >
-                            <image class="wx-image_YoXk15" src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png"/>
-                        </view>
-                    </view>
+                    <!--<view class="wx-view_h6iSr9" >-->
+                        <!--<view class="commentlikebtn">-->
+                            <!--<image class="wx-image_YoXk15" src="http://qty83k.creatby.com/materials/origin/2459ad45d8071985f1cf7f91f3b3df66_origin.png"/>-->
+                        <!--</view>-->
+                        <!--<view class="commentreplybtn" >-->
+                            <!--<image class="wx-image_YoXk15" src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png"/>-->
+                        <!--</view>-->
+                    <!--</view>-->
                     <text class="listitem_creattime" >{{item.time}}</text>
                 </view>
             </view>
         </view>
-
-        <button bindtap="tap_3013baf2" class="wx-button_KajNFH" hover-class="button-hover" size="default" type="default">
-            写点评
-        </button>
     </view>
+    <button bindtap="addCommentFunc" class="wx-button_KajNFH" hover-class="button-hover" size="default" type="default">
+        写点评
+    </button>
 </view>
-<view bindtap="tap_3ec69114" class="modalview {{wx_view_74a0d568.class}}" data-c_e_id="wx_view_74a0d568">
-    <view bindtap="tap_22930b74" class="wx-view_m9HByj" data-c_e_id="wx_view_5a2e85c5">
-        <view class="bottomGrayboder wx-view_vLuOu2" data-c_e_id="wx_view9b1b510b">
-            <view bindtap="tap_e2bd485d" class="_other_text_d8PEVm" data-c_act_id="M_60265ef02e4cfe9b" data-c_e_id="_other_texta33bfdda">
+
+<view class="modalview {{addCommentFlag==true?'c-state1':''}}" >
+<form bindsubmit="addComment">
+    <view  class="wx-view_m9HByj">
+        <view class="bottomGrayboder wx-view_vLuOu2">
+            <view bindtap="closeComment" class="_other_text_d8PEVm">
                 ×
             </view>
         </view>
-        <textarea class="c-block c-fullwidth wx-textarea_9pwDc5" data-c_e_id="wx_textarea_ab411ba2" name="textarea1" placeholder="请输入点评" type="textarea"/>
-        <button bindtap="tap_d6c84484" class="wx-button_V2eIJ4" data-c_act_id="M_17d89e86c5b99fa2" data-c_e_id="wx_button_84416317" hover-class="button-hover" size="mini" type="default">
+
+        <textarea class="c-block c-fullwidth wx-textarea_9pwDc5" sauto-height name="main" placeholder="请输入点评" type="textarea"/>
+        <button class="wx-button_V2eIJ4" form-type="submit" hover-class="button-hover" size="mini" type="default">
             点 评
         </button>
     </view>
+</form>
+
 </view>

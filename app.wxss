@@ -1,62 +1,4 @@
 
-@font-face {font-family: "iconfont";
-  src: url('fonts/iconfont.eot?t=1481120079156'); /* IE9*/
-  src: url('fonts/iconfont.eot?t=1481120079156#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('fonts/iconfont.woff?t=1481120079156') format('woff'), /* chrome, firefox */
-  url('fonts/iconfont.ttf?t=1481120079156') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('fonts/iconfont.svg?t=1481120079156#iconfont') format('svg'); /* iOS 4.1- */
-}
-
-.iconfont {
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-jiahao:before { content: "\e601"; }
-
-.icon-yanjing:before { content: "\e603"; }
-
-.icon-xinjian:before { content: "\e608"; }
-
-.icon-baocun:before { content: "\e604"; }
-
-.icon-ordinaryrefresh:before { content: "\e605"; }
-
-.icon-iconziti17:before { content: "\e61a"; }
-
-.icon-fenxiang:before { content: "\e602"; }
-
-.icon-pinglun:before { content: "\e621"; }
-
-.icon-date:before { content: "\e600"; }
-
-.icon-like:before { content: "\e622"; }
-
-.icon-quanzi:before { content: "\e808"; }
-
-.icon-quanziline:before { content: "\e809"; }
-
-.icon-shizhong:before { content: "\e627"; }
-
-.icon-ren:before { content: "\e667"; }
-
-.icon-iconfonticonfonticonfont74copy:before { content: "\e613"; }
-
-.icon-xinjian1:before { content: "\e619"; }
-
-.icon-ren1:before { content: "\e66b"; }
-
-.icon-aixin:before { content: "\e631"; }
-
-.icon-shanchu-shanchuchengyuan:before { content: "\e606"; }
-
-
-
-
 
 
 
@@ -222,13 +164,11 @@ outline:none;}
 .wx-image_rxdS0O{height: 100%; width: 100%; background-color: transparent; }
 .wx-view_9AHgoU{display: flex; flex-direction: column; height: 100%; padding-top: 30px; justify-content: flex-start; text-align: center; }
 .wx-navigator_91rIxS{padding-top: 8px; padding-bottom: 8px; border-width: 1px; border-style: solid; border-radius: 30px; text-align: center; color: rgb(0, 133, 255); border-color: rgb(0, 133, 255); font-size: 16px; width: 50%; margin-bottom: 10px; }
-.modalview{background-color: rgba(0, 0, 0, 0.690196); opacity: 0; display: block; z-index: 0; position: fixed; top: 0px; bottom: 0px; right: 0px; left: 0px; transform: rotate(0deg) scale(1) translate(0%, 100%); transition: all 0.3s ease; }
 .wx-view_m9HByj{background-color: rgb(255, 255, 255); position: absolute; width: 100%; bottom: 0; box-shadow: rgba(0, 0, 0, 0.270588) 0px -2px 20px 0px; padding-bottom: 10px; text-align: center; }
-.modalview.c-state1{transform: rotate(0deg) scale(1) translate(0%, 0%); transition: all 0.3s ease; opacity: 1; display: block; }
 .wx-button_V2eIJ4{width: 18rem; background-color: rgb(255, 255, 255); font-size: 15px; }
 ._other_text_d8PEVm{width: 24px; height: 24px; text-align: center; margin-right: 10px; display: inline-block;}
 .wx-view_vLuOu2{text-align: right; background-color: rgb(255, 255, 255); padding-top: 3px; padding-bottom: 3px; }
-.wx-textarea_9pwDc5{width: 18rem; display: inline-block; margin-bottom: 10px; padding: 5px 10px; font-size: 14px; z-index: 10; }
+
 .wx-image_SidGqw{width: 100%; height: 100%; }
 .useravatar{width: 100%; height: 100%; border-radius: 48px; border-bottom-right-radius: 48px; border-bottom-left-radius: 48px; border-top-right-radius: 48px; border-top-left-radius: 48px; }
 .wx-view_GSg09R{padding-top: 45px; height: 100%; width: 100%; overflow: auto; }

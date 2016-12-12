@@ -39,8 +39,7 @@ Page({
     var that =this,tempArr =[];
      var nowTime = new Date().getTime(), interval, type, year, day, dateStr,timeStr;
     if ( response && response.list && response.list.length> 0) {
-    
-      response.list.forEach(function (item) {
+        response.list.forEach(function (item) {
           item.eventTime *=1000;
           if (item.eventTime > nowTime) {
               type = '未来';
@@ -79,12 +78,14 @@ Page({
               pic:item.pic,
               zanNum:item.zanNum,
               commentNum:item.commentNum,
-              img: ((img_t == undefined || img_t == '')? 'bg_1.jpg' : img_t )+ "?imageView2/0/w/300"
+              img:common.imgUrl() + (img_t == ''?'bg_1.jpg':img_t)
 
           });
         
       });
-     
+        response.slides.forEach(function (item) {
+            item.img = common.imgUrl() + (item.img == ''?'bg_1.jpg':item.img)
+        })
       that.setData({
          allList:tempArr,
          slideList:response.slides

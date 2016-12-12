@@ -1,6 +1,37 @@
-page { 
-    position: relative;  
+page {
+  position: relative;
+  background-color: #ffffff;
 }
-.title{
-    text-align:center;
+
+.title {
+  text-align: center;
+}
+
+.wx-textarea_9pwDc5 {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+
+}
+
+.modalview {
+  background-color: rgba(0, 0, 0, 0.690196);
+  opacity: 0;
+  display: none;
+  z-index: 0;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  transform: rotate(0deg) scale(1) translate(0%, 100%);
+  transition: all 0.3s ease;
+}
+
+.modalview.c-state1 {
+  transform: rotate(0deg) scale(1) translate(0%, 0%);
+  transition: all 0.3s ease;
+  opacity: 1;
+  display: block;
 }

@@ -1,7 +1,7 @@
 <swiper autoplay="True" class="wx-swiper_6jmaYB" indicator-dots="True" lower-threshold="50">
     <swiper-item class="c-full wx-swiper-item_xLDDmi" wx:for="{{slideList}}" wx:for-item="item" wx:key="id">
         <text class="c-block wx-text_sjmo2j">{{item.eventName}}</text>
-        <image class="wx-image_2d0zeC bg" mode="scaleToFill" src="{{item.img}}" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/893425158b4095f6502bea071a09ffdc_origin.jpg); "/>
+        <image class="wx-image_2d0zeC bg" mode="aspectFill" src="{{item.img}}" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url({{item.img}}); "/>
     </swiper-item>
 </swiper>
 <!--<view wx:for="{{allList}}" wx:for-item="item" wx-key='id'>{{index}}-{{item.id}}</view>-->
@@ -20,7 +20,7 @@
                 
             </view>
             <navigator class="wx-navigator_PNd8QQ" url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">
-                <image class="wx-image_BEjy38" mode="aspectFill" src="{{item.img}}" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/893425158b4095f6502bea071a09ffdc_origin.jpg); " />
+                <image class="wx-image_BEjy38" mode="aspectFill" src="{{item.img}}" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url({{item.img}}); " />
                 <view class="wx-view_KedDbI" >
                     <text class="c-block wx-text_6zTs4l" >{{item.eventContent == null?item.eventName:item.eventContent}}</text>
                 </view>
@@ -28,11 +28,11 @@
             <view class="wx-view_adF7Mw" >
                 <view class="wx-view_2gazUr" >
                     <view class="wx-view_DKe6UT" >
-                        <image class="wx-image_6E2A1o" mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/a67f2e79e6ed8ae5bf46237d4f88a4e7_origin.png" />
+                        <image class="wx-image_6E2A1o" mode="aspectFit" src="../../resources/hasZan.png" />
                         <text class="c-block wx-text_id0VJj" >{{item.zanNum}}</text>
                     </view>
                     <view class="wx-view_DKe6UT" >
-                        <image class="wx-image_6E2A1o"  mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png" />
+                        <image class="wx-image_6E2A1o"  mode="aspectFit" src="../../resources/message.png" />
                         <text class="c-block wx-text_id0VJj" >{{item.commentNum}}</text>
                     </view>
                 </view>
