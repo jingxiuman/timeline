@@ -102,6 +102,12 @@ Page({
         } else {
             common.msgShowDelay("你的数据被偷走了，下面加一个")
         }
+        wx.hideToast();
+        try{
+            wx.stopPullDownRefresh()
+        }catch (e){
+            console.log(e);
+        }
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

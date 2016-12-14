@@ -23,21 +23,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad () {
-    var that =this;
-    common.getAllBox({},{
-      func:function(response){
-        console.info("index data",response);
-       
-        that.makeData(response);
-          
-      },
-      context:that
-    })
+      let that =this;
+      wx.showToast({
+          title: '加载中',
+          icon: 'loading',
+          duration: 10000
+      });
+      that.getNewData();
     
   },
+    getNewData() {
+        let that =this;
+        common.getAllBox({},{
+            func:function(response){
+                console.info("index data",response);
+
+                that.makeData(response);
+
+            },
+            context:that
+        })
+    },
   makeData:function(response){
-    var that =this,tempArr =[];
-     var nowTime = new Date().getTime(), interval, type, year, day, dateStr,timeStr;
+    let that =this,tempArr =[];
+    let nowTime = new Date().getTime(), interval, type, year, day, dateStr,timeStr;
     if ( response && response.list && response.list.length> 0) {
         response.list.forEach(function (item) {
           item.eventTime *=1000;
@@ -78,56 +87,36 @@ Page({
               pic:item.pic,
               zanNum:item.zanNum,
               commentNum:item.commentNum,
-              img:common.imgUrl() + (img_t == ''?'bg_1.jpg':img_t)
+              img:common.imgUrl() + (img_t == ''?'bg_1.jpg':img_t)+'?imageView2/1/w/640/h/360'
 
           });
         
       });
         response.slides.forEach(function (item) {
-            item.img = common.imgUrl() + (item.img == ''?'bg_1.jpg':item.img)
+            item.img = common.imgUrl() + (item.img == ''?'bg_1.jpg':item.img)+'?imageView2/1/w/640/h/360'
         })
       that.setData({
          allList:tempArr,
          slideList:response.slides
       });
+
     console.info("transfer",that.data)
   } else {
       common.msgShowDelay("你的数据被偷走了，下面加一个")
   }
+      wx.hideToast();
+      try{
+          wx.stopPullDownRefresh()
+      }catch (e){
+          console.log(e);
+      }
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload () {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh () {
-    
+
+      this.getNewData();
   },
 
 

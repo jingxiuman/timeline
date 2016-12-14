@@ -23,6 +23,7 @@ Page({
     imgUrl:''
   },
   formSaveData:function(e){
+    console.log(e)
     var that =this;
     var detail = e.detail.value;
     if(detail.title == '' || detail.time == ''){

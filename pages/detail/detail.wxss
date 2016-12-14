@@ -7,18 +7,36 @@ page {
   text-align: center;
 }
 
+.input-main {
+  position: relative;
+}
+
 .wx-textarea_9pwDc5 {
-  width: 100%;
-  margin-bottom: 10px;
+  background-color: #ffffff;
+  width: 19rem;
+  margin: 10px auto;
   padding: 5px 10px;
   font-size: 14px;
+  border: 1px solid #000000;
 
+}
+
+.wx-view_m9HByj {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 10%;
+  box-shadow: rgba(0, 0, 0, 0.270588) 0px -2px 20px 0px;
+  padding-bottom: 20px;
+  text-align: center;
 }
 
 .modalview {
   background-color: rgba(0, 0, 0, 0.690196);
   opacity: 0;
-  display: none;
+  display: block;
   z-index: 0;
   position: fixed;
   top: 0px;
@@ -33,5 +51,30 @@ page {
   transform: rotate(0deg) scale(1) translate(0%, 0%);
   transition: all 0.3s ease;
   opacity: 1;
-  display: block;
+}
+
+.wx-view_q8yXI9 {
+  width: 44px;
+  height: 44px;
+  background-color: rgb(237, 237, 237);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 22px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(219, 219, 219);
+  border-bottom-color: rgba(219, 219, 219, 1);
+  border-top-color: rgba(219, 219, 219, 1);
+  border-right-color: rgba(219, 219, 219, 1);
+  border-left-color: rgba(219, 219, 219, 1);
+  margin: 0 5px;
+}
+
+.comment-input {
+  margin: 1rem -1px;
+  padding: 5px;
+  height: 2rem;
+  border: 1px solid #e1e1e1;
 }

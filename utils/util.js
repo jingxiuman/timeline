@@ -99,12 +99,19 @@ var commonFunc = {
       },
       success: function(res) {
         var response = res.data;
-        console.log("返回",response)
+        console.log("返回",response);
         if(response.code == 0){
            if (!callback) return;
             var callbackFunc = callback.func,
                 callbackContext = callback.context;
             callbackFunc && typeof(callbackFunc) == 'function' && callbackFunc.call(callbackContext, response.data);
+        }else if(response.code == 10001){
+            wx.clearStorage();
+            wx.showToast({
+                title: response.msg || '',
+                duration: 2000
+            });
+
         }else{
           wx.showToast({
             title: response.msg || '',
@@ -191,6 +198,9 @@ var commonFunc = {
   },
   addBoxComment:function(data,callback){
     this.ajaxFunc('/comment/add',data,callback)
+  },
+  shareBox:function(data,callback){
+    this.ajaxFunc('/box/share',data,callback)
   }
 };
 

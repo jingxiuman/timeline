@@ -10,6 +10,9 @@ view,scroll-view,swiper,swiper-item,icon,text,progress,button,checkbox-group,che
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+navigator{
+  height: 100%;
+}
 page {
   height: 100%;
   font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
@@ -121,7 +124,6 @@ outline:none;}
 .wx-view_Ipiy3Y{display: flex; justify-content: center; margin-bottom: 20px;margin-top:20px; }
 .wx-text_V55JEt{text-align: center; margin-top: 30px; padding-left: 20px; padding-right: 20px; margin-bottom: 20px; color: rgb(250, 114, 152); font-size: 30px; }
 .wx-navigator_8s8V9p{text-align: center; background-color: rgba(97,146,255,1); color: rgb(255, 255, 255); padding: 10px 20px; border-radius: 20px; display: inline-block; font-size: 16px; min-width: 180px; margin-right: 10px; height: 44px; }
-.wx-view_q8yXI9{width: 44px; height: 44px; background-color: rgb(237, 237, 237); background-size: cover; display: flex; justify-content: center; align-items: center; border-radius: 22px; border-width: 1px; border-style: solid; border-color: rgb(219, 219, 219); border-bottom-color: rgba(219,219,219,1); border-top-color: rgba(219,219,219,1); border-right-color: rgba(219,219,219,1); border-left-color: rgba(219,219,219,1); }
 .wx-image_YAG40m{width: 30px; height: 30px; }
 .wx-view_KHAWVZ{padding-bottom: 30px; }
 .likelist{padding: 10px 1rem; border-bottom-color: rgb(237, 237, 237); border-top: 1px solid rgb(237, 237, 237); border-bottom-width: 1px; border-bottom-style: solid; }
@@ -164,7 +166,6 @@ outline:none;}
 .wx-image_rxdS0O{height: 100%; width: 100%; background-color: transparent; }
 .wx-view_9AHgoU{display: flex; flex-direction: column; height: 100%; padding-top: 30px; justify-content: flex-start; text-align: center; }
 .wx-navigator_91rIxS{padding-top: 8px; padding-bottom: 8px; border-width: 1px; border-style: solid; border-radius: 30px; text-align: center; color: rgb(0, 133, 255); border-color: rgb(0, 133, 255); font-size: 16px; width: 50%; margin-bottom: 10px; }
-.wx-view_m9HByj{background-color: rgb(255, 255, 255); position: absolute; width: 100%; bottom: 0; box-shadow: rgba(0, 0, 0, 0.270588) 0px -2px 20px 0px; padding-bottom: 10px; text-align: center; }
 .wx-button_V2eIJ4{width: 18rem; background-color: rgb(255, 255, 255); font-size: 15px; }
 ._other_text_d8PEVm{width: 24px; height: 24px; text-align: center; margin-right: 10px; display: inline-block;}
 .wx-view_vLuOu2{text-align: right; background-color: rgb(255, 255, 255); padding-top: 3px; padding-bottom: 3px; }

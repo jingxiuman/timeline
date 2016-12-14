@@ -1,5 +1,5 @@
-page { 
-    background-color: rgba(224,224,224,0.2);  
+page {
+    background-color: rgba(244, 244, 244, 0.2);
 }
 .wx-view_TokXq5{margin-top: 25px; }
 .wx-text_gin1mW{position: absolute; top: 0px; left: 10px; bottom: 0px; margin-top: auto; margin-bottom: auto; right: 0px; display: flex; align-items: center; width: 85px; font-size: 17px; color: #000; }

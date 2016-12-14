@@ -11,7 +11,11 @@
     <view class="wx-view_Ipiy3Y" >
         <view class="wx-view_q8yXI9" bindtap="addFavor">
             <image class="wx-image_YAG40m" mode="aspectFit" wx:if="{{detail.hasZan > 0}}" src="../../resources/hasZan.png" />
-            <image class="wx-image_YAG40m" mode="aspectFit"  wx:if="{{detail.hasZan == 0}}" src="../../resources/noZan.png" />
+            <image class="wx-image_YAG40m" mode="aspectFit"  wx:if="{{detail.hasZan == 0}}" src="../../resources/zan_none.png" />
+        </view>
+        <view class="wx-view_q8yXI9" bindtap="addShare">
+            <image class="wx-image_YAG40m" mode="aspectFit" wx:if="{{detail.hasShare == 1}}" src="../../resources/share.png" />
+            <image class="wx-image_YAG40m" mode="aspectFit"  wx:if="{{detail.hasShare == 0}}" src="../../resources/share_none.png" />
         </view>
     </view>
     <view class="likelist"  wx:if="{{zanLength > 0}}">
@@ -66,7 +70,7 @@
     </button>
 </view>
 
-<view class="modalview {{addCommentFlag==true?'c-state1':''}}" >
+<view class="modalview {{addCommentFlag==true?'c-state1':''}}" wx:if="addCommentFlag" >
 <form bindsubmit="addComment">
     <view  class="wx-view_m9HByj">
         <view class="bottomGrayboder wx-view_vLuOu2">
@@ -75,7 +79,9 @@
             </view>
         </view>
 
-        <textarea class="c-block c-fullwidth wx-textarea_9pwDc5" sauto-height name="main" placeholder="请输入点评" type="textarea"/>
+        <input class="c-fullwidth comment-input" name="main"  maxlength="140" placeholder="输入你的评论" />
+        <!--<view class="input-main"><textarea class="c-block c-fullwidth wx-textarea_9pwDc5"   wx:if="addCommentFlag"  name="main" placeholder="请输入点评" type="textarea"/></view>-->
+
         <button class="wx-button_V2eIJ4" form-type="submit" hover-class="button-hover" size="mini" type="default">
             点 评
         </button>

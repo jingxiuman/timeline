@@ -1,4 +1,4 @@
-var common = require('../../utils/util.js');
+let common = require('../../utils/util.js');
 // 创建页面实例对象
 Page({
     /**
@@ -22,7 +22,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad (e) {
-        var that = this;
+        let that = this;
         this.setData({
             id:e.id
         });
@@ -30,16 +30,17 @@ Page({
             id: e.id
         }, {
             func: function (response) {
-                var timeAll = common.formatDate(response.eventTime)
+                let timeAll = common.formatDate(response.eventTime)
                 that.setData({
                     detail: {
-                        img: common.imgUrl() + (response.img == ''?'bg_1.jpg':response.img),
+                        img: common.imgUrl() + (response.img == ''?'bg_1.jpg':response.img)+'?imageView2/1/w/640/h/360',
                         eventName: response.eventName,
                         eventTime: "1472398615",
                         type: timeAll.type,
                         timeStr: timeAll.timeStr,
                         dateStr: timeAll.dateStr,
                         id: response.id,
+                        hasShare: response.idShare,
                         hasZan: response.hasZan,
                         created_at: response.created_at,
                         eventContent: response.eventContent
@@ -51,7 +52,7 @@ Page({
         that.getComment(e.id);
     },
     getComment:function (id) {
-        var that =this;
+        let that =this;
         common.getBoxComment({
             id:id
         },{
@@ -71,15 +72,14 @@ Page({
             context:that
         })
     },
-    addCommentFunc:function (e) {
+    addCommentFunc(e) {
         this.setData({'addCommentFlag':true})
-
     },
-    addComment:function (e) {
+    addComment (e) {
         console.log(e);
-        var value = e.detail.value.main;
-        var that =this;
-        if(value.trim() != ''){
+        let value = e.detail.value.main;
+        let that =this;
+        if(value != ''){
             common.addBoxComment({
                 type:1,
                 id:that.data.id,
@@ -106,25 +106,53 @@ Page({
             })
         }
     },
-    closeComment:function () {
+    closeComment() {
         this.setData({'addCommentFlag':false})
     },
-    addFavor:function () {
-        var that =this;
+    addFavor() {
+        let that =this;
         common.addBoxComment({
-            type:0,
+            type:!that.data.detail.hasZan?1:0,
             id:that.data.id,
         },{
             func:function (re) {
                 this.setData({
-                    'detail.hasZan': 1
+                    'detail.hasZan': that.data.detail.hasZan?1:0
                 });
                 that.getComment(that.data.id)
                 wx.showToast({
-                    title: '点赞成功',
+                    title: that.data.detail.hasZan == 1?'点赞成功':'取消点赞',
                     icon: 'success',
                     duration: 1500
                 })
+            },
+            context:that
+        })
+    },
+    addShare() {
+        let that =this;
+
+        common.shareBox({
+            type:!that.data.detail.hasShare,
+            id:that.data.id,
+        },{
+            func:function (re) {
+                if(re.type != 'other') {
+                    this.setData({
+                        'detail.hasShare': !that.data.detail.hasShare
+                    });
+                    wx.showToast({
+                        title: that.data.detail.hasShare == 1 ? '分享成功' : '取消分享',
+                        icon: 'success',
+                        duration: 1500
+                    })
+                }else{
+                    wx.showToast({
+                        title: '这是别人的',
+                        icon: 'success',
+                        duration: 1500
+                    })
+                }
             },
             context:that
         })
