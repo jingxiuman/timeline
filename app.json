@@ -12,9 +12,8 @@
     "pages/all/all", 
     "pages/box/box", 
     "pages/addBox/addBox", 
-    "pages/profile/profile", 
-    "pages/detail/detail", 
-    "pages/login/login"
+    "pages/profile/profile",
+    "pages/detail/detail"
   ], 
   "tabBar": {
     "color": "#fa7298",

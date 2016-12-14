@@ -3,7 +3,7 @@ var commonFunc = {
   /**
    * ajax传送
    */
-  debug:true,
+  debug: false,
   formatTime:function (date) {
     var year = date.getFullYear()
     var month = date.getMonth() + 1

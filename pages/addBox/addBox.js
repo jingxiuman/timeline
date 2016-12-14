@@ -26,6 +26,7 @@ Page({
     console.log(e)
     var that =this;
     var detail = e.detail.value;
+
     if(detail.title == '' || detail.time == ''){
       wx.showModal({
         title:'警告',
@@ -33,6 +34,11 @@ Page({
         showCancel:false
       })
     }else{
+        wx.showToast({
+            title: '添加中',
+            icon: 'loading',
+            duration: 10000
+        });
       common.addBoxDetail({
         eventName:detail.title,
         eventTime:new Date(detail.time).getTime()/1000,
@@ -40,6 +46,7 @@ Page({
         img:that.data.imgUrl
       },{
         func:function(response){
+            wx.hideToast();
             wx.navigateTo({
               url:'../box/box'
             })
@@ -47,7 +54,6 @@ Page({
         context:that
       })
     }
-    console.log(e);
     
   },
   /**
@@ -89,7 +95,7 @@ Page({
       }
     })
   },
-  previewPic:function(){
+    previewPic(){
     var that =this;
     console.log("ad");
     wx.previewImage({

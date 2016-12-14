@@ -15,7 +15,6 @@
         <view class="c-minheight wx-view_N9YFCX" >
             <text class="c-block wx-text_gin1mW" >事件标题:</text>
             <input class="c-block c-fullwidth wx-input_4oSHFL"
-              
               name="title" 
               placeholder="总结一下这一刻" 
               placeholder-class="input-placeholder"
@@ -31,12 +30,12 @@
              type="textarea"/>
         </view>
         <view class="c-minheight wx-view_SGgymE" >
-            <image class="wx-image_aQZsaV"  mode="scaleToFill" wx:if="{{imgList !=''}}" 
-            bingTap="previewPic"
-            src="{{imgList}}"/>
-            <image class="wx-image_aQZsaV"  mode="scaleToFill" wx:if ="{{imgList == ''}}"
-            bindtap="choosePic" 
-            src="http://qty83k.creatby.com/materials/origin/ae6d11a247ae0c6ee89fd70a86b225c9_origin.png" />
+            <image class="wx-image_aQZsaV" mode="scaleToFill"
+                   bingTap="previewPic"
+                   src="{{imgList}}"/>
+            <image class="wx-image_aQZsaV" mode="scaleToFill"
+                   bindtap="choosePic"
+                   src="http://qty83k.creatby.com/materials/origin/ae6d11a247ae0c6ee89fd70a86b225c9_origin.png" />
         </view>
     </view>
     <view class="c-minheight wx-view_85NAQS" >

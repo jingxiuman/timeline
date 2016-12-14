@@ -112,16 +112,16 @@ Page({
     addFavor() {
         let that =this;
         common.addBoxComment({
-            type:!that.data.detail.hasZan?1:0,
+            type: 0,
             id:that.data.id,
         },{
             func:function (re) {
                 this.setData({
-                    'detail.hasZan': that.data.detail.hasZan?1:0
+                    'detail.hasZan': 1
                 });
-                that.getComment(that.data.id)
+                that.getComment(that.data.id);
                 wx.showToast({
-                    title: that.data.detail.hasZan == 1?'点赞成功':'取消点赞',
+                    title: '点赞成功',
                     icon: 'success',
                     duration: 1500
                 })

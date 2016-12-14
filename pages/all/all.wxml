@@ -1,6 +1,6 @@
 <swiper autoplay="True" class="wx-swiper_6jmaYB"   lower-threshold="50">
     <swiper-item class="c-full wx-swiper-item_xLDDmi" wx:for="{{slideList}}" wx:for-item="item" wx:key="id">
-        <navigator url="../detail/detail?id={{item.id}}">
+        <navigator url="../detail/detail?id={{item.id}}" class="swiper-navigator">
             <text class="c-block wx-text_sjmo2j">{{item.eventName}}</text>
             <image class="wx-image_2d0zeC bg" mode="aspectFill" src="{{item.img}}" style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url({{item.img}}); "/>
         </navigator>
