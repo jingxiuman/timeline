@@ -156,6 +156,13 @@ Page({
             },
             context:that
         })
-    }
+    },
+    onPullDownRefresh () {
+        try {
+            wx.stopPullDownRefresh()
+        } catch (e) {
+            console.log(e);
+        }
+    },
 });
 

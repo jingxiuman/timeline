@@ -98,6 +98,7 @@ Page({
                 boxList: tempArr,
                 boxCount: DataMain.count
             });
+
             //main.render('boxList', {list: main.data})
         } else {
             common.msgShowDelay("你的数据被偷走了，下面加一个")
@@ -134,6 +135,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload () {
+
 
     },
 

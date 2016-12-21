@@ -3,9 +3,10 @@
         <view class="c-minheight wx-view_N9YFCX" >
             <text class="c-block wx-text_gin1mW">事件时间:</text>
             <!--<input model="time" class="c-block c-fullwidth wx-input_4oSHFL" name="input1" placeholder="请输入时间" type="time"/>-->
-            <picker mode="date" value="{{detail.time}}" 
-            name="time"
-            class="eventTime" 
+            <picker mode="date" value="{{detail.time}}"
+                    name="time"
+                    class="eventTime"
+                    bindchange="eventTimeChange"
            >
                 <view class="picker">
               {{detail.time || '点击记录这一刻时间'}}
@@ -15,27 +16,30 @@
         <view class="c-minheight wx-view_N9YFCX" >
             <text class="c-block wx-text_gin1mW" >事件标题:</text>
             <input class="c-block c-fullwidth wx-input_4oSHFL"
-              name="title" 
-              placeholder="总结一下这一刻" 
-              placeholder-class="input-placeholder"
-              type="text"/>
+                   name="title"
+                   placeholder="总结一下这一刻"
+                   value="{{detail.title ||''}}"
+                   placeholder-class="input-placeholder"
+                   type="text"/>
         </view>
         <view class="c-minheight wx-view_3bKcZe" >
             <text class="c-block wx-text_DD8VXD" >事件内容:</text>
             <textarea class="c-block wx-textarea_EjpJYT"
-            auto-height="true"
-             name="content" 
-             placeholder="记录这一刻点点滴滴" 
-             placeholder-class="input-placeholder"
-             type="textarea"/>
+                      auto-height="true"
+                      name="content"
+                      value="{{detail.content || ''}}"
+                      placeholder="记录这一刻点点滴滴"
+                      placeholder-class="input-placeholder"
+                      type="textarea"/>
         </view>
         <view class="c-minheight wx-view_SGgymE" >
             <image class="wx-image_aQZsaV" mode="scaleToFill"
-                   bingTap="previewPic"
-                   src="{{imgList}}"/>
-            <image class="wx-image_aQZsaV" mode="scaleToFill"
                    bindtap="choosePic"
-                   src="http://qty83k.creatby.com/materials/origin/ae6d11a247ae0c6ee89fd70a86b225c9_origin.png" />
+                   src="../../resources/addPic.png"/>
+            <image class="wx-image_aQZsaV" mode="scaleToFill"
+                   bingTap="seePic"
+                   src="{{imgList}}"/>
+
         </view>
     </view>
     <view class="c-minheight wx-view_85NAQS" >
