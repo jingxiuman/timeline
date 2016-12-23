@@ -25,7 +25,6 @@
         <view class="c-minheight wx-view_3bKcZe" >
             <text class="c-block wx-text_DD8VXD" >事件内容:</text>
             <textarea class="c-block wx-textarea_EjpJYT"
-                      auto-height="true"
                       name="content"
                       value="{{detail.content || ''}}"
                       placeholder="记录这一刻点点滴滴"
@@ -37,16 +36,17 @@
                    bindtap="choosePic"
                    src="../../resources/addPic.png"/>
             <image class="wx-image_aQZsaV" mode="scaleToFill"
-                   bingTap="seePic"
+                   bindtap="seePic"
                    src="{{imgList}}"/>
 
         </view>
     </view>
     <view class="c-minheight wx-view_85NAQS" >
-        <button class="wx-button_Is0zdo" 
-         formType="submit"
-          hover-class="button-hover"  
-          size="default" >
+        <button class="wx-button_Is0zdo"
+                formType="submit"
+                bindTap="clickBTN"
+                hover-class="button-hover"
+                size="default" >
             保存
         </button>
     </view>

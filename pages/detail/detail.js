@@ -164,5 +164,13 @@ Page({
             console.log(e);
         }
     },
+    onShareAppMessage: function () {
+        var that = this;
+        return {
+            title: that.data.detail.eventName || '旧时光',
+            desc: that.data.detail.eventContent || '记录你的幸福时光',
+            path: '/page/detail/detail?id=' + that.data.id
+        }
+    }
 });
 

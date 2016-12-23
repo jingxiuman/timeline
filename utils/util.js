@@ -2,7 +2,7 @@ let commonFunc = {
   /**
    * ajax传送
    */
-  debug: true,
+  debug: false,
   /**
    * 检测用户是否登陆
    */

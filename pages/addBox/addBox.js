@@ -21,6 +21,9 @@ Page({
         imgList: '',
         imgUrl: ''
     },
+    clickBTN: function () {
+        console.log('点击时间')
+    },
     formSaveData(e){
         console.log(e)
         var that = this;
@@ -45,12 +48,13 @@ Page({
                 img: that.data.imgUrl
             }, {
                 func: function (response) {
-                    wx.hideToast();
+
                     wx.showToast({
                         title: '保存成功',
                         icon: 'success',
                         duration: 2000
                     });
+                    wx.hideToast();
                     that.setData({
                         detail: {
                             time: '',
@@ -58,7 +62,9 @@ Page({
                             content: '',
                         }
                     })
-
+                    wx.switchTab({
+                        url: '/pages/box/box'
+                    })
                     // wx.redirectTo({
                     //     url: '../box/box'
                     // })
@@ -109,7 +115,7 @@ Page({
             }
         })
     },
-    seePic(){
+    seePic: function () {
         var that = this;
         console.log("ad");
         let urlImg = common.imgUrl() + that.data.imgUrl;

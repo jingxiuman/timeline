@@ -23,20 +23,22 @@ Page({
      */
     onLoad () {
         let that = this;
-        wx.showToast({
-            title: '加载中',
-            icon: 'loading',
-            duration: 1500,
 
-        });
 
         that.requestData();
 
     },
     requestData: function () {
         var that = this;
+        wx.showToast({
+            title: '加载中',
+            icon: 'loading',
+            duration: 1500,
+
+        });
         common.getOwnBox({}, {
             func: function (response) {
+                wx.hideToast();
                 console.info("box 返回数据", response)
                 that.makeData(response)
             },
@@ -103,7 +105,7 @@ Page({
         } else {
             common.msgShowDelay("你的数据被偷走了，下面加一个")
         }
-        wx.hideToast();
+
         try{
             wx.stopPullDownRefresh()
         }catch (e){
