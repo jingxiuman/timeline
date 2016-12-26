@@ -133,11 +133,11 @@ Page({
         let that =this;
 
         common.shareBox({
-            type:!that.data.detail.hasShare,
-            id:that.data.id,
-        },{
-            func:function (re) {
-                if(re.type != 'other') {
+            type: !that.data.detail.hasShare,
+            id: that.data.id,
+        }, {
+            func: function (re) {
+                if (re.type != 'other') {
                     this.setData({
                         'detail.hasShare': !that.data.detail.hasShare
                     });
@@ -146,7 +146,7 @@ Page({
                         icon: 'success',
                         duration: 1500
                     })
-                }else{
+                } else {
                     wx.showToast({
                         title: '这是别人的',
                         icon: 'success',
@@ -154,8 +154,12 @@ Page({
                     })
                 }
             },
-            context:that
+            context: that
         })
+    }
+}
+    
+       
     },
     onPullDownRefresh () {
         try {
