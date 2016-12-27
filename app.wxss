@@ -15,6 +15,9 @@ radio-group {
   display: block;
 }
 
+.hidden {
+  opacity: 0;
+}
 :before,
 :after {
   -webkit-box-sizing: border-box;

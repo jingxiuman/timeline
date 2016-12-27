@@ -9,7 +9,6 @@
     "backgroundTextStyle": "dark"
   }, 
   "pages": [
-    "pages/all/all",
     "pages/box/box", 
     "pages/addBox/addBox", 
     "pages/profile/profile",
@@ -20,12 +19,6 @@
     "selectedColor": "#fa7298",
     "borderStyle": "white", 
     "list": [
-      {
-        "text": "\u793e\u533a",
-        "pagePath": "pages/all/all",
-        "iconPath": "resources/community_none.png",
-        "selectedIconPath": "resources/community_select.png"
-      },
       {
         "text": "\u65f6\u5149\u673a", 
         "pagePath": "pages/box/box", 

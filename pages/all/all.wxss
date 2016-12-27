@@ -1,7 +1,0 @@
-.index-view{
-    min-height: 200px
-}
-
-.swiper-navigator {
-  height: 100%;
-}

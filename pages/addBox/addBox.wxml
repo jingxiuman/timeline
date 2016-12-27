@@ -37,6 +37,7 @@
                    src="../../resources/addPic.png"/>
             <image class="wx-image_aQZsaV" mode="scaleToFill"
                    bindtap="seePic"
+                   wx:if="{{imgList !=''}}"
                    src="{{imgList}}"/>
 
         </view>

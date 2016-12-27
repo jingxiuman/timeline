@@ -21,24 +21,11 @@ Page({
     onLoad () {
         console.log(app.globalData);
 
-        this.data.userInfo = app.globalData.userInfo;
+        let userInfo = wx.getStorageSync('userInfo');
         console.info("本页面元素", this.data)
         this.setData({
-            userInfo: app.globalData.userInfo
+            userInfo: userInfo
         })
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow () {
     },
 
 

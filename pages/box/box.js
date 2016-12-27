@@ -1,4 +1,4 @@
-var common = require('../../utils/util.js');
+let common = require('../../utils/util.js');
 // 获取全局应用程序实例对象
 const app = getApp();
 
@@ -14,7 +14,8 @@ Page({
 
     data: {
         boxList: [],
-        boxCount: 0
+        boxCount: 0,
+        baseImg: '',
 
     },
 
@@ -23,13 +24,20 @@ Page({
      */
     onLoad () {
         let that = this;
+        that.setData({
+            baseImg: common.baseImg()
+        });
+        if (common.checkLogin()) {
+            that.requestData();
+        } else {
+            this.userLogin();
+        }
 
 
-        that.requestData();
 
     },
     requestData: function () {
-        var that = this;
+        let that = this;
         wx.showToast({
             title: '加载中',
             icon: 'loading',
@@ -46,8 +54,8 @@ Page({
         })
     },
     makeData: function (DataMain) {
-        var that = this, tempArr = [];
-        var nowTime = new Date().getTime(), interval, type, year, day, dateStr, timeStr;
+        let that = this, tempArr = [];
+        let nowTime = new Date().getTime(), interval, type, year, day, dateStr, timeStr;
         if (DataMain.count > 0) {
 
             DataMain.data.forEach(function (item) {
@@ -64,9 +72,9 @@ Page({
                 year = parseInt(interval / 365);
                 day = parseInt(interval % 365);
 
-                var timS = item.eventTime / 1;
+                let timS = item.eventTime / 1;
 
-                var date = new Date(timS),
+                let date = new Date(timS),
                     date_year = date.getFullYear(),
                     date_month = date.getMonth() + 1;
 
@@ -77,7 +85,7 @@ Page({
                     timeStr = day + '天';
                 }
                 // console.log("总共"+interval+'天'+"--"+year+'年'+day+'天,时间:'+dateStr);
-                var img_t = '';
+                let img_t = '';
                 //console.log(img_t)
                 if (item.img != '') {
 
@@ -112,40 +120,72 @@ Page({
             console.log(e);
         }
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady () {
+    getUserInfo: function () {
+        let that = this;
+        wx.getUserInfo({
+            success: function (res) {
+                console.log('wx user info', res);
+                res.wx_token = wx.getStorageSync('wx_token')
+                common.wxUserLogin(res, {
+                    func: function (response) {
+                        console.info('lasrt', res);
+                        wx.setStorageSync('token', response.token);
+                        wx.setStorageSync('info', response.info);
+                        wx.setStorageSync('userInfo', res.userInfo)
+                        that.requestData();
+                    },
+                    context: that
+                })
+            }
+        })
+    },
+    userLogin: function () {
+        let that = this,
+            flag = 0; // 0代表已经注册过了 1表示没有注册登陆过
+        //调用登录接口
+        if (!common.checkLogin()) {
+            flag = 1;
+        }
+        if (flag == 1) {
+            wx.login({
+                success: function (res_main) {
+                    console.log('get code', res_main)
+                    common.wxUserCode({
+                        code: res_main.code,
+                        //  token:wx.getStorageSync('wx_token')
+                    }, {
+                        func: function (response_code) {
+                            console.log('response_code', response_code)
+                            wx.setStorageSync('wx_token', response_code.token);
+                            that.getUserInfo();
+                        },
+                        context: that
+                    })
+                }
+            })
+
+        } else {
+            if (wx.getStorageInfoSync('userInfo') == '') {
+                common.getWxUser({}, {
+                    func: function (response) {
+                        wx.setStorageSync('userInfo', response);
+                        that.globalData.userInfo = response;
+                        that.requestData();
+                    },
+                    context: that
+                })
+            } else {
+                that.globalData.userInfo = wx.getStorageSync('userInfo');
+            }
+        }
+
 
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload () {
-
-
-    },
-
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh () {
-        var that = this;
+        let that = this;
         that.requestData();
     },
 

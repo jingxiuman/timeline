@@ -11,10 +11,10 @@ Page({
 
     data: {
         detail: {},
-        zanList:[],
-        commentList:[],
-        id:0,
-        addCommentFlag:false
+        zanList: [],
+        commentList: [],
+        id: 0,
+        addCommentFlag: false
 
     },
 
@@ -24,7 +24,7 @@ Page({
     onLoad (e) {
         let that = this;
         this.setData({
-            id:e.id
+            id: e.id
         });
         common.getBoxDetailByOwn({
             id: e.id
@@ -33,7 +33,7 @@ Page({
                 let timeAll = common.formatDate(response.eventTime)
                 that.setData({
                     detail: {
-                        img: common.imgUrl() + (response.img == ''?'bg_1.jpg':response.img)+'?imageView2/1/w/640/h/360',
+                        img: common.imgUrl() + (response.img == '' ? 'bg_1.jpg' : response.img) + '?imageView2/1/w/640/h/360',
                         eventName: response.eventName,
                         eventTime: "1472398615",
                         type: timeAll.type,
@@ -51,41 +51,41 @@ Page({
         });
         that.getComment(e.id);
     },
-    getComment:function (id) {
-        let that =this;
+    getComment: function (id) {
+        let that = this;
         common.getBoxComment({
-            id:id
-        },{
-            func:function(response){
+            id: id
+        }, {
+            func: function (response) {
                 console.log(response);
-                response && response.list &&response.list.forEach(function(item){
+                response && response.list && response.list.forEach(function (item) {
                     let time = new Date(item.time * 1000);
-                    item.time = time.getFullYear() +'-'+(time.getMonth()+1)+'-'+time.getDate()
-                }) ;
+                    item.time = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate()
+                });
                 that.setData({
-                    zanLength:response && response.zan && response.zan.length,
-                    zanList:response && response.zan,
-                    commentList:response && response.list,
-                    commentLength:response && response.list && response.list.length
+                    zanLength: response && response.zan && response.zan.length,
+                    zanList: response && response.zan,
+                    commentList: response && response.list,
+                    commentLength: response && response.list && response.list.length
                 })
             },
-            context:that
+            context: that
         })
     },
     addCommentFunc(e) {
-        this.setData({'addCommentFlag':true})
+        this.setData({'addCommentFlag': true})
     },
     addComment (e) {
         console.log(e);
         let value = e.detail.value.main;
-        let that =this;
-        if(value != ''){
+        let that = this;
+        if (value != '') {
             common.addBoxComment({
-                type:1,
-                id:that.data.id,
-                content:value,
-            },{
-                func:function (re) {
+                type: 1,
+                id: that.data.id,
+                content: value,
+            }, {
+                func: function (re) {
                     this.setData({
                         'addCommentFlag': false
                     });
@@ -96,26 +96,26 @@ Page({
                         duration: 1500
                     })
                 },
-                context:that
+                context: that
             })
-        }else{
+        } else {
             wx.showModal({
-                title:'警告',
-                content:'内容必填哦～',
-                showCancel:false
+                title: '警告',
+                content: '内容必填哦～',
+                showCancel: false
             })
         }
     },
     closeComment() {
-        this.setData({'addCommentFlag':false})
+        this.setData({'addCommentFlag': false})
     },
     addFavor() {
-        let that =this;
+        let that = this;
         common.addBoxComment({
             type: 0,
-            id:that.data.id,
-        },{
-            func:function (re) {
+            id: that.data.id,
+        }, {
+            func: function (re) {
                 this.setData({
                     'detail.hasZan': 1
                 });
@@ -126,11 +126,11 @@ Page({
                     duration: 1500
                 })
             },
-            context:that
+            context: that
         })
     },
     addShare() {
-        let that =this;
+        let that = this;
 
         common.shareBox({
             type: !that.data.detail.hasShare,
@@ -156,18 +156,17 @@ Page({
             },
             context: that
         })
-    }
-}
-    
-       
+
     },
-    onPullDownRefresh () {
+    onPullDownRefresh()
+    {
         try {
             wx.stopPullDownRefresh()
         } catch (e) {
             console.log(e);
         }
-    },
+    }
+    ,
     onShareAppMessage: function () {
         var that = this;
         return {
@@ -176,5 +175,6 @@ Page({
             path: '/page/detail/detail?id=' + that.data.id
         }
     }
-});
+})
+;
 

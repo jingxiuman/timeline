@@ -41,6 +41,7 @@ Page({
                 icon: 'loading',
                 duration: 10000
             });
+            console.log(that.data.imgUrl);
             common.addBoxDetail({
                 eventName: detail.title,
                 eventTime: new Date(detail.time).getTime() / 1000,
@@ -60,7 +61,9 @@ Page({
                             time: '',
                             title: '',
                             content: '',
-                        }
+                        },
+                        imgList: '',
+                        imgUrl: ''
                     })
                     wx.switchTab({
                         url: '/pages/box/box'
@@ -149,6 +152,8 @@ Page({
         }
     },
     //以下为自定义点击事件
+    onUnload(){
 
+    }
 })
 

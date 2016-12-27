@@ -9,14 +9,14 @@
                     </view>
                 </view>
                 <navigator  class="wx-navigator_PNd8QQ" url='../detail/detail?id={{item.id}}'  hover-class="navigator-hover">
-                    <image class="wx-image_BEjy38 bg"  mode="aspectFill" src="{{item.img}}" 
-                     style=" background-image: url(http://qty83k.creatby.com/materials/origin/cc09a72b7456da9c074c33dfffc1f94b_origin_2.jpg); "/>
+                    <image class="wx-image_BEjy38 bg" mode="aspectFill" src="{{item.img}}"
+                           style=" background-image: url({{baseImg}}); "/>
                     <view class="wx-view_KedDbI" >
                         <text class="c-block wx-text_6zTs4l">{{item.eventName}}</text>
                     </view>
                 </navigator>
                 <view class="wx-view_adF7Mw">
-                    <view class="wx-view_2gazUr" >
+                    <view class="wx-view_2gazUr hidden">
                         <view class="wx-view_DKe6UT" >
                             <image class="wx-image_6E2A1o bg" mode="aspectFit" src="http://qty83k.creatby.com/materials/origin/a67f2e79e6ed8ae5bf46237d4f88a4e7_origin.png"
                              style="background-image: url(http://qty83k.creatby.com/materials/origin/a67f2e79e6ed8ae5bf46237d4f88a4e7_origin.png); "/>
