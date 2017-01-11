@@ -1,0 +1,9 @@
+<view class="error">
+    <image class="bg" mode="aspectFit" src="../../resources/error.png"/>
+    <view class="info">
+        <text>依赖用户信息，保存你的时间</text>
+    </view>
+    <button class="btn" type="primary" bindtap="userLogin">
+        点击获取用户信息
+    </button>
+</view>

@@ -1,0 +1,20 @@
+.error {
+  padding-top: 25%;
+
+}
+
+.error .bg {
+  width: 40%;
+  margin: 0 30%;
+
+}
+
+.error .info {
+  text-align: center;
+}
+
+.btn {
+  margin-top: 30px;
+  width: 50%;
+
+}
