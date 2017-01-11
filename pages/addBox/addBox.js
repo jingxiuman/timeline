@@ -19,7 +19,8 @@ Page({
             content: ' ',
         },
         imgList: '',
-        imgUrl: ''
+        imgUrl: '',
+        isLoading: false,
     },
     clickBTN: function () {
         console.log('点击时间')
@@ -36,11 +37,9 @@ Page({
                 showCancel: false
             })
         } else {
-            wx.showToast({
-                title: '添加中',
-                icon: 'loading',
-                duration: 10000
-            });
+            that.setData({
+                isLoading: true,
+            })
             console.log(that.data.imgUrl);
             common.addBoxDetail({
                 eventName: detail.title,
@@ -49,7 +48,9 @@ Page({
                 img: that.data.imgUrl
             }, {
                 func: function (response) {
-
+                    that.setData({
+                        isLoading: false,
+                    })
                     wx.showToast({
                         title: '保存成功',
                         icon: 'success',
@@ -85,7 +86,7 @@ Page({
         this.setData({
             detail: {
                 time: time
-            }
+            },
         })
 
     },

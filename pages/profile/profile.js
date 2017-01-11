@@ -21,7 +21,7 @@ Page({
     onLoad () {
         console.log(app.globalData);
 
-        let userInfo = wx.getStorageSync('userInfo');
+        let userInfo = app.globalData.userInfo;
         console.info("本页面元素", this.data)
         this.setData({
             userInfo: userInfo

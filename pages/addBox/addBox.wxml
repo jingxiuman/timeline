@@ -51,4 +51,7 @@
             保存
         </button>
     </view>
+    <text class="loading" wx:if="{{isLoading == true}}">
+        保存中
+    </text>
 </form>

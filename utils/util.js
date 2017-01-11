@@ -2,7 +2,7 @@ let commonFunc = {
     /**
      * ajax传送
      */
-    debug: false,
+    debug: true,
     /**
      * 检测用户是否登陆
      */
@@ -63,6 +63,8 @@ let commonFunc = {
             type: type,
         }
     },
+
+
     ajaxFunc: function (url, data, callback, type) {
         let self = this;
         data.token = wx.getStorageSync('token');

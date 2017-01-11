@@ -15,7 +15,7 @@ Page({
     data: {
         boxList: [],
         boxCount: 0,
-        baseImg: '',
+        baseImg: ''
 
     },
 
@@ -23,31 +23,33 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad () {
+        wx.showNavigationBarLoading();
+        let that = this;
+        if (common.checkLogin()) {
+
+            that.requestData();
+            that.getUserInfo();
+        } else {
+            that.userLogin();
+        }
+
+    },
+    onReady () {
         let that = this;
         that.setData({
             baseImg: common.baseImg()
         });
-        if (common.checkLogin()) {
-            that.requestData();
-        } else {
-            this.userLogin();
-        }
-
-
+    },
+    onShow(){
+        let that = this;
 
     },
     requestData: function () {
         let that = this;
-        wx.showToast({
-            title: '加载中',
-            icon: 'loading',
-            duration: 1500,
-
-        });
         common.getOwnBox({}, {
             func: function (response) {
-                wx.hideToast();
-                console.info("box 返回数据", response)
+                console.info("box 返回数据", response);
+                wx.hideNavigationBarLoading()
                 that.makeData(response)
             },
             context: that
@@ -120,66 +122,57 @@ Page({
             console.log(e);
         }
     },
+    userLogin: function () {
+        let that = this;
+        wx.login({
+            success: function (res_main) {
+                console.log('get code', res_main)
+                common.wxUserCode({
+                    code: res_main.code,
+                    //  token:wx.getStorageSync('wx_token')
+                }, {
+                    func: function (response_code) {
+                        console.log('response_code', response_code)
+                        wx.setStorageSync('wx_token', response_code.token);
+                        that.setUserInfo();
+                    },
+                    context: that
+                })
+            }
+        });
+    },
     getUserInfo: function () {
+        let that = this;
+        common.getWxUser({}, {
+            func: function (response) {
+                app.globalData.userInfo = response;
+            },
+            context: that
+        })
+    },
+    setUserInfo: function () {
         let that = this;
         wx.getUserInfo({
             success: function (res) {
+                res.wx_token = wx.getStorageSync('wx_token');
                 console.log('wx user info', res);
-                res.wx_token = wx.getStorageSync('wx_token')
                 common.wxUserLogin(res, {
                     func: function (response) {
-                        console.info('lasrt', res);
                         wx.setStorageSync('token', response.token);
                         wx.setStorageSync('info', response.info);
-                        wx.setStorageSync('userInfo', res.userInfo)
+                        app.globalData.userInfo = res.userInfo;
                         that.requestData();
                     },
                     context: that
+                })
+            },
+            fail: function (e) {
+                //console.error(e);
+                wx.redirectTo({
+                    url: '/pages/error/error'
                 })
             }
         })
-    },
-    userLogin: function () {
-        let that = this,
-            flag = 0; // 0代表已经注册过了 1表示没有注册登陆过
-        //调用登录接口
-        if (!common.checkLogin()) {
-            flag = 1;
-        }
-        if (flag == 1) {
-            wx.login({
-                success: function (res_main) {
-                    console.log('get code', res_main)
-                    common.wxUserCode({
-                        code: res_main.code,
-                        //  token:wx.getStorageSync('wx_token')
-                    }, {
-                        func: function (response_code) {
-                            console.log('response_code', response_code)
-                            wx.setStorageSync('wx_token', response_code.token);
-                            that.getUserInfo();
-                        },
-                        context: that
-                    })
-                }
-            })
-
-        } else {
-            if (wx.getStorageInfoSync('userInfo') == '') {
-                common.getWxUser({}, {
-                    func: function (response) {
-                        wx.setStorageSync('userInfo', response);
-                        that.globalData.userInfo = response;
-                        that.requestData();
-                    },
-                    context: that
-                })
-            } else {
-                that.globalData.userInfo = wx.getStorageSync('userInfo');
-            }
-        }
-
-
     },
     /**
      * 页面相关事件处理函数--监听用户下拉动作
@@ -188,9 +181,5 @@ Page({
         let that = this;
         that.requestData();
     },
-
-
-    //以下为自定义点击事件
-
 })
 

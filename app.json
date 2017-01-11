@@ -9,7 +9,8 @@
     "backgroundTextStyle": "dark"
   }, 
   "pages": [
-    "pages/box/box", 
+    "pages/box/box",
+    "pages/error/error",
     "pages/addBox/addBox", 
     "pages/profile/profile",
     "pages/detail/detail"

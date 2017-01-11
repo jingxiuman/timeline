@@ -497,3 +497,17 @@ radio-group {
   background-repeat: no-repeat;
 }
 
+.loading {
+  position: fixed;
+  left: 20%;
+  top: 50%;
+  right: 20%;
+  height: 40px;
+  margin-top: -20px;
+  background-color: rgba(0, 0, 0, 0.51);
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  border-radius: 5px;
+}
