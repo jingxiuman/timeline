@@ -42,7 +42,9 @@ Page({
     },
     onShow(){
         let that = this;
-
+        if (common.checkLogin()) {
+            that.requestData();
+        }
     },
     requestData: function () {
         let that = this;
@@ -167,10 +169,14 @@ Page({
                 })
             },
             fail: function (e) {
-                //console.error(e);
-                wx.redirectTo({
-                    url: '/pages/error/error'
-                })
+                common.createUser({}, {
+                    func: function (response) {
+                        wx.setStorageSync('token', response.token);
+                        wx.setStorageSync('info', response.info);
+                        app.globalData.userInfo = response.userInfo;
+                        that.requestData();
+                    }
+                });
             }
         })
     },

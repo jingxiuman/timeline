@@ -27,6 +27,7 @@ Page({
     },
     onReady(){
         let that = this;
+        wx.showNavigationBarLoading();
         common.getBoxDetailByOwn({
             id: that.data.id
         }, {
@@ -46,7 +47,8 @@ Page({
                         created_at: response.created_at,
                         eventContent: response.eventContent
                     }
-                })
+                });
+                wx.hideNavigationBarLoading();
             },
             context: that
         });

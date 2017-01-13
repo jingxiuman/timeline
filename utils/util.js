@@ -2,7 +2,7 @@ let commonFunc = {
     /**
      * ajax传送
      */
-    debug: true,
+    debug: false,
     /**
      * 检测用户是否登陆
      */
@@ -18,7 +18,7 @@ let commonFunc = {
     url: function () {
         let str = '';
         if (this.debug) {
-            str = 'https://test.knowthis.site'
+            str = 'https://test.xbpig.cn'
         } else {
             str = 'https://lovelog.zhouxianbao.cn'
         }
@@ -115,9 +115,6 @@ let commonFunc = {
             }
         })
     },
-    getBoxList: function (data, callback) {
-        this.ajaxFunc('/box/all', data, callback)
-    },
     wxUserLogin: function (data, callback) {
         this.ajaxFunc('/users/wxLogin', data, callback)
     },
@@ -129,9 +126,6 @@ let commonFunc = {
     },
     getOwnBox: function (data, callback) {
         this.ajaxFunc('/box/all', data, callback)
-    },
-    getAllBox: function (data, callback) {
-        this.ajaxFunc('/box/ownAndOther', data, callback, 'GET')
     },
     getBoxDetailByOwn: function (data, callback) {
         this.ajaxFunc('/box/getOne', data, callback)
@@ -174,14 +168,8 @@ let commonFunc = {
     addBoxDetail: function (data, callback) {
         this.ajaxFunc('/box/addWxBox', data, callback)
     },
-    getBoxComment: function (data, callback) {
-        this.ajaxFunc('/comment/boxDetail/' + data.id, {}, callback, 'GET')
-    },
-    addBoxComment: function (data, callback) {
-        this.ajaxFunc('/comment/add', data, callback)
-    },
-    shareBox: function (data, callback) {
-        this.ajaxFunc('/box/share', data, callback)
+    createUser: function (data, callback) {
+        this.ajaxFunc('/users/wxLoginNone', data, callback)
     }
 };
 
