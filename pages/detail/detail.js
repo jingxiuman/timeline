@@ -31,19 +31,20 @@ Page({
         common.getBoxDetailByOwn({
             id: that.data.id
         }, {
-            func: function (response) {
-                let timeAll = common.formatDate(response.eventTime);
+            func: function (res) {
+                let response = res[0];
+                let timeAll = common.formatTimeLine(response.eventTime, 'time');
                 that.setData({
                     detail: {
-                        img: response.img ? (common.imgUrl() + response.img + '?imageView2/1/w/640/h/360') : common.baseImg(),
+                        img: (response.img ? (common.imgUrl() + response.img) : common.imgDefault) + '?imageView2/1/w/640/h/360',
                         eventName: response.eventName,
                         eventTime: "1472398615",
                         type: timeAll.type,
-                        timeStr: timeAll.timeStr,
-                        dateStr: timeAll.dateStr,
+                        timeStr: common.formatTimeLine(response.eventTime, 'time'),
+                        dateStr: common.formatTimeLine(response.eventTime, 'date'),
                         id: response.id,
-                        hasShare: response.idShare,
-                        hasZan: response.hasZan,
+                        //hasShare: response.idShare,
+                        //hasZan: response.hasZan,
                         created_at: response.created_at,
                         eventContent: response.eventContent
                     }

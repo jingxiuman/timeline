@@ -25,10 +25,26 @@ Page({
     clickBTN: function () {
         console.log('点击时间')
     },
+    titleFunc: function (e) {
+        var that = this;
+        that.setData({
+            'detail.title': e.detail.value
+        })
+    },
+    contentFunc: function (e) {
+        var that = this;
+        that.setData({
+            'detail.content': e.detail.value
+        })
+    },
     formSaveData(e){
         console.log(e)
         var that = this;
-        var detail = e.detail.value;
+        var detail = {
+            title: that.data.detail.title,
+            time: that.data.detail.time,
+            content: that.data.detail.content
+        };
 
         if (detail.title == '' || detail.time == '') {
             wx.showModal({

@@ -1,8 +1,8 @@
 {
   "debug": true, 
   "window": {
-    "navigationBarTextStyle": "white", 
-    "navigationBarBackgroundColor": "#fa7298", 
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#fa7298",
     "navigationBarTitleText": "\u65e7\u65f6\u5149", 
     "backgroundColor": "#ffffff",
     "enablePullDownRefresh": true, 
@@ -31,15 +31,15 @@
         "pagePath": "pages/addBox/addBox", 
         "iconPath": "resources/add_none.png",
         "selectedIconPath": "resources/add_select.png"
-      }, 
+      },
       {
-        "text": "\u6211\u7684\u8d26\u53f7", 
-        "pagePath": "pages/profile/profile", 
+        "text": "我的",
+        "pagePath": "pages/profile/profile",
         "iconPath": "resources/person_none.png",
         "selectedIconPath": "resources/person_select.png"
       }
-    ], 
-    "backgroundColor": "#fafafb"
+    ],
+    "backgroundColor": "rgba(255, 255, 255, 0.21)"
   }, 
   "networkTimeout": {
     "connectSocket": "10000", 

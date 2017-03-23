@@ -1,37 +1,49 @@
-<scroll-view class="c-minheight wx-scroll-view_249AMb" lower-threshold="50" scroll-top="17" scroll-y="True"
-             style="overflow-x: hidden; overflow-y: auto; " upper-threshold="50">
-    <view class="c-minheight wx-view_9pDwAF" wx:for="{{boxList}}" wx:for-item="item" wx:key="id">
-        <view class="wx-view_JbWxfk">
-            <view class="carditem01">
-                <view class="wx-view_QvvUkU">
-                    <view class="wx-view_cPj0ok">
-                        <text class="c-block wx-text_TvHPc9">{{item.eventTimeStr}}</text>
-                        <text class="c-block wx-text_EOz0oL">{{item.eventTime}}</text>
-                    </view>
-                </view>
-                <navigator class="wx-navigator_PNd8QQ" url='../detail/detail?id={{item.id}}' hover-class="navigator-hover">
-                    <image class="wx-image_BEjy38 bg" mode="aspectFill" src="{{item.img}}"
-                           style=" background-image: url({{baseImg}}); "/>
-                    <view class="wx-view_KedDbI">
-                        <text class="c-block wx-text_6zTs4l">{{item.eventName}}</text>
-                    </view>
-                </navigator>
-                <view class="wx-view_adF7Mw">
-                    <view class="wx-view_2gazUr hidden">
-                        <view class="wx-view_DKe6UT">
-                            <image class="wx-image_6E2A1o bg" mode="aspectFit"
-                                   src="http://qty83k.creatby.com/materials/origin/a67f2e79e6ed8ae5bf46237d4f88a4e7_origin.png"
-                                   style="background-image: url(http://qty83k.creatby.com/materials/origin/a67f2e79e6ed8ae5bf46237d4f88a4e7_origin.png); "/>
-                            <text class="c-block wx-text_id0VJj">{{item.zanNum}}</text>
-                        </view>
-                        <view class="wx-view_DKe6UT">
-                            <image class="wx-image_6E2A1o" mode="aspectFit"
-                                   src="http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png"
-                                   style="background-size: contain; background-position: center center; background-repeat: no-repeat; background-image: url(http://qty83k.creatby.com/materials/origin/0564a45ab780222757935674e13d6919_origin.png); "/>
-                            <text class="c-block wx-text_id0VJj">{{item.commentNum}}</text>
-                        </view>
-                    </view>
-                    <text class="c-block wx-text_9Wn0Di">{{item.createStr}}</text>
+<view class="background"></view>
+<scroll-view class="time_container" upper-threshold="50">
+
+<view class="timeLine">
+    <view class="timeLine_time">
+        <view class="time">12:12</view>
+        <view class="date">2017/12/12</view>
+    </view>
+    <view class="timeLine_line">
+        <view class="line"></view>
+        <view class="type">
+            <image class="img" src="../../resources/address.png"></image>
+        </view>
+    </view>
+    <view class="timeLine_content">
+        <view class="all">
+            <view class="timeStr">14年12日</view>
+            <view class="dateStr">距离2015年12月12日</view>
+            <view class="title ">admin</view>
+        </view>
+
+        <view class="bg-img">
+            <image class="img" style="" src="http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg"></image>
+        </view>
+    </view>
+</view>
+<view class="timeLine diary">
+    <view class="timeLine_time">
+        <view class="time">12:12</view>
+        <view class="date">2017/12/12</view>
+    </view>
+    <view class="timeLine_line">
+        <view class="line"></view>
+        <view class="type">
+            <image class="img" src="../../resources/address.png"></image>
+        </view>
+    </view>
+    <view class="timeLine_content">
+        <view class="all">
+            <view class="title ">admin</view>
+            <view class="content">asdasdasdasdasd</view>
+            <view class="address">
+                <image class="img" src="../../resources/address_gray.png">
+
+                </image>
+                上海文青大街
                 </view>
             </view>
         </view>

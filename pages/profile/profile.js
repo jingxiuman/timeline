@@ -1,30 +1,30 @@
-// 获取全局应用程序实例对象
+let common = require('../../utils/util.js');
 const app = getApp();
-
-// 创建页面实例对象
 Page({
-    /**
-     * 页面名称
-     */
-    name: "profile",
-    /**
-     * 页面的初始数据
-     */
-
     data: {
-        userInfo: ''
+        userInfo: {}
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad () {
-        console.log(app.globalData);
-
-        let userInfo = app.globalData.userInfo;
-        console.info("本页面元素", this.data)
-        this.setData({
-            userInfo: userInfo
+        let that = this, userPic;
+        common.getWxUser({}, {
+            func: function (response) {
+                if (!response.userPic) {
+                    userPic = common.imgDefault
+                } else {
+                    userPic = response.userPic
+                }
+                this.setData({
+                    userInfo: {
+                        userPic: userPic,
+                        username: response.username
+                    }
+                })
+            },
+            context: that
         })
     },
 
@@ -36,8 +36,5 @@ Page({
             console.log(e);
         }
     },
-
-    //以下为自定义点击事件
-
-})
+});
 

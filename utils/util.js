@@ -2,7 +2,7 @@ let commonFunc = {
     /**
      * ajax传送
      */
-    debug: false,
+    debug: true,
     /**
      * 检测用户是否登陆
      */
@@ -18,17 +18,15 @@ let commonFunc = {
     url: function () {
         let str = '';
         if (this.debug) {
-            str = 'https://test.xbpig.cn'
+            str = 'https://apit.xbpig.cn'
         } else {
-            str = 'https://lovelog.zhouxianbao.cn'
+            str = 'https://api.xbpig.cn'
         }
         return str;
     },
-    baseImg(){
-        return this.imgUrl() + 's_274ffe054868503f5ad33125e964dc13142502.jpg?imageView2/0/w/300'
-    },
+    imgDefault: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg',
     imgUrl: function () {
-        let str = '';
+        let str;
         if (!this.debug) {
             str = 'http://cdn.xbpig.cn/'
         } else {
@@ -36,18 +34,13 @@ let commonFunc = {
         }
         return str;
     },
-    formatDate: function (time) {
-        let nowTime = new Date().getTime(), interval, type, year, day, dateStr, timeStr;
-        time *= 1000;
-        if (time > nowTime) {
-            type = '未来';
-        } else {
-            type = '过去';
-        }
-        interval = Math.round(Math.abs((time - nowTime) / 86400000));
+    formatTimeLine: function (timestamps, type) {
+        let str = '', nowTime = new Date().getTime(), interval, year, day, dateStr, timeStr;
+        timestamps *= 1000;
+        interval = Math.round(Math.abs((timestamps - nowTime) / 86400000));
         year = parseInt(interval / 365);
         day = parseInt(interval % 365);
-        let timS = time / 1;
+        let timS = timestamps;
         let date = new Date(timS),
             date_year = date.getFullYear(),
             date_month = date.getMonth() + 1;
@@ -57,13 +50,13 @@ let commonFunc = {
         } else {
             timeStr = day + '天';
         }
-        return {
-            dateStr: dateStr,
-            timeStr: timeStr,
-            type: type,
+        if (type === 'date') {
+            str = dateStr;
+        } else if (type === 'time') {
+            str = timeStr;
         }
+        return str;
     },
-
 
     ajaxFunc: function (url, data, callback, type) {
         let self = this;
@@ -116,19 +109,19 @@ let commonFunc = {
         })
     },
     wxUserLogin: function (data, callback) {
-        this.ajaxFunc('/users/wxLogin', data, callback)
+        this.ajaxFunc('/api2/wx/login', data, callback)
     },
     getWxUser: function (data, callback) {
-        this.ajaxFunc('/users/getWxUser', data, callback)
+        this.ajaxFunc('/api2/user/detail', data, callback)
     },
     wxUserCode: function (data, callback) {
-        this.ajaxFunc('/users/wxCode', data, callback)
+        this.ajaxFunc('/api2/wx/addCode', data, callback)
     },
     getOwnBox: function (data, callback) {
-        this.ajaxFunc('/box/all', data, callback)
+        this.ajaxFunc('/api2/box/own', data, callback)
     },
     getBoxDetailByOwn: function (data, callback) {
-        this.ajaxFunc('/box/getOne', data, callback)
+        this.ajaxFunc('/api2/box/one', data, callback)
     },
     addPic: function (data, callback) {
         let self = this;
@@ -169,7 +162,7 @@ let commonFunc = {
         this.ajaxFunc('/box/addWxBox', data, callback)
     },
     createUser: function (data, callback) {
-        this.ajaxFunc('/users/wxLoginNone', data, callback)
+        this.ajaxFunc('/api2/wx/loginNone', data, callback)
     }
 };
 
