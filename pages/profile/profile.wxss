@@ -1,6 +1,28 @@
 page{
   background-color: #e3e3e3;
 }
+
+.container {
+
+}
+
+.profile {
+  width: 115px;
+  margin: 0 auto;
+  padding-top: 10%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.profile .img {
+  width: 115px;
+  height: 115px;
+  border-radius: 115px;
+}
+
+.profile-text {
+  margin-top: 20px;
+}
 .wx-view_FhhAKO{
     background-color: #ffffff;
 }
@@ -9,6 +31,8 @@ page{
 }
 .nav{
   background-color: #ffffff;
+  height: 40px;
+  line-height: 40px;
   border-top:1px solid #e4e4e4;
 
 }

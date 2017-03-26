@@ -2,86 +2,9 @@ page {
 
 }
 
-.wx-view_TokXq5 {
-  margin-top: 25px;
+.container {
+  padding-top: 10px;
 }
-
-.wx-text_gin1mW {
-  position: absolute;
-  top: 0px;
-  left: 10px;
-  bottom: 0px;
-  margin-top: auto;
-  margin-bottom: auto;
-  right: 0px;
-  display: flex;
-  align-items: center;
-  width: 85px;
-  font-size: 17px;
-  color: #000;
-}
-
-.wx-input_4oSHFL {
-  color: #000;
-  background-color: rgb(255, 255, 255);
-  height: 2.4rem;
-  margin-top: 0px;
-  padding-left: 89px;
-}
-
-.wx-text_DD8VXD {
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  text-align: center;
-  min-height: 20px;
-  z-index: 10;
-  padding-left: 0px;
-  font-size: 17px;
-  padding-top: 8px;
-  border-color: rgb(136, 136, 136);
-  color: #000;
-}
-
-.wx-button_Is0zdo {
-  background-color: rgba(250, 114, 152, 1);
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  color: #fff;
-  opacity: 1;
-  background-attachment: scroll;
-  background-repeat: no-repeat;
-}
-
-.wx-textarea_EjpJYT {
-  background-color: rgb(255, 255, 255);
-  margin-top: 0px;
-  padding: 9px 9px 9px 90px;
-  min-height: 80px;
-  width: 100%;
-  height: 400 rpx;
-  box-sizing: border-box;
-}
-
-.wx-view_N9YFCX {
-  min-height: 0px;
-  margin-top: 0px;
-  position: relative;
-  border-bottom: 1px solid #b2b2b2;
-}
-
-.wx-view_3bKcZe {
-  margin-top: 0px;
-  position: relative;
-}
-
-.wx-view_SGgymE {
-  margin-top: 20px;
-  min-height: 0px;
-  padding: 0 20px;
-}
-
 .button-hover {
   background-color: rgb(249, 127, 161);
 }
@@ -96,4 +19,72 @@ page {
 
 .input-placeholder {
   color: #b2b2b2;
+}
+
+.form-group {
+  width: 90%;
+  margin: 0 auto 10px;
+  color: #ffffff;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+}
+
+.form-group-title {
+  flex: 1;
+}
+
+.form-group-input {
+  flex: 3;
+  height: 42px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.form-group-texterea {
+  flex: 3;
+  background-color: #ffffff;
+  padding: 10px;
+  color: #ccc;
+  border-radius: 5px;
+  min-height: 60px;
+}
+
+.form-group-address {
+  flex: 3;
+  min-height: 42px;
+  padding: 10px;
+  color: #ccc;
+  border-radius: 5px;
+}
+
+.img-group {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.img-item {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+.img-item .img {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-group {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-save {
+  width: 50%;
+  background-color: rgb(249, 127, 161);
+  color: #ffffff;
+  margin-top: 10px;
 }

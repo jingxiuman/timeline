@@ -20,6 +20,7 @@ page {
   right: 0;
   top: 0;
   bottom: 0;
+  z-index: -1;
   background-image: linear-gradient(170deg, rgba(48, 162, 188, .8) 1%, #3a326b)
 }
 /** **/

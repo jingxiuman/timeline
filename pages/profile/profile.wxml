@@ -1,8 +1,11 @@
-<view class="c-minheight wx-view_FhhAKO" >
-    <view class="c-minheight wx-view_JjAvLE">
-        <image class="wx-image_V5q0cS" mode="scaleToFill" src="{{ userInfo.userPic}}"
+<view class="background">
+
+</view>
+<view class="container">
+<view class="profile">
+    <image class="img" mode="scaleToFill" src="{{ userInfo.userPic}}"
                style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://o3bnyc.creatby.com/diazo/images/image-placeholder.svg);"/>
-        <text class="c-block wx-text_zYvEQG">{{userInfo.username}}</text>
+    <view class="profile-text">{{userInfo.username}}</view>
     </view>
     <view class="nav-container">
         <view class="nav">

@@ -1,83 +1,84 @@
 <view class="background"></view>
-<form class="c-minheight wx-form_m3foRJ" bindsubmit="formSaveData" >
-<view class="form-group">
-    <text class="c-block wx-text_gin1mW">事件标题:</text>
-    <input class="c-block c-fullwidth wx-input_4oSHFL"
-           name="title"
-           bindinput="titleFunc"
-           placeholder="总结一下这一刻"
-           value="{{detail.title ||''}}"
-           placeholder-class="input-placeholder"
-           type="text"/>
-</view>
-<view class="form-group">
-    <text class="c-block wx-text_gin1mW">事件时间:</text>
-    <picker mode="date" value="{{detail.time}}"
-            name="time"
-            class="eventTime"
-            bindchange="eventTimeChange"
-    >
-        <view class="picker">
-            {{detail.time || '点击记录这一刻时间'}}
-        </view>
-    </picker>
-</view>
-
-
-<view class="c-minheight wx-view_TokXq5" >
-    <view class="c-minheight wx-view_N9YFCX" >
-        <text class="c-block wx-text_gin1mW">事件时间:</text>
-        <!--<input model="time" class="c-block c-fullwidth wx-input_4oSHFL" name="input1" placeholder="请输入时间" type="time"/>-->
+<view class="container">
+<form class="" bindsubmit="formSaveData">
+    <label class="form-group">
+        <text class="form-group-title">事件标题:</text>
+        <input class="form-group-input"
+               bindinput="titleFunc"
+               placeholder="总结一下这一刻"
+               value="{{detail.title ||''}}"
+               placeholder-class="input-placeholder"
+               type="text"/>
+    </label>
+    <label class="form-group">
+        <text class="form-group-title">事件时间:</text>
         <picker mode="date" value="{{detail.time}}"
                 name="time"
-                class="eventTime"
+                class="eventTime form-group-input"
                 bindchange="eventTimeChange"
         >
             <view class="picker">
                 {{detail.time || '点击记录这一刻时间'}}
             </view>
         </picker>
-    </view>
-    <view class="c-minheight wx-view_N9YFCX" >
-        <text class="c-block wx-text_gin1mW" >事件标题:</text>
-        <input class="c-block c-fullwidth wx-input_4oSHFL"
-               name="title"
-               bindinput="titleFunc"
-               placeholder="总结一下这一刻"
-               value="{{detail.title ||''}}"
-               placeholder-class="input-placeholder"
-               type="text"/>
-    </view>
-    <view class="c-minheight wx-view_3bKcZe" >
-        <text class="c-block wx-text_DD8VXD" >事件内容:</text>
-        <textarea class="c-block wx-textarea_EjpJYT"
+    </label>
+    <label class="form-group">
+        <text class="form-group-title">事件类型:</text>
+        <picker mode="selector" value="{{detail.time}}"
+                name="time"
+                class="eventTime form-group-input"
+                bindchange="eventTimeChange"
+        >
+            <view class="picker">
+                {{detail.time || '点击记录这一刻时间'}}
+            </view>
+        </picker>
+    </label>
+    <label class="form-group">
+        <text class="form-group-title">事件内容:</text>
+        <textarea class="form-group-texterea"
                   name="content"
+                  auto-height="true"
                   bindinput="contentFunc"
                   value="{{detail.content || ''}}"
                   placeholder="记录这一刻点点滴滴"
                   placeholder-class="input-placeholder"
                   type="textarea"/>
-    </view>
-    <view class="c-minheight wx-view_SGgymE" >
-        <image class="wx-image_aQZsaV" mode="scaleToFill"
-               bindtap="choosePic"
-               src="../../resources/addPic.png"/>
+    </label>
+    <label class="form-group">
+        <text class="form-group-title">地理位置:</text>
+        <text class="form-group-address">上海文青大街</text>
+    </label>
+
+    <view class="img-group">
+        <view class="img-item">
+            <image class="img" mode="scaleToFill"
+                   bindtap="choosePic"
+                   src="../../resources/addPic.png"/>
+        </view>
+        <view class="img-item">
+            <image class="img" mode="scaleToFill"
+                   bindtap="choosePic"
+                   src="../../resources/addPic.png"/>
+        </view>
+
+
         <image class="wx-image_aQZsaV" mode="scaleToFill"
                bindtap="seePic"
                wx:if="{{imgList !=''}}"
                src="{{imgList}}"/>
 
     </view>
-</view>
-<view class="c-minheight wx-view_85NAQS" >
-    <button class="wx-button_Is0zdo"
-            bindtap="formSaveData"
-            hover-class="button-hover"
-            size="default" >
-        保存
-    </button>
-</view>
-<text class="loading" wx:if="{{isLoading == true}}">
-    保存中
-</text>
+    <view class="btn-group">
+        <button class="btn-save"
+                bindtap="formSaveData"
+                hover-class="button-hover"
+                size="default">
+            保存
+        </button>
+    </view>
+    <text class="loading" wx:if="{{isLoading == true}}">
+        保存中
+    </text>
 </form>
+</view>
