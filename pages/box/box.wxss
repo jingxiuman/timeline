@@ -1,5 +1,8 @@
 /* pages/box/box.wxss */
 
+scroll-view {
+  height: 100%;
+}
 .time_container {
   padding: 10px;
 }
@@ -128,10 +131,15 @@
 }
 
 .timeLine.diary .timeLine_content .content {
-  height: 45px;
+  line-height: 1.5;
   font-size: 12px;
   margin-top: 5px;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .timeLine.diary .timeLine_content .address {

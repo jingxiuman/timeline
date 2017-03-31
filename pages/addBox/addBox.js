@@ -15,27 +15,41 @@ Page({
     data: {
         detail: {
             time: '',
+            timeStr: '',
             title: '',
             content: ' ',
+            eventType: 0, //0:纪念日 1：日记
         },
         imgList: '',
+        changeArr: ['纪念日', '日记'],
+        changeIndex: 0,
         imgUrl: '',
         isLoading: false,
     },
-    clickBTN: function () {
-        console.log('点击时间')
-    },
-    titleFunc: function (e) {
+    titleChange: function (e) {
         var that = this;
         that.setData({
             'detail.title': e.detail.value
-        })
+        });
+        return e.detail.value
     },
     contentFunc: function (e) {
         var that = this;
         that.setData({
             'detail.content': e.detail.value
         })
+    },
+    eventTypeChange: function (e) {
+        console.log(e.detail.value);
+        var that = this;
+        this.setData({
+            'detail': {
+                eventType: e.detail.value == true ? 1 : 0,
+                timeStr: common.formatCreate(new Date().getTime() / 1000, 'all'),
+                time: new Date().getTime()
+            }
+        });
+
     },
     formSaveData(e){
         console.log(e)
@@ -101,7 +115,9 @@ Page({
         var time = this.getCurrentTime();
         this.setData({
             detail: {
-                time: time
+                time: new Date().getTime(),
+                timeStr: time,
+                eventType: 0
             },
         })
 

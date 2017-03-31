@@ -57,6 +57,19 @@ let commonFunc = {
         }
         return str;
     },
+    formatCreate: function (timestamp, type) {
+        let time = new Date(timestamp * 1000), str;
+        if (type === 'time') {
+            str = time.getHours() + ':' + time.getMinutes();
+        } else if (type === 'date') {
+            str = time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDay();
+            // str = time.getDate();
+        } else if (type === 'all') {
+            str = time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDay() + ' ' + time.getHours() + ':' + time.getMinutes();
+
+        }
+        return str;
+    },
 
     ajaxFunc: function (url, data, callback, type) {
         let self = this;

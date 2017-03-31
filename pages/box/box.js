@@ -56,8 +56,11 @@ Page({
     makeData: function (res) {
         res.forEach(function (item) {
             console.log(item);
+            item.img = item.img ? item.img : common.imgDefault;
             item.eventTimeStr = common.formatTimeLine(item.eventTime, 'time');
             item.eventTime = common.formatTimeLine(item.eventTime, 'date');
+            item.createTime = common.formatCreate(item.created_at, 'time');
+            item.createDate = common.formatCreate(item.created_at, 'date')
 
         });
         this.setData({boxList: res})

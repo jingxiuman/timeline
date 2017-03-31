@@ -4,7 +4,7 @@
     <label class="form-group">
         <text class="form-group-title">事件标题:</text>
         <input class="form-group-input"
-               bindinput="titleFunc"
+               bindinput="titleChange"
                placeholder="总结一下这一刻"
                value="{{detail.title ||''}}"
                placeholder-class="input-placeholder"
@@ -12,27 +12,29 @@
     </label>
     <label class="form-group">
         <text class="form-group-title">事件时间:</text>
-        <picker mode="date" value="{{detail.time}}"
+        <picker mode="date" value="{{detail.timeStr}}"
+                wx:if="{{detail.eventType == 0}}"
                 name="time"
                 class="eventTime form-group-input"
                 bindchange="eventTimeChange"
         >
             <view class="picker">
-                {{detail.time || '点击记录这一刻时间'}}
+                {{detail.timeStr || '点击记录这一刻时间'}}
             </view>
         </picker>
+        <view class="form-group-switch" wx:if="{{detail.eventType == 1}}">
+            {{detail.timeStr}}
+        </view>
     </label>
     <label class="form-group">
         <text class="form-group-title">事件类型:</text>
-        <picker mode="selector" value="{{detail.time}}"
-                name="time"
-                class="eventTime form-group-input"
-                bindchange="eventTimeChange"
-        >
-            <view class="picker">
-                {{detail.time || '点击记录这一刻时间'}}
-            </view>
-        </picker>
+        <view class="form-group-switch">
+            纪念日
+            <switch bindchange="eventTypeChange"/>
+            日记
+        </view>
+
+
     </label>
     <label class="form-group">
         <text class="form-group-title">事件内容:</text>

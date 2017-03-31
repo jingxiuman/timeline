@@ -1,51 +1,39 @@
 <view class="background"></view>
-<scroll-view class="time_container" upper-threshold="50">
+<scroll-view class="time_container" scroll-y="true" upper-threshold="50">
+<block wx:for="{{boxList}}" wx:for-index="id" wx:for-item="item">
+    <navigator url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">
+        <view class="timeLine {{item.eventType==1?'diary':''}}">
+            <view class="timeLine_time">
+                <view class="time">{{item.createTime}}</view>
+                <view class="date">{{item.createDate}}</view>
+            </view>
+            <view class="timeLine_line">
+                <view class="line"></view>
+                <view class="type">
+                    <image class="img" src="../../resources/address.png"></image>
+                </view>
+            </view>
+            <view class="timeLine_content">
+                <view class="all" wx:if="{{item.eventType==0}}">
+                    <view class="timeStr">{{item.eventTimeStr}}</view>
+                    <view class="dateStr">{{item.eventTime}}</view>
+                    <view class="title ">{{item.eventName}}</view>
+                </view>
+                <view class="bg-img" wx:if="{{item.eventType==0}}">
+                    <image class="img" src="{{item.img}}"></image>
+                </view>
+                <view class="all" wx:if="{{item.eventType==1}}">
+                    <view class="title ">{{item.eventName}}</view>
+                    <view class="content">{{item.eventContent}}</view>
+                    <view class="address">
+                        <image wx:if="{{item.address !=null}}" class="img" src="../../resources/address_gray.png">
 
-<view class="timeLine">
-    <view class="timeLine_time">
-        <view class="time">12:12</view>
-        <view class="date">2017/12/12</view>
-    </view>
-    <view class="timeLine_line">
-        <view class="line"></view>
-        <view class="type">
-            <image class="img" src="../../resources/address.png"></image>
-        </view>
-    </view>
-    <view class="timeLine_content">
-        <view class="all">
-            <view class="timeStr">14年12日</view>
-            <view class="dateStr">距离2015年12月12日</view>
-            <view class="title ">admin</view>
-        </view>
-
-        <view class="bg-img">
-            <image class="img" style="" src="http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg"></image>
-        </view>
-    </view>
-</view>
-<view class="timeLine diary">
-    <view class="timeLine_time">
-        <view class="time">12:12</view>
-        <view class="date">2017/12/12</view>
-    </view>
-    <view class="timeLine_line">
-        <view class="line"></view>
-        <view class="type">
-            <image class="img" src="../../resources/address.png"></image>
-        </view>
-    </view>
-    <view class="timeLine_content">
-        <view class="all">
-            <view class="title ">admin</view>
-            <view class="content">asdasdasdasdasd</view>
-            <view class="address">
-                <image class="img" src="../../resources/address_gray.png">
-
-                </image>
-                上海文青大街
+                        </image>
+                        {{item.address}}
+                    </view>
                 </view>
             </view>
         </view>
-    </view>
+    </navigator>
+</block>
 </scroll-view>

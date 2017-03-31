@@ -52,6 +52,9 @@ page {
   min-height: 60px;
 }
 
+.form-group-switch {
+  flex: 3;
+}
 .form-group-address {
   flex: 3;
   min-height: 42px;
