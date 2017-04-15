@@ -25,8 +25,8 @@
                 <view class="all" wx:if="{{item.eventType==1}}">
                     <view class="title ">{{item.eventName}}</view>
                     <view class="content">{{item.eventContent}}</view>
-                    <view class="address">
-                        <image wx:if="{{item.address !=null}}" class="img" src="../../resources/address_gray.png">
+                    <view class="address" wx:if="{{item.address !=null}}">
+                        <image class="img" src="../../resources/address_gray.png">
 
                         </image>
                         {{item.address}}

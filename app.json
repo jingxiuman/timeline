@@ -13,16 +13,17 @@
     "pages/error/error",
     "pages/addBox/addBox", 
     "pages/profile/profile",
-    "pages/detail/detail"
-  ], 
+    "pages/detail/detail",
+    "pages/advice/advice"
+  ],
   "tabBar": {
     "color": "#fa7298",
     "selectedColor": "#fa7298",
-    "borderStyle": "white", 
+    "borderStyle": "white",
     "list": [
       {
-        "text": "\u65f6\u5149\u673a", 
-        "pagePath": "pages/box/box", 
+        "text": "\u65f6\u5149\u673a",
+        "pagePath": "pages/box/box",
         "iconPath": "resources/clock_none.png",
         "selectedIconPath": "resources/clock_select.png"
       }, 

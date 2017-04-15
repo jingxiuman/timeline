@@ -25,34 +25,45 @@ Page({
         })
 
     },
-    onReady(){
+    onShow(){
+        wx.showLoading({title: '加载中'});
         let that = this;
-        wx.showNavigationBarLoading();
         common.getBoxDetailByOwn({
             id: that.data.id
         }, {
             func: function (res) {
                 let response = res[0];
                 let timeAll = common.formatTimeLine(response.eventTime, 'time');
+                let imgArr = [], imgA = [];
+                response.img && (imgArr = response.img.split("-"));
+                imgArr.forEach(function (item) {
+                    console.log(item);
+                    imgA.push(common.getImgUrl(item, 640, 360))
+                });
+                response.img = response.img ? common.getImgUrl(imgArr[0], 640, 360) : common.imgDefault;
                 that.setData({
                     detail: {
-                        img: (response.img ? (common.imgUrl() + response.img) : common.imgDefault) + '?imageView2/1/w/640/h/360',
+                        img: response.img,
                         eventName: response.eventName,
                         eventTime: "1472398615",
                         type: timeAll.type,
                         timeStr: common.formatTimeLine(response.eventTime, 'time'),
                         dateStr: common.formatTimeLine(response.eventTime, 'date'),
                         id: response.id,
-                        //hasShare: response.idShare,
-                        //hasZan: response.hasZan,
+                        address: response.address,
+                        imgList: imgA,
                         created_at: response.created_at,
                         eventContent: response.eventContent
                     }
                 });
-                wx.hideNavigationBarLoading();
+                wx.hideToast()
             },
             context: that
         });
+    },
+    onReady(){
+
+
     },
     onPullDownRefresh()
     {

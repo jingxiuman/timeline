@@ -4,6 +4,8 @@ page {
 
 .container {
   padding-top: 10px;
+  height: 100%;
+  overflow: auto;
 }
 .button-hover {
   background-color: rgb(249, 127, 161);
@@ -41,6 +43,7 @@ page {
   border-radius: 5px;
   padding: 0 10px;
   box-sizing: border-box;
+  color: #cccccc;
 }
 
 .form-group-texterea {

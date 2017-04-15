@@ -22,7 +22,7 @@ scroll-view {
 
 .timeLine_line {
   flex: 1 40px;
-  height: 135px;
+  height: 145px;
   position: relative;
 }
 
@@ -65,6 +65,7 @@ scroll-view {
   background-color: #ffffff;
   border-radius: 5px;
   padding: 10px 0;
+  box-sizing: border-box;
 }
 
 .timeLine_content .bg-img {
@@ -95,30 +96,41 @@ scroll-view {
 
 .timeLine_content .all .timeStr {
   font-size: 32px;
-  margin-top: 50px;
+  margin-top: 15%;
 }
 
 .timeLine_content .all .dateStr {
   font-size: 12px;
   color: #fa7298;
-  margin-top: 20px;
-
+  margin-top: 5%;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
 }
 
 .timeLine_content .all .title {
   font-size: 12px;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
 
 }
 
 .timeLine.diary .timeLine_content .all {
   background-color: #ffffff;
   color: #95989a;
-  padding: 10px;
+  padding: 0 10px;
   position: relative;
+  min-height: 110px;
 }
 
 .timeLine.diary .timeLine_content .all .title {
   font-size: 16px;
+  position: relative;
+  bottom: 0;
+
 }
 
 .timeLine.diary .timeLine_content .all .timeStr {
@@ -126,9 +138,7 @@ scroll-view {
   margin-top: 0;
 }
 
-.timeLine.diary .timeLine_content {
-  height: 100px;
-}
+
 
 .timeLine.diary .timeLine_content .content {
   line-height: 1.5;
@@ -138,16 +148,21 @@ scroll-view {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
 .timeLine.diary .timeLine_content .address {
   font-size: 12px;
   text-align: left;
+  margin-top: 10px;
+  position: absolute;
+  left: 10px;
+  bottom: -10px;
 }
 
 .timeLine.diary .timeLine_content .address .img {
   width: 16px;
   height: 16px;
+  vertical-align: middle;
 }

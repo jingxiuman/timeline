@@ -1,12 +1,11 @@
 <view class="background"></view>
 <view class="container">
-<form class="" bindsubmit="formSaveData">
     <label class="form-group">
         <text class="form-group-title">事件标题:</text>
         <input class="form-group-input"
                bindinput="titleChange"
                placeholder="总结一下这一刻"
-               value="{{detail.title ||''}}"
+               value="{{detail.title}}"
                placeholder-class="input-placeholder"
                type="text"/>
     </label>
@@ -49,26 +48,20 @@
     </label>
     <label class="form-group">
         <text class="form-group-title">地理位置:</text>
-        <text class="form-group-address">上海文青大街</text>
+        <text class="form-group-address">{{detail.address}}</text>
     </label>
 
     <view class="img-group">
-        <view class="img-item">
+        <view class="img-item" wx:for="{{imgList}}" wx:item="item">
             <image class="img" mode="scaleToFill"
-                   bindtap="choosePic"
-                   src="../../resources/addPic.png"/>
+                   src="{{item}}"
+            />
         </view>
         <view class="img-item">
             <image class="img" mode="scaleToFill"
                    bindtap="choosePic"
                    src="../../resources/addPic.png"/>
         </view>
-
-
-        <image class="wx-image_aQZsaV" mode="scaleToFill"
-               bindtap="seePic"
-               wx:if="{{imgList !=''}}"
-               src="{{imgList}}"/>
 
     </view>
     <view class="btn-group">
@@ -79,8 +72,4 @@
             保存
         </button>
     </view>
-    <text class="loading" wx:if="{{isLoading == true}}">
-        保存中
-    </text>
-</form>
 </view>

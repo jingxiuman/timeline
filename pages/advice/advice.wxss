@@ -1,0 +1,50 @@
+.textarea-main {
+  background-color: #ffffff;
+  width: 90%;
+  min-height: 150px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+
+}
+
+.main {
+  padding-top: 20px;
+}
+
+.btn-group {
+  width: 100%;
+  text-align: center;
+}
+
+.btn-save {
+  width: 50%;
+  background-color: rgb(249, 127, 161);
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.log {
+  margin-top: 25px;
+  height: 350px;
+}
+
+.log-item {
+  width: 90%;
+  margin: 10px auto;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 16px;
+
+}
+
+.log-title {
+  text-align: center;
+}
+
+.log-content {
+  margin-top: 10px;
+}

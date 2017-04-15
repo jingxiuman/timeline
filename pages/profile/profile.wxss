@@ -43,3 +43,18 @@ page{
   color: #696969;
   padding: 15px 10px;
 }
+
+.contactMe {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 20%;
+
+  color: #fff;
+}
+
+.contactMe_btn {
+  background-color: rgb(249, 127, 161);
+  text-align: center;
+  color: #fff;
+}

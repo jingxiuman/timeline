@@ -2,7 +2,7 @@ let commonFunc = {
     /**
      * ajax传送
      */
-    debug: true,
+    debug: false,
     /**
      * 检测用户是否登陆
      */
@@ -33,6 +33,11 @@ let commonFunc = {
             str = 'http://ohhuk1c8m.bkt.clouddn.com/'
         }
         return str;
+    },
+    getImgUrl(img, w, h){
+        if (!w) w = 300;
+        if (!h) h = 250;
+        return this.imgUrl() + img + '?imageView2/1/w/' + w + '/h/' + h
     },
     formatTimeLine: function (timestamps, type) {
         let str = '', nowTime = new Date().getTime(), interval, year, day, dateStr, timeStr;
@@ -95,13 +100,13 @@ let commonFunc = {
                 } else if (response.code == 10001) {
                     wx.clearStorage();
                     wx.showToast({
-                        title: response.msg || '',
+                        title: response.msg || '接口异常 code:10001',
                         duration: 2000
                     });
 
                 } else {
                     wx.showToast({
-                        title: response.msg || '',
+                        title: response.msg || '接口异常 code:' + res.code,
                         duration: 2000
                     });
                     if (response.code == 1111) {
@@ -138,7 +143,7 @@ let commonFunc = {
     },
     addPic: function (data, callback) {
         let self = this;
-        let urlStr = self.url() + '/pic/add';
+        let urlStr = self.url() + '/api2/pic/add';
         wx.uploadFile({
             url: urlStr, //仅为示例，非真实的接口地址
             filePath: data[0],
@@ -172,10 +177,19 @@ let commonFunc = {
         })
     },
     addBoxDetail: function (data, callback) {
-        this.ajaxFunc('/box/addWxBox', data, callback)
+        this.ajaxFunc('/api2/box/add', data, callback)
     },
     createUser: function (data, callback) {
         this.ajaxFunc('/api2/wx/loginNone', data, callback)
+    },
+    getAddress: function (data, callback) {
+        this.ajaxFunc('/api2/address/get', data, callback)
+    },
+    addAdvice: function (data, callback) {
+        this.ajaxFunc('/api2/advice/add', data, callback)
+    },
+    getUpdateList: function (data, callback) {
+        this.ajaxFunc('/api2/system/update/list', data, callback)
     }
 };
 

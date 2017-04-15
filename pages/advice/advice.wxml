@@ -1,0 +1,20 @@
+<view class="background"></view>
+<view class="main">
+<view class="textarea-main">
+    <textarea bindinput="bindTextAreaBlur" value="{{this.data.content}}" auto-height placeholder="自动变高"/>
+</view>
+<view class="btn-group">
+    <button class="btn-save"
+            bindtap="formSaveData"
+            hover-class="button-hover"
+            size="default">
+        保存
+    </button>
+</view>
+<scroll-view class="log" scroll-y="true">
+    <view class="log-item" wx:for="{{list}}">
+        <view class="log-title">{{item.time}}更新日志</view>
+        <view class="log-content">{{item.content}}</view>
+    </view>
+</scroll-view>
+</view>

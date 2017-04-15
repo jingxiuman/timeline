@@ -1,11 +1,26 @@
-<view class="wx-view_KHAWVZ">
-    <image class="wx-image_Z7Ayms" mode="aspectFill" src="{{detail.img}}"/>
-    <text class="c-block wx-text_V55JEt">{{detail.timeStr}}</text>
-    <text class="c-block title">
+<view class="background"></view>
+<view class="detail">
+<view class="detail-img-main">
+    <image class="detail-img" mode="aspectFill" src="{{detail.img}}"/>
+    <text class="detail-time">{{detail.timeStr}}</text>
+
+</view>
+<view class="detail-container">
+    <view class="detail-title">
         {{detail.eventName?detail.eventName:'暂无内容'}}
-    </text>
-    <text class="c-block wx-text_6P0UgX">
+    </view>
+    <view class="detail-other">
+        <view class="address">{{detail.address}}</view>
+        <view class="createTime">创建时间：{{detail.created_at}}</view>
+    </view>
+
+    <view class="detail-content">
         {{detail.eventContent?detail.eventContent:'暂无内容'}}
-    </text>
+    </view>
+    <view wx:for="{{detail.imgList}}" class="detail-img-item" wx:key="item">
+        <image class="detail-img" mode="aspectFill" src="{{item}}"/>
+    </view>
+</view>
+
 
 </view>
