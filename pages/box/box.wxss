@@ -68,6 +68,13 @@ scroll-view {
   box-sizing: border-box;
 }
 
+.timeLine_content .del {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+}
 .timeLine_content .bg-img {
   position: absolute;
   top: 0;
