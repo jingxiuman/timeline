@@ -8,6 +8,7 @@ Page({
      * 页面名称
      */
     name: "box",
+
     /**
      * 页面的初始数据
      */
@@ -18,17 +19,9 @@ Page({
         baseImg: ''
 
     },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
+    isLongTap: false,
     onLoad () {
-        let that = this;
-        if (common.checkLogin()) {
-            that.requestData();
-        } else {
-            that.userLogin();
-        }
+
 
     },
     onReady () {
@@ -38,16 +31,23 @@ Page({
         });
     },
     onShow(){
+        // let that = this;
+        // if (common.checkLogin()) {
+        //     that.requestData();
+        // }
         let that = this;
         if (common.checkLogin()) {
+
             that.requestData();
+        } else {
+            that.userLogin();
         }
     },
     requestData: function () {
         let that = this;
         common.getOwnBox({}, {
             func: function (response) {
-                console.info("box 返回数据", response);
+                // console.info("box 返回数据", response);
                 that.makeData(response)
             },
             context: that
@@ -55,7 +55,6 @@ Page({
     },
     makeData: function (res) {
         res.forEach(function (item) {
-            console.log(item);
             let imgArr = [];
             item.img && (imgArr = item.img.split("-"));
             item.img = item.img ? common.getImgUrl(imgArr[0]) : common.imgDefault;
@@ -66,6 +65,48 @@ Page({
 
         });
         this.setData({boxList: res})
+
+    },
+    delBox: function (e) {
+        console.log("long", e);
+        this.isLongTap = true;
+        let that = this;
+        //TODO 完成删除逻辑
+        wx.showModal({
+            title: '提示',
+            content: '确认删除当前的事件',
+            success: function (res) {
+                if (res.confirm) {
+                    let id = e.currentTarget.dataset.id;
+                    common.delBoxOne({
+                        id: id
+                    }, {
+                        func: function (res) {
+                            that.requestData();
+                            wx.showToast({
+                                title: '删除成功'
+                            })
+                        },
+                        context: that
+                    })
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        })
+        return false
+
+    },
+    goToDetail: function (e) {
+        console.log("tap", e);
+        let id = e.currentTarget.dataset.id;
+        if (this.isLongTap) {
+            this.isLongTap = false;
+            return
+        }
+        wx.navigateTo({
+            url: '../detail/detail?id=' + id
+        })
 
     },
     userLogin: function () {

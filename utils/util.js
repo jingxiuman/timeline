@@ -18,7 +18,7 @@ let commonFunc = {
     url: function () {
         let str = '';
         if (this.debug) {
-            str = 'https://apit.xbpig.cn'
+            str = 'http://apit.xbpig.cn'
         } else {
             str = 'https://api.xbpig.cn'
         }
@@ -190,6 +190,9 @@ let commonFunc = {
     },
     getUpdateList: function (data, callback) {
         this.ajaxFunc('/api2/system/update/list', data, callback)
+    },
+    delBoxOne: function (data, callback) {
+        this.ajaxFunc('/api2/box/del', data, callback)
     }
 };
 
