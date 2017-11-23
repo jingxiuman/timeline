@@ -1,0 +1,96 @@
+<view class="weui-cells__title">事件基本信息</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">事件标题</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder=""  bindinput="titleChange" value="{{detail.eventName}}"/>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">事件时间</view>
+    </view>
+    <view class="weui-cell__bd">
+        <picker mode="date" value="{{detail.dateStr}}" value="{{detail.timeStr}}"  bindchange="eventTimeChange">
+            <view class="weui-input"> {{detail.dateStr || '点击记录这一刻时间'}}</view>
+        </picker>
+    </view>
+  </view>
+</view>
+<view class="weui-cells__title">事件类型</view>
+<view class="weui-cells weui-cells_after-title">
+    <radio-group bindchange="eventTypeChange">
+        <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+            </view>
+        </label>
+    </radio-group>
+</view>
+<view class="weui-cells__title">事件内容</view>
+<view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <textarea class="weui-textarea" 
+            auto-height="true"
+            maxlength="500"
+              placeholder="记录这一刻点点滴滴"
+              bindinput="contentFunc"
+              value="{{detail.eventContent || ''}}"
+              style="height: 3.3em" />
+            <view class="weui-textarea-counter">{{detail.eventContent.length}}/500</view>
+        </view>
+    </view>
+</view>
+<view class="weui-cells__title">记录地理位置</view>
+<view class="weui-cells weui-cells_after-title">
+<view class="weui-cell weui-cell_input">
+    <view class="weui-cell__hd">
+      <view class="weui-label">地理位置</view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="" value="{{detail.address}}"/>
+    </view>
+  </view>
+</view>
+<view class="page__bd">
+    <view class="weui-cells">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <view class="weui-uploader">
+                    <view class="weui-uploader__hd">
+                        <view class="weui-uploader__title">图片上传</view>
+                        <view class="weui-uploader__info">{{imgList.length}}/9</view>
+                    </view>
+                    <view class="weui-uploader__bd">
+                        <view class="weui-uploader__files" id="uploaderFiles" >
+                            <block wx:for="{{imgList}}" wx:key="item">
+                                <view class="weui-uploader__file" bindtap="previewImage" bindlongpress="delImage" data-url="{{item}}" data-index="{{index}}" >
+                                    <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                </view>
+                            </block>
+                        </view>
+                        <view class="weui-uploader__input-box">
+                            <view class="weui-uploader__input" bindtap="choosePic"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="qcontainer">
+    <view class="btn-group">
+        <button class="btn-save"
+                bindtap="formSaveData"
+                hover-class="button-hover"
+                size="default">
+            保存
+        </button>
+    </view>
+</view>

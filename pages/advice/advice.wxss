@@ -24,27 +24,3 @@
   color: #ffffff;
   margin-top: 10px;
 }
-
-.log {
-  margin-top: 25px;
-  height: 350px;
-}
-
-.log-item {
-  width: 90%;
-  margin: 10px auto;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  color: #ffffff;
-  padding: 10px;
-  font-size: 16px;
-
-}
-
-.log-title {
-  text-align: center;
-}
-
-.log-content {
-  margin-top: 10px;
-}

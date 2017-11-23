@@ -29,7 +29,8 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad () {
+    onLoad (options) {
+      console.info("url data",options)
         var time = this.getCurrentTime();
         this.setData({
             detail: {

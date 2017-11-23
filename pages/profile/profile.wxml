@@ -7,18 +7,16 @@
            style="background-size: 100% 100%; background-position: 0% 0%; background-repeat: no-repeat; background-image: url(http://o3bnyc.creatby.com/diazo/images/image-placeholder.svg);"/>
     <view class="profile-text">{{userInfo.username}}</view>
 </view>
-<view class="nav-container">
-    <navigator url="/pages/advice/advice">
-        <view class="nav">
-            <text class="c-block nav-text">意见反馈</text>
-
+<view class="weui-cells nav-container weui-cells_after-title">
+            <navigator url="/pages/advice/advice" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">意见反馈</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator url="/pages/log/log" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">更新日志</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
         </view>
-    </navigator>
-
-    <!--<view class="nav">-->
-    <!--<text class="c-block nav-text">关于我们</text>-->
-    <!--</view>-->
-</view>
 <view class="contactMe">
     <button open-type="contact"
             class="contactMe_btn"
@@ -29,9 +27,4 @@
         给我留言
     </button>
 </view>
-<!--<view class="c-minheight wx-view_fsAYm3" data-c_e_id="wx_view_427e9c56">
-    <navigator class="wx-navigator_91rIxS" data-c_e_id="wx_navigator_f466d04e" hover-class="navigator-hover" url="../login/login">
-        <text class="c-block wx-text_T7Ctll" data-c_e_id="wx_text_85b91d3b">其他账号</text>
-    </navigator>
-</view>-->
 </view>

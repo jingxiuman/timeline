@@ -11,7 +11,8 @@ Page({
 
     data: {
         detail: {},
-        id: 0
+        id: 0,
+        showEdit:true
 
     },
 
@@ -23,7 +24,6 @@ Page({
         this.setData({
             id: e.id,
         })
-
     },
     onShow(){
         wx.showLoading({title: '加载中'});
@@ -41,6 +41,9 @@ Page({
                     imgA.push(common.getImgUrl(item, 640, 360))
                 });
                 response.img = response.img ? common.getImgUrl(imgArr[0], 640, 360) : common.imgDefault;
+                wx.setNavigationBarTitle({
+                  title: response.eventName||'旧时光详情'
+                })
                 that.setData({
                     detail: {
                         img: response.img,
@@ -56,7 +59,12 @@ Page({
                         eventContent: response.eventContent
                     }
                 });
-                wx.hideToast()
+                wx.hideToast();
+                if (response.isDefault) {
+                  that.setData({
+                    showEdit:false
+                  })
+                }
             },
             context: that
         });
@@ -77,9 +85,9 @@ Page({
     onShareAppMessage: function () {
         var that = this;
         return {
-            title: that.data.detail.eventName || '旧时光',
-            desc: that.data.detail.eventContent || '记录你的幸福时光',
-            path: '/pages/box/box'
+          title:  '记录我们距离上一次幸福时光的时间，摆脱时间的遗忘',
+            path: '/pages/box/box',
+            imageUrl:'http://cdn.xbpig.cn/common/shareMain.png'
         }
     }
 })

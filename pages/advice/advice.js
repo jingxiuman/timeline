@@ -2,17 +2,10 @@ let common = require('../../utils/util.js');
 Page({
     data: {
         content: '',
-        list: []
     },
 
     onLoad () {
         let that = this;
-        common.getUpdateList({}, {
-            func: function (res) {
-                that.setData({list: res})
-            },
-            context: that
-        })
     },
     onShow(){
 

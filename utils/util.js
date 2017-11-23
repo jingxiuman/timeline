@@ -2,7 +2,7 @@ let commonFunc = {
     /**
      * ajax传送
      */
-    debug: false,
+    debug: 'release',
     /**
      * 检测用户是否登陆
      */
@@ -17,9 +17,11 @@ let commonFunc = {
     },
     url: function () {
         let str = '';
-        if (this.debug) {
+        if (this.debug == 'test') {
             str = 'http://apit.xbpig.cn'
-        } else {
+        }else if (this.debug == 'local') {
+          str = 'http://api.xbpig.cn'
+        }else {
             str = 'https://api.xbpig.cn'
         }
         return str;
@@ -27,7 +29,7 @@ let commonFunc = {
     imgDefault: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg',
     imgUrl: function () {
         let str;
-        if (!this.debug) {
+        if (this.debug == 'release') {
             str = 'http://cdn.xbpig.cn/'
         } else {
             str = 'http://ohhuk1c8m.bkt.clouddn.com/'
@@ -67,10 +69,10 @@ let commonFunc = {
         if (type === 'time') {
             str = time.getHours() + ':' + time.getMinutes();
         } else if (type === 'date') {
-            str = time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDay();
+          str = time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDate();
             // str = time.getDate();
         } else if (type === 'all') {
-            str = time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDay() + ' ' + time.getHours() + ':' + time.getMinutes();
+          str = time.getFullYear() + '/' + (time.getMonth() + 1) + '/' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes();
 
         }
         return str;
@@ -81,7 +83,7 @@ let commonFunc = {
         data.token = wx.getStorageSync('token');
         data.info = wx.getStorageSync('info');
         let urlStr = self.url() + url;
-        console.info("url:", urlStr)
+        wx.showLoading({title:'加载中'})
         wx.request({
             url: urlStr, //仅为示例，并非真实的接口地址
             data: data,
@@ -90,6 +92,7 @@ let commonFunc = {
                 'Content-Type': 'application/json'
             },
             success: function (res) {
+              wx.hideLoading()
                 let response = res.data;
                 console.log("返回", response);
                 if (response.code == 0) {
@@ -193,6 +196,9 @@ let commonFunc = {
     },
     delBoxOne: function (data, callback) {
         this.ajaxFunc('/api2/box/del', data, callback)
+    },
+    updateBoxOne: function (data, callback) {
+      this.ajaxFunc('/api2/box/update', data, callback)
     }
 };
 

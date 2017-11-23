@@ -21,6 +21,12 @@
         <image class="detail-img" mode="aspectFill" src="{{item}}"/>
     </view>
 </view>
-
-
+<!-- <view class='share'>
+  <button type="primary" size="mini"  plain="true" open-type="share"> 分享给好朋友 </button>
+</view> -->
+<view class='operation' wx:if="{{showEdit}}" >
+<navigator url="/pages/updateBox/updateBox?id={{id}}" open-type="navigate" >
+  <text>编辑</text>
+</navigator>
+</view>
 </view>

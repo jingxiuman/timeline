@@ -1,20 +1,22 @@
 {
-  "debug": true, 
+  "debug": true,
   "window": {
     "navigationBarTextStyle": "white",
     "navigationBarBackgroundColor": "#fa7298",
-    "navigationBarTitleText": "\u65e7\u65f6\u5149", 
+    "navigationBarTitleText": "旧时光",
     "backgroundColor": "#ffffff",
-    "enablePullDownRefresh": true, 
+    "enablePullDownRefresh": true,
     "backgroundTextStyle": "dark"
-  }, 
+  },
   "pages": [
     "pages/box/box",
     "pages/error/error",
-    "pages/addBox/addBox", 
+    "pages/addBox/addBox",
     "pages/profile/profile",
     "pages/detail/detail",
-    "pages/advice/advice"
+    "pages/advice/advice",
+    "pages/log/log",
+    "pages/updateBox/updateBox"
   ],
   "tabBar": {
     "color": "#fa7298",
@@ -22,14 +24,14 @@
     "borderStyle": "white",
     "list": [
       {
-        "text": "\u65f6\u5149\u673a",
+        "text": "时光机",
         "pagePath": "pages/box/box",
         "iconPath": "resources/clock_none.png",
         "selectedIconPath": "resources/clock_select.png"
-      }, 
+      },
       {
-        "text": "\u65b0\u5efa", 
-        "pagePath": "pages/addBox/addBox", 
+        "text": "新建",
+        "pagePath": "pages/addBox/addBox",
         "iconPath": "resources/add_none.png",
         "selectedIconPath": "resources/add_select.png"
       },
@@ -41,11 +43,11 @@
       }
     ],
     "backgroundColor": "rgba(255, 255, 255, 0.21)"
-  }, 
+  },
   "networkTimeout": {
-    "connectSocket": "10000", 
-    "request": "10000", 
-    "downloadFile": "10000", 
+    "connectSocket": "10000",
+    "request": "10000",
+    "downloadFile": "10000",
     "uploadFile": "10000"
   }
 }

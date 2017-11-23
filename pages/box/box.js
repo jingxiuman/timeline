@@ -135,7 +135,7 @@ Page({
         wx.getUserInfo({
             success: function (res) {
                 res.wx_token = wx.getStorageSync('wx_token');
-                console.log('wx user info', res);
+                console.log('wx user info',JSON.stringify(res));
                 common.wxUserLogin(res, {
                     func: function (response) {
                         wx.setStorageSync('token', response.token);

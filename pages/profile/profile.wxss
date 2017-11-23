@@ -1,11 +1,6 @@
 page{
   background-color: #e3e3e3;
 }
-
-.container {
-
-}
-
 .profile {
   width: 115px;
   margin: 0 auto;
