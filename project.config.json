@@ -3,23 +3,24 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-		"postcss": false,
-		"minified": true
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
 	},
-	"compileType": "weapp",
+	"compileType": "miniprogram",
 	"libVersion": "1.5.2",
 	"appid": "wx94aaef79dd810fcb",
 	"projectname": "timeline",
 	"condition": {
-		"weapp": {
-			"current": -1,
-			"list": []
-		},
 		"search": {
 			"current": -1,
 			"list": []
 		},
 		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
 			"current": -1,
 			"list": []
 		}

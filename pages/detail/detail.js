@@ -51,6 +51,7 @@ Page({
                         eventTime: "1472398615",
                         type: timeAll.type,
                         timeStr: common.formatTimeLine(response.eventTime, 'time'),
+                        timeStr2: common.formatTimeLine(response.eventTime, 'day'),
                         dateStr: common.formatTimeLine(response.eventTime, 'date'),
                         id: response.id,
                         address: response.address,

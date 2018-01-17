@@ -61,6 +61,8 @@ let commonFunc = {
             str = dateStr;
         } else if (type === 'time') {
             str = timeStr;
+        } else if( type === 'day') {
+          str = interval + '天'
         }
         return str;
     },

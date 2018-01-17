@@ -3,6 +3,7 @@
 <view class="detail-img-main">
     <image class="detail-img" mode="aspectFill" src="{{detail.img}}"/>
     <text class="detail-time">{{detail.timeStr}}</text>
+    <text class="detail-day">(共{{detail.timeStr2}})</text>
 
 </view>
 <view class="detail-container">
