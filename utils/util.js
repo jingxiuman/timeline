@@ -2,7 +2,7 @@ let commonFunc = {
     /**
      * ajax传送
      */
-    debug: 'release',
+    debug: 'test',
     /**
      * 检测用户是否登陆
      */
@@ -18,7 +18,7 @@ let commonFunc = {
     url: function () {
         let str = '';
         if (this.debug == 'test') {
-            str = 'http://apit.xbpig.cn'
+            str = 'http://api.xbpig.cn'
         }else if (this.debug == 'local') {
           str = 'http://api.xbpig.cn'
         }else {
