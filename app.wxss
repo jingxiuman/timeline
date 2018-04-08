@@ -1,6 +1,11 @@
 @import 'style/weui.wxss';
+
 /* 基础样式 */
-view, scroll-view, swiper, swiper-item, icon, text, progress, button, checkbox-group, checkbox, form, input, label, picker, radio-group, radio, slider, switch, action-sheet, action-sheet-item, action-sheet-cancel, modal, toast, loading, navigator, audio, image, video, map, canvas {
+
+view, scroll-view, swiper, swiper-item, icon, text, progress, button,
+checkbox-group, checkbox, form, input, label, picker, radio-group, radio, slider,
+switch, action-sheet, action-sheet-item, action-sheet-cancel, modal, toast,
+loading, navigator, audio, image, video, map, canvas {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -21,9 +26,11 @@ page {
   top: 0;
   bottom: 0;
   z-index: -1;
-  background-image: linear-gradient(170deg, rgba(48, 162, 188, .8) 1%, #3a326b)
+  background-image: linear-gradient(170deg, rgba(48, 162, 188, 0.8) 1%, #3a326b);
 }
+
 /** **/
+
 .bg {
   background-size: cover;
   background-position: center center;
@@ -38,7 +45,7 @@ page {
   height: 40px;
   margin-top: -20px;
   background-color: rgba(0, 0, 0, 0.51);
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   font-size: 20px;
   line-height: 40px;
@@ -47,4 +54,12 @@ page {
 
 .img {
   width: 100%;
+}
+
+.seeMore {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: 5%;
+  bottom: -8%;
 }
