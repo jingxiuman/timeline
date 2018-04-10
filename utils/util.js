@@ -12,6 +12,10 @@ let commonFunc = {
     var now = moment();
     return Math.abs(now.diff(day, 'day'));
   },
+  defaultBg: {
+    index: 'http://cdn.xbpig.cn/common/indexBg.png',
+    item: ''
+  },
   /**
    * 检测用户是否登陆
    */

@@ -1,0 +1,39 @@
+<view class="background"></view>
+<scroll-view class="time_container" scroll-y="true" upper-threshold="50">
+<block wx:for="{{boxList}}" wx:for-index="id" wx:for-item="item">
+    <!--<navigator url="../detail/detail?id={{item.id}}" hover-class="navigator-hover">-->
+    <view class="timeLine {{item.eventType==1?'diary':''}}" catchtap="goToDetail" catchlongtap="delBox" data-id="{{item.id}}">
+            <view class="timeLine_time">
+                <view class="time">{{item.createTime}}</view>
+                <view class="date">{{item.createDate}}</view>
+            </view>
+            <view class="timeLine_line">
+                <view class="line"></view>
+                <view class="type">
+                    <image class="img" src="../../resources/address.png"></image>
+                </view>
+            </view>
+        <view class="timeLine_content">
+                <view class="all" wx:if="{{item.eventType==0}}">
+                    <view class="timeStr">{{item.eventTimeStr}}</view>
+                    <view class="dateStr">{{item.eventTime}}</view>
+                    <view class="title ">{{item.eventName}}</view>
+                </view>
+                <view class="bg-img" wx:if="{{item.eventType==0}}">
+                    <image class="img" src="{{item.img}}"></image>
+                </view>
+                <view class="all" wx:if="{{item.eventType==1}}">
+                    <view class="title ">{{item.eventName}}</view>
+                    <view class="content">{{item.eventContent}}</view>
+                    <view class="address" wx:if="{{item.address !=null}}">
+                        <image class="img" src="../../resources/address_gray.png">
+
+                        </image>
+                        {{item.address}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    <!--</navigator>-->
+</block>
+</scroll-view>

@@ -11,7 +11,6 @@ Page({
       eventDay:0,
     }
   },
-  bgImg: 'http://cdn.xbpig.cn/common/indexBg.png',
   onShow: function () {
     let that = this;
     wx.hideTabBar({});
@@ -20,12 +19,6 @@ Page({
     } else {
       that.requestData();
     }
-  },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   },
   requestData () {
     console.log("get box");
@@ -82,7 +75,7 @@ Page({
   imgLoadError(e){
     console.log(e);
     this.setData({
-      'info.bgImg': this.bgImg
+      'info.bgImg': common.defaultBg.index
     })
   }
 })
