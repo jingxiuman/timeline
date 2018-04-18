@@ -28,18 +28,14 @@ Page({
   },
   makeData: function (res) {
     res.forEach(function (item) {
-      let imgArr = [];
-      item.img && (imgArr = item.img.split("-"));
-      item.img = item.img ? common.getImgUrl(imgArr[0]) : common.imgDefault;
+      item.img = item.img.length > 0 ? common.getImgUrl(item.img[0].url) : common.imgDefault;
       item.eventTimeStr = common.formatTimeLine(item.eventTime, 'day');
       item.eventTimeStr2 = common.formatTimeLine(item.eventTime, 'time');
       item.eventTime = common.formatTimeLine(item.eventTime, 'date');
       item.createTime = common.formatCreate(item.created_at, 'time');
       item.createDate = common.formatCreate(item.created_at, 'date')
-
     });
     this.setData({ boxList: res })
-
   },
   delBox: function (e) {
     console.log("long", e);

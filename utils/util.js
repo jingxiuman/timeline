@@ -40,19 +40,10 @@ let commonFunc = {
     return str;
   },
   imgDefault: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg',
-  imgUrl: function () {
-    let str;
-    if (this.debug == 'release') {
-      str = 'http://cdn.xbpig.cn/'
-    } else {
-      str = 'http://ohhuk1c8m.bkt.clouddn.com/'
-    }
-    return str;
-  },
   getImgUrl(img, w, h) {
     if (!w) w = 300;
     if (!h) h = 250;
-    return this.imgUrl() + img + '?imageView2/1/w/' + w + '/h/' + h
+    return 'http://cdn.xbpig.cn/' + img + '?imageView2/1/w/' + w + '/h/' + h
   },
   formatTimeLine: function (timestamps, type) {
     let str = '', nowTime = new Date().getTime(), interval, year, day, dateStr, timeStr;

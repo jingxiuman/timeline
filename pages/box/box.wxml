@@ -1,6 +1,6 @@
 <scroll-view class='container' scroll-y="true" upper-threshold="50" scroll-with-animation="true">
   <block wx:for="{{boxList}}" wx:for-index="id" wx:for-item="item">
-    <view class='timeLine-item' data-id="{{item.id}}">
+    <view class='timeLine-item' data-id="{{item.id}}"  catchtap="goToDetail" catchlongtap="delBox" >
       <view class="timeLine-img">
         <image class="img" mode="aspectFill" binderror="imgLoadError" src="{{item.img}}"></image>
       </view>
