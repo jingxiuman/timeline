@@ -1,18 +1,20 @@
 <!--pages/index/index.wxml-->
 <view class="container">
   <image class="containerBg" mode="aspectFill" src="{{info.bgImg}}" binderror="imgLoadError"></image>
-  <view class='content'>
-    <view class="title">
-      <text class='desc'>记录你生命中的最重要时刻</text>
-      <text class='author'>--旧时光</text>
+  <navigator open-type="switchTab" url="../box/box">
+    <view class='content'>
+      <view class="title">
+        <text class='desc'>记录你生命中的最重要时刻</text>
+        <text class='author'>--旧时光</text>
+      </view>
     </view>
-  </view>
-  <view class='eventContent'>
-    <text class='dayName'>DAY</text>
-    <text class='dayNum'>{{ info.eventDay }}</text>
-    <text class='eventName'>{{ info.eventName }}</text>
-    <navigator open-type="switchTab" url="../box/box">
+    <view class='eventContent'>
+      <text class='dayName'>DAY</text>
+      <text class='dayNum'>{{ info.eventDay }}</text>
+      <text class='eventName'>{{ info.eventName }}</text>
+
       <image class='seeMore' src="../../resources/index/right.png" mode="scaleToFill"></image>
-    </navigator>
-  </view>
+
+    </view>
+  </navigator>
 </view>

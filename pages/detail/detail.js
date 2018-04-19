@@ -19,7 +19,8 @@ Page({
       id: that.data.id
     }, function (response) {
       let timeAll = common.formatTimeLine(response.eventTime, 'time');
-      let imgA = [], img = '';
+      let imgA = [];
+      let img = '';
       response.img.forEach(function (item, index) {
         if (item.url) {
           let imgTmp = common.getImgUrl(item.url, 640, 360)
