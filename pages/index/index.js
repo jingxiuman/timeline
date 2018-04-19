@@ -25,6 +25,9 @@ Page({
     let that = this;
     common.getRandomOne({}, function (res) {
       console.log(res);
+      if(res.code === 1111) {
+        that.userLogin();
+      }
       that.setData({
         info: {
           bgImg: res.img ? (res.cdn + res.img) : that.imgBg,
