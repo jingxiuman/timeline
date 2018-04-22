@@ -23,7 +23,7 @@ Page({
       let img = '';
       response.img.forEach(function (item, index) {
         if (item.url) {
-          let imgTmp = common.getImgUrl(item.url, 640, 360)
+          let imgTmp = common.getImgUrl(item.url, 640, 360, 0)
           if (index === 0) {
             img = imgTmp
           } else {

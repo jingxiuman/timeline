@@ -32,7 +32,8 @@
   right: 0;
   bottom: 0;
   top: 0;
-  background: -webkit-radial-gradient(50% 50%, farthest-corner, #fffefe 66%, #8a8888 157%)；;
+  background: -webkit-radial-gradient(50% 50%, farthest-corner, #000 66%, #8a8888 157%);
+  opacity: 0.2;
 }
 
 .detail-day {
@@ -73,28 +74,31 @@
   color: #95989a;
   text-align: center;
 }
-
+.detail-createTime {
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 10px;
+}
 
 .detail-content {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
+  text-align: left;
   color: #95989a;
-  margin: 0 20px;
+  margin: 10px 20px 0;
   padding: 10px 0;
+  min-height:200px;
 }
 
 .detail-img-item {
-  margin: 10px 15px 0;
+  margin: 10px;
   border-radius: 5px;
 }
 
 .detail-img-item image {
   border-radius: 5px;
-}
-
-.share {
-  text-align: center;
-  margin-top: 10px;
 }
 
 .operation {
@@ -109,4 +113,25 @@
   line-height: 50px;
   color: #fff;
   font-size: 20px;
+}
+.detail-address{
+  text-align: right;
+  margin-top: 20px;
+  font-size: 12px;
+  margin-right: 20px;
+}
+.share {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.share button{
+  background: #fff !important;
+}
+.detail-create {
+  text-align: right;
+  font-size: 10px;
+  margin-right: 20px;
 }

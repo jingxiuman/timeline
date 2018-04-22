@@ -40,10 +40,11 @@ let commonFunc = {
     return str;
   },
   imgDefault: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg',
-  getImgUrl(img, w, h) {
+  getImgUrl(img, w, h, type) {
     if (!w) w = 300;
     if (!h) h = 250;
-    return 'http://cdn.xbpig.cn/' + img + '?imageView2/1/w/' + w + '/h/' + h
+    if (type!== 0 && !type) type = 1;
+    return 'http://cdn.xbpig.cn/' + img + '?imageView2/' + type+'/w/' + w + '/h/' + h
   },
   formatTimeLine: function (timestamps, type) {
     let str = '', nowTime = new Date().getTime(), interval, year, day, dateStr, timeStr;
