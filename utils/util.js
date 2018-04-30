@@ -1,6 +1,5 @@
 var moment = require('./moment.min.js');
 moment.locale('zh-cn');
-console.log(moment)
 let commonFunc = {
   moment: moment,
   /**
@@ -14,7 +13,7 @@ let commonFunc = {
   },
   defaultBg: {
     index: 'http://cdn.xbpig.cn/common/indexBg.png',
-    item: ''
+    item: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg?imageView2/0/w/300/h/250'
   },
   /**
    * 检测用户是否登陆
@@ -39,12 +38,18 @@ let commonFunc = {
     }
     return str;
   },
-  imgDefault: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg',
+  imgDefault: 'http://cdn.xbpig.cn/common/colorful-bubble-with-reflection-of-prague-buildings-picjumbo-com.jpg?imageView2/0/w/300/h/250',
   getImgUrl(img, w, h, type) {
     if (!w) w = 300;
     if (!h) h = 250;
     if (type!== 0 && !type) type = 1;
-    return 'http://cdn.xbpig.cn/' + img + '?imageView2/' + type+'/w/' + w + '/h/' + h
+    let url;
+    if(this.debug ==='test') {
+      url='http://ohhuk1c8m.bkt.clouddn.com/'
+    } else {
+      url = 'http://cdn.xbpig.cn/' 
+    }
+    return url + img + '?imageView2/' + type+'/w/' + w + '/h/' + h
   },
   formatTimeLine: function (timestamps, type) {
     let str = '', nowTime = new Date().getTime(), interval, year, day, dateStr, timeStr;
@@ -102,20 +107,14 @@ let commonFunc = {
         wx.hideLoading();
         let response = res.data;
         console.log("返回", response);
-        if (response.code == 0) {
-          if (typeof (callback) == 'function') {
-            callback.call(null, response.data)
-          } else {
-            return;
-          }
-        } else if (response.code == 10001) {
+        if (response.code == 10001) {
           wx.clearStorage();
           wx.showToast({
             title: response.msg || '接口异常 code:10001',
             duration: 2000
           });
 
-        } else {
+        } else if(response.code != 0) {
           wx.showToast({
             title: response.msg || '接口异常 code:' + res.code,
             duration: 2000
@@ -125,6 +124,11 @@ let commonFunc = {
             wx.removeStorageSync('info');
 
           }
+        }
+        if (typeof (callback) == 'function' && (response.code || response.code == 0)) {
+          callback.call(null, response.data, response.code)
+        } else {
+          return;
         }
 
       },
@@ -168,7 +172,7 @@ let commonFunc = {
         if (response.code == 0) {
           if (!callback) return;
           if (typeof (callback) == 'function') {
-            callbackFunc.call(null, response.data)
+            callback.call(null, response.data)
           }
         } else {
           wx.showToast({

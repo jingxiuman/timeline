@@ -1,92 +1,94 @@
 .container {
-  padding-top: 10px;
+  position: relative;
+  background-color: #fdfcfc;
   height: 100%;
-  overflow: auto;
-}
-.button-hover {
-  background-color: rgb(249, 127, 161);
-}
-
-.eventTime {
-  background-color: #fff;
-  height: 2.4rem;
-  padding-left: 89px;
-  line-height: 2.4rem;
-  color: #b2b2b2;
+  font-size: 14px;
+  color: #838080;
+  padding: 20px;
 }
 
-.input-placeholder {
-  color: #b2b2b2;
+.group-area {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 9px #d6d1d1;
+  margin: 10px 0;
+  padding: 0 5px;
 }
 
 .form-group {
-  width: 90%;
-  margin: 0 auto 10px;
-  color: #ffffff;
   display: flex;
-  font-size: 15px;
-  align-items: center;
+  line-height: 40px;
 }
 
-.form-group-title {
+.form-group:not(:last-child) {
+  border-bottom: 1px solid #e3dddd;
+}
+
+.form-group-label {
   flex: 1;
-}
-
-.form-group-input {
-  flex: 3;
-  height: 42px;
-  background-color: #ffffff;
-  border-radius: 5px;
-  padding: 0 10px;
-  box-sizing: border-box;
-  color: #cccccc;
-}
-
-.form-group-texterea {
-  flex: 3;
-  background-color: #ffffff;
-  padding: 10px;
-  color: #ccc;
-  border-radius: 5px;
-  min-height: 60px;
-}
-
-.form-group-switch {
-  flex: 3;
-}
-.form-group-address {
-  flex: 3;
-  min-height: 42px;
-  padding: 10px;
-  color: #ccc;
-  border-radius: 5px;
-}
-
-.img-group {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.img-item {
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-}
-
-.img-item .img {
-  width: 100%;
-  height: 100%;
-}
-
-.btn-group {
-  width: 100%;
   text-align: center;
 }
 
+.form-group-input-container {
+  flex: 4;
+}
+
+.form-group-input {
+  line-height: 40px;
+  height: 40px;
+  padding: 0 5px;
+  color: #838080;
+}
+
+.form-group-title {
+  color: #bfbfbf;
+}
+
+.form-group-texterea {
+  min-height: 150px;
+  color: #838080;
+  padding: 10px;
+}
+.form-group-img-list {
+  padding:  10px 0;
+  display: flex;
+  flex-flow: row wrap;
+
+}
+.form-group-img-list .img {
+  width: 100%;
+  height: 100%;
+}
+.form-group-img-list .img-item {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  float: left;
+  flex: 1 64px;
+  max-width: 64px;
+}
+.form-group-img-list .img-item:not(:last-child) {
+  margin:5px;
+}
+.form-group-img-list .img-item .img-del {
+  position: absolute;
+  top: -7.5px;
+  right: -7.5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  background-color: #ff0000;
+}
+.btn-group{
+  padding: 0;
+  width: 180px;
+  margin: 40px auto;
+}
 .btn-save {
-  width: 50%;
-  background-color: rgb(249, 127, 161);
-  color: #ffffff;
-  margin-top: 10px;
+  background-color: #FC7097;
+  color: #fff;
 }

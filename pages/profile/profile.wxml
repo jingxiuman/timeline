@@ -11,15 +11,38 @@
   <view class='profile_name'>
     <text>{{userInfo.username}}</text>
   </view>
-  <view class="weui-cells nav-container weui-cells_after-title">
-    <navigator url="/pages/advice/advice" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">意见反馈</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
-    <navigator url="/pages/log/log" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-      <view class="weui-cell__bd">更新日志</view>
-      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-    </navigator>
+  <view class='profile_data'>
+    <view class='profile_data_item'>
+      <view class='profile_data_item_content'>123</view>
+      <view class='profile_data_item_desc'>EVENTS</view>
+    </view>
+    <view class='profile_data_item'>
+      <view class='profile_data_item_content'>123</view>
+      <view class='profile_data_item_desc'>CREATETIME</view>
+    </view>
+    <view class='profile_data_item'>
+      <view class='profile_data_item_content'>123123</view>
+      <view class='profile_data_item_desc'>ADVANCE</view>
+    </view>
   </view>
- 
+  <view class='others'>
+    <view class='others_item'>
+      <text>意见反馈</text>
+      <view class='others_item_right'>
+        <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+      </view>
+    </view>
+    <view class='others_item'>
+      <text>用户安全</text>
+      <view class='others_item_right'>
+        <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+      </view>
+    </view>
+    <view class='others_item'>
+      <text>更新日志</text>
+      <view class='others_item_right'>
+        <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+      </view>
+    </view>
+  </view>
 </view>

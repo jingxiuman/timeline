@@ -1,75 +1,57 @@
-<view class="background"></view>
-<view class="container">
-    <label class="form-group">
-        <text class="form-group-title">事件标题:</text>
-        <input class="form-group-input"
-               bindinput="titleChange"
-               placeholder="总结一下这一刻"
-               value="{{detail.title}}"
-               placeholder-class="input-placeholder"
-               type="text"/>
-    </label>
-    <label class="form-group">
-        <text class="form-group-title">事件时间:</text>
-        <picker mode="date" value="{{detail.timeStr}}"
-                wx:if="{{detail.eventType == 0}}"
-                name="time"
-                class="eventTime form-group-input"
-                bindchange="eventTimeChange"
-        >
-            <view class="picker">
-                {{detail.timeStr || '点击记录这一刻时间'}}
-            </view>
-        </picker>
-        <view class="form-group-switch" wx:if="{{detail.eventType == 1}}">
-            {{detail.timeStr}}
-        </view>
-    </label>
-    <label class="form-group">
-        <text class="form-group-title">事件类型:</text>
-        <view class="form-group-switch">
-            纪念日
-            <switch bindchange="eventTypeChange"/>
-            日记
-        </view>
-
-
-    </label>
-    <label class="form-group">
-        <text class="form-group-title">事件内容:</text>
-        <textarea class="form-group-texterea"
-                  name="content"
-                  auto-height="true"
-                  bindinput="contentFunc"
-                  value="{{detail.content || ''}}"
-                  placeholder="记录这一刻点点滴滴"
-                  placeholder-class="input-placeholder"
-                  type="textarea"/>
-    </label>
-    <label class="form-group">
-        <text class="form-group-title">地理位置:</text>
-        <text class="form-group-address">{{detail.address}}</text>
-    </label>
-
-    <view class="img-group">
-        <view class="img-item" wx:for="{{imgList}}" wx:item="item">
-            <image class="img" mode="scaleToFill"
-                   src="{{item}}"
-            />
-        </view>
-        <view class="img-item">
-            <image class="img" mode="scaleToFill"
-                   bindtap="choosePic"
-                   src="../../resources/addPic.png"/>
-        </view>
-
+<view class='container'>
+  <view class='group-area'>
+    <view class='form-group'>
+      <view class='form-group-label'>
+        <text class="form-group-title">标题</text>
+      </view>
+      <view class='form-group-input-container'>
+        <input class="form-group-input" bindinput="titleChange" placeholder="总结一下这一刻" value="{{detail.title}}" type="text" />
+      </view>
     </view>
-    <view class="btn-group">
-        <button class="btn-save"
-                bindtap="formSaveData"
-                hover-class="button-hover"
-                size="default">
-            保存
-        </button>
+  </view>
+  <view class='group-area'>
+      <view class='form-group'>
+        <view class='form-group-label'>
+          <text class="form-group-title">时间</text>
+        </view>
+        <view class='form-group-input-container'>
+          <picker mode="date" value="{{timeStr}}" name="time" class="eventTime form-group-input" bindchange="eventTimeChange">
+            <view class="picker">
+              {{timeStr || '点击记录这一刻时间'}}
+            </view>
+          </picker>
+         
+        </view>
+      </view>
+    <view class='form-group'>
+      <view class='form-group-label'>
+        <text class="form-group-title">位置</text>
+      </view>
+      <view class='form-group-input-container'>
+        {{detail.address}}
+      </view>
+    </view>
+  </view>
+  <view class='group-area'>
+    <textarea class="form-group-texterea" maxlength="-1" auto-height="true" name="content"  bindinput="contentFunc" value="{{detail.content || ''}}" placeholder="记录这一刻点点滴滴" type="textarea" />
+  </view>
+  <view class='group-area'>
+    <view class="form-group-img-list">
+    <block wx:for="{{imgList}}" wx:key='*this' wx:for-index="indexId" wx:item="item">
+      <view class="img-item">
+        <image class="img" bindtap='seePic' data-url="{{item}}" mode="scaleToFill" src="{{item}}" />
+        <view class='img-del' bindtap='deletePic' data-index="{{indexId}}">X</view>
+      </view>
+    </block>      
+      <view class="img-item">
+        <image class="img" mode="scaleToFill" bindtap="choosePic" src="../../resources/addPic.png" />
+      </view>
+      <view class='clearfix'></view>
+    </view>
+  </view>
+   <view class="btn-group group-area">
+      <button class="btn-save" bindtap="formSaveData" size="default">
+        保存
+      </button>
     </view>
 </view>

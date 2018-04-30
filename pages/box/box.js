@@ -9,8 +9,6 @@ Page({
     baseImg: ''
   },
   isLongTap: false,
-  onLoad() {
-  },
   onReady() {
     let that = this;
     that.setData({
@@ -96,10 +94,6 @@ Page({
       }
     });
   },
-  getUserInfo: function () {
-    let that = this;
-
-  },
   setUserInfo: function () {
     let that = this;
     wx.getUserInfo({
@@ -133,9 +127,11 @@ Page({
     that.requestData();
   },
   imgLoadError(e) {
-    console.log(e);
+    let index = e.target.dataset.id;
+    let keyName = 'boxList[' + index +'].img';
+    console.log(keyName, common.defaultBg.item);
     this.setData({
-      'info.bgImg': common.defaultBg.index
+      keyName: common.defaultBg.item
     })
   }
 })

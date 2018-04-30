@@ -10,7 +10,10 @@
   color: #B0ACAC;
 }
 .timeLine-img {
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   height: 145px;
+  background-color: #fa7298;
 }
 .timeLine-img .img {
   border-top-left-radius: 15px;
@@ -26,6 +29,9 @@
 .timeLine-title {
   flex: 2;
   line-height: 75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .timeLine-date {
   flex: 1;

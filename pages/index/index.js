@@ -23,9 +23,9 @@ Page({
   requestData () {
     console.log("get box");
     let that = this;
-    common.getRandomOne({}, function (res) {
+    common.getRandomOne({}, function (res, code) {
       console.log(res);
-      if(res.code === 1111) {
+      if(code === 1111 || code == 10001) {
         that.userLogin();
       }
       that.setData({
