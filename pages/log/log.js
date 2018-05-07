@@ -14,11 +14,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    common.getUpdateList({}, {
-      func: function (res) {
-        that.setData({ list: res })
-      },
-      context: that
+    common.getUpdateList({}, function (res) {
+      that.setData({ list: res })
     })
   },
 

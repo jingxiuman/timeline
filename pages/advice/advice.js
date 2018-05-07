@@ -2,13 +2,18 @@ let common = require('../../utils/util.js');
 Page({
     data: {
         content: '',
+        list:[]
     },
-
-    onLoad () {
-        let that = this;
+    onShow() {
+      this.getUserAdviceList();
     },
-    onShow(){
-
+    getUserAdviceList() {
+      let that = this;
+      common.getUserAdvice({}, function (res) {
+        that.setData({
+          list: res || []
+        })
+      });
     },
     bindTextAreaBlur(e){
         let val = e.detail.value
@@ -19,16 +24,12 @@ Page({
         common.addAdvice({
             title: '用户反馈',
             content: this.data.content
-        }, {
-            func: function () {
-                wx.showToast({
-                    title: '感谢您的反馈！',
-                });
-                that.setData({content: ""});
-                wx.switchTab({
-                    url: '/pages/box/box'
-                })
-            }, content: that
+        }, function () {
+          wx.showToast({
+            title: '感谢您的反馈！',
+          });
+          that.setData({ content: "" });
+          that.getUserAdviceList();
         })
     }
 });

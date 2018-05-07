@@ -214,6 +214,9 @@ let commonFunc = {
   },
   getRandomOne: function (data, callback) {
     this.ajaxFunc('/api2/box/randomOne', data, callback)
+  },
+  getUserAdvice: function (data, callback) {
+    this.ajaxFunc('/api2/advice/get', data, callback)
   }
 };
 

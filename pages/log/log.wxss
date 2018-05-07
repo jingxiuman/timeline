@@ -1,17 +1,17 @@
 /* pages/log/log.wxss */
-.log {
+.log, page{
   height: 100%;
 }
 
 .log-item {
-  width: 90%;
-  margin: 10px auto;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  color: #ffffff;
-  padding: 10px;
-  font-size: 16px;
-
+  width:left;
+  margin:10px auto;
+  padding:10px;
+  font-size:16px;
+  min-height:150px;
+}
+.log-item:not(:last-child) {
+  border-bottom:1px solid #fa7298;
 }
 
 .log-title {
@@ -20,4 +20,6 @@
 
 .log-content {
   margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.5;
 }

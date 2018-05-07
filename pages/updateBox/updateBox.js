@@ -11,7 +11,8 @@ Page({
     },
     timeStr: '',
     imgList: [],
-    id:0
+    id:0,
+    isUpload:false
   },
   onLoad(options) {
     console.info("url data", options);
@@ -22,21 +23,33 @@ Page({
   
   },
   onShow(){
-    let that =this;
+    if (!this.data.isUpload) {
+      this.getBoxDetail();
+    } else{
+      this.setData({
+        isUpload: false
+      });
+    }
+  },
+  getBoxDetail() {
+    let that = this;
     common.getBoxDetailByOwn({
       id: that.data.id
     }, function (response) {
       console.log(response);
       let imgList = [];
       let imgUrl = [];
-      response.img.map(function(item) {
-        imgUrl.push(item.url);
+      response.img.map(function (item) {
+        imgUrl.push({
+          key: item.url,
+          hash: item.hash
+        });
         imgList.push(common.getImgUrl(item.url));
       })
-      
+
       that.setData({
         detail: {
-          time: response.eventTIme * 1000,
+          time: response.eventTime * 1000,
           title: response.eventName,
           content: response.eventContent,
           address: response.address,
@@ -67,7 +80,7 @@ Page({
       time: that.data.detail.time,
       content: that.data.detail.content,
       address: that.data.detail.address,
-      img: that.data.detail.imgUrl.join("-"),
+      img: that.data.detail.imgUrl,
       id: that.data.id
     };
 
@@ -81,10 +94,10 @@ Page({
         eventName: detail.title,
         eventTime: detail.time / 1000,
         eventContent: detail.content,
-        eventImg: detail.img,
+        eventImg: JSON.stringify(detail.img),
         eventAddress: detail.address,
         id: detail.id
-      }, function (response) {
+      }, function (response, code) {
         wx.showToast({
           title: '保存成功',
           duration: 2000
@@ -113,16 +126,20 @@ Page({
       wx.showLoading({
         'title': '图片上传中'
       })
+      that.setData({
+        isUpload: true
+      });
       wx.chooseImage({
         count: 1, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function (res) {
+          
           var tempFilePaths = res.tempFilePaths;
           common.addPic(tempFilePaths, function (response) {
             wx.hideLoading();
             let realUrl = that.data.imgList;
-            realUrl.push(common.getImgUrl(response));
+            realUrl.push(common.getImgUrl(response.key));
             let pathUrl = that.data.detail.imgUrl;
             pathUrl.push(response)
             that.setData({

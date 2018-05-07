@@ -61,7 +61,7 @@ Page({
       time: that.data.detail.time,
       content: that.data.detail.content,
       address: that.data.detail.address,
-      img: that.data.detail.imgUrl.join("-")
+      img: that.data.detail.imgUrl
     };
 
     if (detail.title == '') {
@@ -74,7 +74,7 @@ Page({
         eventName: detail.title,
         eventTime: detail.time / 1000,
         eventContent: detail.content,
-        eventImg: detail.img,
+        eventImg: JSON.stringify(detail.img),
         eventAddress: detail.address,
       }, function (response) {
         wx.showToast({
@@ -87,7 +87,7 @@ Page({
             time: '',
             title: '',
             content: ' ',
-            address: '',
+            address: detail.address,
             imgUrl: [],
           },
           imgList: [],
@@ -114,7 +114,7 @@ Page({
           common.addPic(tempFilePaths, function (response) {
             wx.hideLoading();
             let realUrl = that.data.imgList;
-            realUrl.push(common.getImgUrl(response));
+            realUrl.push(common.getImgUrl(response.key));
             let pathUrl = that.data.detail.imgUrl;
             pathUrl.push(response)
             that.setData({

@@ -17,7 +17,10 @@ Page({
         that.setData({
           userInfo: {
             userPic: userPic,
-            username: response.username
+            username: response.username,
+            eventNums: response.eventNum,
+            create_time: common.moment(response.create_time*1000).format('YYYY-MM-DD'),
+            adviceNum: response.adviceNum
           }
         })
       })

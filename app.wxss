@@ -20,3 +20,47 @@ loading, navigator, audio, image, video, map, canvas {
 .clearfix {
   clear: both;
 }
+
+
+.group-area {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 9px #d6d1d1;
+  margin: 10px 0;
+  padding: 0 5px;
+}
+
+.form-group {
+  display: flex;
+  line-height: 40px;
+}
+
+.form-group:not(:last-child) {
+  border-bottom: 1px solid #e3dddd;
+}
+
+.form-group-label {
+  flex: 1;
+  text-align: center;
+}
+
+.form-group-input-container {
+  flex: 4;
+}
+
+.form-group-input {
+  line-height: 40px;
+  height: 40px;
+  padding: 0 5px;
+  color: #838080;
+}
+
+.form-group-title {
+  color: #bfbfbf;
+}
+
+.form-group-texterea {
+  min-height: 150px;
+  color: #838080;
+  padding: 10px;
+}

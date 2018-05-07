@@ -1,6 +1,3 @@
-<view class="background">
-
-</view>
 <scroll-view class="log" scroll-y="true">
     <view class="log-item" wx:for="{{list}}">
         <view class="log-title">{{item.time}}更新日志</view>
