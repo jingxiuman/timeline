@@ -1,0 +1,27 @@
+.secure, page {
+  height: 100%;
+  position: relative
+}
+.header {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 600px;
+  background-color: #fa7298;
+  top: -400px;
+  left: 50%;
+  margin-left: -300px;
+}
+.header-content {
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+}
+.container{
+  padding-top: 300px;
+  margin: 0 20px;
+}

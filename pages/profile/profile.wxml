@@ -34,12 +34,14 @@
       </view>
     </view>
     </navigator>
+    <navigator open-type='navigate' url='../secure/secure'>
     <view class='others_item'>
       <text>用户安全</text>
       <view class='others_item_right'>
         <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
       </view>
     </view>
+     </navigator>
     <navigator open-type='navigate' url='../log/log'>
     <view class='others_item'>
       <text>更新日志</text>

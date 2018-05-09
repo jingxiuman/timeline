@@ -9,7 +9,9 @@ Page({
       bgImg:'',
       eventName:'',
       eventDay:0,
-    }
+    },
+    isAnswer: false,
+    bgImg: '',
   },
   onShow: function () {
     let that = this;
@@ -19,6 +21,9 @@ Page({
     } else {
       that.requestData();
     }
+    that.setData({
+      bgImg: common.defaultBg.index
+    });
   },
   requestData () {
     console.log("get box");
@@ -28,13 +33,16 @@ Page({
       if(code === 1111 || code == 10001) {
         that.userLogin();
       }
-      that.setData({
-        info: {
-          bgImg: res.img ? (res.cdn + res.img) : that.imgBg,
-          eventName: res.eventName,
-          eventDay: common.formatTimeToNow(res.eventTime),
-        }
-      })
+      if (res) {
+        that.setData({
+          info: {
+            bgImg: res.img ? (res.cdn + res.img) : that.imgBg,
+            eventName: res.eventName,
+            eventDay: common.formatTimeToNow(res.eventTime),
+          },
+          isAnswer: true
+        })
+      }
     })
   },
   setUserInfo: function () {

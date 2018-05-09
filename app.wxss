@@ -38,6 +38,12 @@ loading, navigator, audio, image, video, map, canvas {
 .form-group:not(:last-child) {
   border-bottom: 1px solid #e3dddd;
 }
+.form-group-secure {
+  flex-direction: column;
+}
+.form-group-secure .form-group-label {
+  font-size: 12px;
+}
 
 .form-group-label {
   flex: 1;

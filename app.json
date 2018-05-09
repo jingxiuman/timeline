@@ -9,6 +9,7 @@
     "backgroundTextStyle": "dark"
   },
   "pages": [
+    "pages/secure/secure",
     "pages/index/index",
     "pages/box/box",
     "pages/error/error",
