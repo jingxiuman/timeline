@@ -13,13 +13,38 @@ Page({
     isAnswer: false,
     bgImg: '',
   },
+  onLaunch:function() {
+    
+  },
   onShow: function () {
     let that = this;
     wx.hideTabBar({});
     if (!common.checkLogin()) {
-      that.userLogin();
+      common.userLogin(function() {
+        that.requestData()
+      });
     } else {
-      that.requestData();
+      wx.getStorage({
+        key: 'launchIndex',
+        success: function (res) {
+          let num = res.data;
+          console.log(num);
+          if (num && num % 3 === 0) {
+            wx.setStorageSync('launchIndex', ++num)
+            wx.switchTab({
+              url: '/pages/box/box'
+            })
+          } else {
+            wx.setStorageSync('launchIndex', ++num)
+            that.requestData();
+          }
+        }, 
+        fail: function() {
+          console.log('asd')
+          wx.setStorageSync('launchIndex', 1)
+          that.requestData();
+        }
+      })
     }
     that.setData({
       bgImg: common.defaultBg.index
@@ -29,9 +54,8 @@ Page({
     console.log("get box");
     let that = this;
     common.getRandomOne({}, function (res, code) {
-      console.log(res);
       if(code === 1111 || code == 10001) {
-        that.userLogin();
+        common.userLogin();
       }
       if (res) {
         that.setData({
@@ -45,44 +69,7 @@ Page({
       }
     })
   },
-  setUserInfo: function () {
-    let that = this;
-    wx.getUserInfo({
-      success: function (res) {
-        res.wx_token = wx.getStorageSync('wx_token');
-        common.wxUserLogin(res, function (response) {
-          wx.setStorageSync('token', response.token);
-          wx.setStorageSync('info', response.info);
-          getApp().globalData.userInfo = res.userInfo;
-          that.requestData();
-        })
-      },
-      fail: function (e) {
-        common.createUser({}, {
-          func: function (response) {
-            wx.setStorageSync('token', response.token);
-            wx.setStorageSync('info', response.info);
-            getApp().globalData.userInfo = response.userInfo;
-            that.requestData();
-          }
-        });
-      }
-    })
-  },
-  userLogin: function () {
-    let that = this;
-    wx.login({
-      success: function (res_main) {
-        common.wxUserCode({
-          code: res_main.code,
-          //  token:wx.getStorageSync('wx_token')
-        }, function (response_code) {
-          wx.setStorageSync('wx_token', response_code.token);
-          that.setUserInfo();
-        });
-      }
-    });
-  },
+  
   imgLoadError(e){
     console.log(e);
     this.setData({

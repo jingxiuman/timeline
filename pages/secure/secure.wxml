@@ -3,16 +3,29 @@
     <view class='header-content'>记录你生命中最重要的时刻</view>
   </view>
   <view class='container'>
-    <view class='group-area '>
-      <view class='form-group form-group-secure'>
+    <view class='group-area group-secure'>
+      <view class='form-group '>
         <view class='form-group-label'>
-          <text class="form-group-title">标题</text>
+          <text class="form-group-title">输入密码</text>
+        </view>
+        <view class='form-group-input-container'>
+          <input class="form-group-input" type="password" />
+        </view>
+      </view>
+      <view class='form-group '>
+        <view class='form-group-label'>
+          <text class="form-group-title">确认密码</text>
         </view>
         <view class='form-group-input-container'>
           <input class="form-group-input" type="password" />
         </view>
       </view>
     </view>
+  </view>
+  <view class="btn-group secure-btn-save">
+    <button class="btn-save" bindtap="formSaveData" hover-class="button-hover" size="default">
+      保存
+    </button>
   </view>
   
 </view>

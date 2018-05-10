@@ -25,3 +25,11 @@
   padding-top: 300px;
   margin: 0 20px;
 }
+.secure-btn-save {
+  width: 50%;
+  margin: 30px auto;
+}
+.secure-btn-save .btn-save {
+  background-color: #fa7298;
+  color: #fff;
+}

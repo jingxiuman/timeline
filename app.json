@@ -9,7 +9,6 @@
     "backgroundTextStyle": "dark"
   },
   "pages": [
-    "pages/secure/secure",
     "pages/index/index",
     "pages/box/box",
     "pages/error/error",
@@ -18,7 +17,8 @@
     "pages/detail/detail",
     "pages/advice/advice",
     "pages/log/log",
-    "pages/updateBox/updateBox"
+    "pages/updateBox/updateBox",
+    "pages/secure/secure"
   ],
   "tabBar": {
     "color": "#fa7298",

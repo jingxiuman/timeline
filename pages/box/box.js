@@ -48,15 +48,12 @@ Page({
           let id = e.currentTarget.dataset.id;
           common.delBoxOne({
             id: id
-          }, {
-              func: function (res) {
-                that.requestData();
-                wx.showToast({
-                  title: '删除成功'
-                })
-              },
-              context: that
+          }, function (res) {
+            that.requestData();
+            wx.showToast({
+              title: '删除成功'
             })
+          })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
@@ -128,7 +125,7 @@ Page({
   },
   imgLoadError(e) {
     let index = e.target.dataset.id;
-    let keyName = 'boxList[' + index +'].img';
+    let keyName = 'boxList[' + index + '].img';
     console.log(keyName, common.defaultBg.item);
     this.setData({
       keyName: common.defaultBg.item

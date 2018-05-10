@@ -12,7 +12,8 @@ Page({
       common.getUserAdvice({}, function (res) {
         that.setData({
           list: res || []
-        })
+        });
+        wx.stopPullDownRefresh()
       });
     },
     bindTextAreaBlur(e){
@@ -31,6 +32,9 @@ Page({
           that.setData({ content: "" });
           that.getUserAdviceList();
         })
+    },
+    onPullDownRefresh(){
+      this.getUserAdviceList();
     }
 });
 

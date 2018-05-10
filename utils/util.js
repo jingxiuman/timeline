@@ -5,7 +5,7 @@ let commonFunc = {
   /**
    * ajax传送
    */
-  debug: 'test',
+  debug: 'local',
   formatTimeToNow(timeStamps) {
     var day = moment(timeStamps * 1000);
     var now = moment();
@@ -19,9 +19,15 @@ let commonFunc = {
    * 检测用户是否登陆
    */
   checkLogin: function () {
-    let token = wx.getStorageSync('token'),
-      info = wx.getStorageSync('info');
+    let token = wx.getStorageSync('token');
+    let info = wx.getStorageSync('info');
+    let that = this;
     if (token != '' && info != '') {
+      this.checkUserInfo({}, function(data, code) {
+        if (code === 1111 || code == 10001) {
+          that.userLogin();
+        }
+      });
       return true;
     } else {
       return false;
@@ -30,7 +36,7 @@ let commonFunc = {
   url: function () {
     let str = '';
     if (this.debug == 'test') {
-      str = 'http://api.xbpig.cn'
+      str = 'https://apit.xbpig.cn'
     } else if (this.debug == 'local') {
       str = 'http://api.xbpig.cn'
     } else {
@@ -44,7 +50,7 @@ let commonFunc = {
     if (!h) h = 250;
     if (type!== 0 && !type) type = 1;
     let url;
-    if(this.debug ==='test') {
+    if(this.debug ==='test' || this.debug ==='local') {
       url='http://ohhuk1c8m.bkt.clouddn.com/'
     } else {
       url = 'http://cdn.xbpig.cn/' 
@@ -89,7 +95,41 @@ let commonFunc = {
     }
     return str;
   },
-
+  setUserInfo: function (cb) {
+    let that = this;
+    wx.getUserInfo({
+      success: function (res) {
+        res.wx_token = wx.getStorageSync('wx_token');
+        that.wxUserLogin(res, function (response) {
+          wx.setStorageSync('token', response.token);
+          wx.setStorageSync('info', response.info);
+          cb && cb();
+        })
+      },
+      fail: function (e) {
+        common.createUser({}, {
+          func: function (response) {
+            wx.setStorageSync('token', response.token);
+            wx.setStorageSync('info', response.info);
+            cb && cb();
+          }
+        });
+      }
+    })
+  },
+  userLogin: function (cb) {
+    let that = this;
+    wx.login({
+      success: function (res_main) {
+        that.wxUserCode({
+          code: res_main.code,
+        }, function (response_code) {
+          wx.setStorageSync('wx_token', response_code.token);
+          that.setUserInfo(cb);
+        });
+      }
+    });
+  },
   ajaxFunc: function (url, data, callback, type) {
     let self = this;
     data.token = wx.getStorageSync('token');
@@ -217,6 +257,9 @@ let commonFunc = {
   },
   getUserAdvice: function (data, callback) {
     this.ajaxFunc('/api2/advice/get', data, callback)
+  },
+  checkUserInfo: function (data, callback) {
+    this.ajaxFunc('/api2/user/check', data, callback)
   }
 };
 

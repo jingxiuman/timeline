@@ -1,7 +1,7 @@
 <view class="container">
   <view class='profile_container'>
     <view class='profile_bg'>
-       <image class='img' mode="scaleToFill" src="{{ userInfo.userPic}}"></image>
+      <image class='img' mode="scaleToFill" src="{{ userInfo.userPic}}"></image>
     </view>
     <view class='profile_sq'></view>
     <view class='profile_pic'>
@@ -27,28 +27,28 @@
   </view>
   <view class='others'>
     <navigator open-type='navigate' url='../advice/advice'>
-    <view class='others_item'>
-      <text>意见反馈</text>
-      <view class='others_item_right'>
-        <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+      <view class='others_item'>
+        <text>意见反馈</text>
+        <view class='others_item_right'>
+          <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+        </view>
       </view>
-    </view>
     </navigator>
-    <navigator open-type='navigate' url='../secure/secure'>
+    <!-- <navigator open-type='navigate' url='../secure/secure'>
     <view class='others_item'>
       <text>用户安全</text>
       <view class='others_item_right'>
         <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
       </view>
     </view>
-     </navigator>
+     </navigator> -->
     <navigator open-type='navigate' url='../log/log'>
-    <view class='others_item'>
-      <text>更新日志</text>
-      <view class='others_item_right'>
-        <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+      <view class='others_item'>
+        <text>更新日志</text>
+        <view class='others_item_right'>
+          <image src='../../resources/profile/right.png' mode='scaleToFill'></image>
+        </view>
       </view>
-    </view>
     </navigator>
   </view>
 </view>

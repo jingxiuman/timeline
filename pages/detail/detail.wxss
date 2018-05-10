@@ -5,6 +5,7 @@
 
 .detail-img-main {
   position: relative;
+  background-color: #fa7298;
 }
 
 .detail-img {

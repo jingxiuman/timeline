@@ -41,8 +41,8 @@ loading, navigator, audio, image, video, map, canvas {
 .form-group-secure {
   flex-direction: column;
 }
-.form-group-secure .form-group-label {
-  font-size: 12px;
+.group-secure .form-group-label {
+  font-size: 10px;
 }
 
 .form-group-label {
