@@ -5,7 +5,7 @@ let commonFunc = {
   /**
    * ajax传送
    */
-  debug: 'local',
+  debug: 'release',
   formatTimeToNow(timeStamps) {
     var day = moment(timeStamps * 1000);
     var now = moment();
@@ -40,7 +40,7 @@ let commonFunc = {
     } else if (this.debug == 'local') {
       str = 'http://api.xbpig.cn'
     } else {
-      str = 'https://api.xbpig.cn'
+      str = 'https://gateway.xbpig.cn'
     }
     return str;
   },
@@ -260,6 +260,9 @@ let commonFunc = {
   },
   checkUserInfo: function (data, callback) {
     this.ajaxFunc('/api2/user/check', data, callback)
+  },
+  getConfig: function (data, callback) {
+    this.ajaxFunc('/api2/system/config', data, callback)
   }
 };
 

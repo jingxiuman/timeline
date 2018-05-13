@@ -1,6 +1,11 @@
 let common = require('utils/util.js');
 App({
-  globalData: {
-    userInfo: {}
+  onShow: function() {
+    let that = this;
+    common.getConfig({
+      type: 'share'
+    }, function(res){
+        that.shareData = res
+    })
   }
 });

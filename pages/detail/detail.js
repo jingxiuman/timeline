@@ -57,10 +57,6 @@ Page({
       }
     });
   },
-  onReady() {
-
-
-  },
   onPullDownRefresh() {
     try {
       wx.stopPullDownRefresh()
@@ -71,11 +67,18 @@ Page({
   ,
   onShareAppMessage: function () {
     var that = this;
-    return {
-      title: '记录我们距离上一次幸福时光的时间，摆脱时间的遗忘',
-      path: '/pages/box/box',
-      imageUrl: 'http://cdn.xbpig.cn/common/shareMain.png'
+    var allData = getApp().shareData;
+    console.log(getApp().shareData,'all');
+    let shareData = {
+      title: allData.shareTitle,
+      path: allData.sharePath,
+      imageUrl: allData.shareImage
     }
+
+    return allData.shareFlag == 1 ? shareData : {
+      title: that.data.detail.eventName,
+      path: 'pages/index/index',
+    };
   }
 })
   ;

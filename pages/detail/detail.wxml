@@ -11,8 +11,8 @@
       {{detail.eventContent?detail.eventContent:'暂无内容'}}
     </view>
     <view wx:for="{{detail.imgList}}" class="detail-img-item" wx:key="item">
-        <image class="detail-img" mode="aspectFill" src="{{item}}" />
-      </view>
+      <image class="detail-img" mode="aspectFill" src="{{item}}" />
+    </view>
     <view class='detail-address' wx:if="{{detail.address}}">记录于{{detail.address}}</view>
     <view class='detail-create'>{{ detail.created_at}}</view>
   </view>
