@@ -48,11 +48,18 @@ Page({
           let id = e.currentTarget.dataset.id;
           common.delBoxOne({
             id: id
-          }, function (res) {
-            that.requestData();
-            wx.showToast({
-              title: '删除成功'
-            })
+          }, function (res, code) {
+            if(code == 0) {
+              that.requestData();
+              wx.showToast({
+                title: '删除成功'
+              })
+            } else {
+              wx.showToast({
+                title: res.msg
+              })
+            }
+            
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
