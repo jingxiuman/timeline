@@ -1,20 +1,37 @@
 .error {
-  padding-top: 25%;
-
 }
-
 .error .bg {
-  width: 40%;
-  margin: 0 30%;
-
+  width: 20%;
+  margin: 0 40%;
 }
-
 .error .info {
   text-align: center;
 }
-
 .btn {
   margin-top: 30px;
   width: 50%;
+}
+.btn-group {
+  width: 80%;
+  margin: 20px auto;
+  text-align: center;
+}
+.btn-group .group-area {
+  padding: 0;
 
+}
+.userInfo {
+  width: 100%;
+  border: 0;
+  font-size: 14px;
+}
+.visitor {
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  color: #a2a2a2;
+}
+.btn-group .label {
+  font-size: 10px;
+  color: #a2a2a2;
 }

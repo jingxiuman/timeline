@@ -18,19 +18,20 @@ let commonFunc = {
   /**
    * 检测用户是否登陆
    */
-  checkLogin: function () {
+  checkLogin: function (cbPass,cbError) {
     let token = wx.getStorageSync('token');
     let info = wx.getStorageSync('info');
     let that = this;
     if (token != '' && info != '') {
       this.checkUserInfo({}, function(data, code) {
-        if (code === 1111 || code == 10001) {
-          that.userLogin();
+        if (code === 1111 || code == 10001 || code == 10002) {
+          cbError && cbError();
+        } else {
+          cbPass && cbPass()
         }
       });
-      return true;
     } else {
-      return false;
+      cbError && cbError();
     }
   },
   url: function () {
@@ -107,13 +108,10 @@ let commonFunc = {
         })
       },
       fail: function (e) {
-        common.createUser({}, {
-          func: function (response) {
-            wx.setStorageSync('token', response.token);
-            wx.setStorageSync('info', response.info);
-            cb && cb();
-          }
-        });
+        console.log(e);
+        wx.navigateTo({
+          url: '/pages/error/error',
+        })
       }
     })
   },
@@ -162,7 +160,7 @@ let commonFunc = {
           if (response.code == 1111) {
             wx.removeStorageSync('token');
             wx.removeStorageSync('info');
-
+            self.userLogin();
           }
         }
         if (typeof (callback) == 'function' && (response.code || response.code == 0)) {

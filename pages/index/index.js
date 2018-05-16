@@ -11,19 +11,15 @@ Page({
       eventDay:0,
     },
     isAnswer: false,
-    bgImg: '',
+    bgImg: common.defaultBg.index,
   },
   onLaunch:function() {
-    
+   
   },
   onShow: function () {
     let that = this;
     wx.hideTabBar({});
-    if (!common.checkLogin()) {
-      common.userLogin(function() {
-        that.requestData()
-      });
-    } else {
+    common.checkLogin(function () {
       wx.getStorage({
         key: 'launchIndex',
         success: function (res) {
@@ -38,17 +34,18 @@ Page({
             wx.setStorageSync('launchIndex', ++num)
             that.requestData();
           }
-        }, 
-        fail: function() {
+        },
+        fail: function () {
           console.log('asd')
           wx.setStorageSync('launchIndex', 1)
           that.requestData();
         }
       })
-    }
-    that.setData({
-      bgImg: common.defaultBg.index
-    });
+    }, function () {
+      common.userLogin(function () {
+        that.requestData()
+      });
+    })
   },
   requestData () {
     console.log("get box");

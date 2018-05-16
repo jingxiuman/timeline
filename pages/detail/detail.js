@@ -4,13 +4,17 @@ Page({
   data: {
     detail: {},
     id: 0,
-    showEdit: true
+    showEdit: true,
+    isShare: 0
 
   },
   onLoad(e) {
+    var allData = getApp().shareData;
+    
     this.setData({
       id: e.id,
-    })
+      isShare: !allData.shareFlag
+    });
   },
   onShow() {
     wx.showLoading({ title: '加载中' });
@@ -65,21 +69,21 @@ Page({
     }
   }
   ,
-  onShareAppMessage: function () {
-    var that = this;
-    var allData = getApp().shareData;
-    console.log(getApp().shareData,'all');
-    let shareData = {
-      title: allData.shareTitle,
-      path: allData.sharePath,
-      imageUrl: allData.shareImage
-    }
+  // onShareAppMessage: function () {
+  //   var that = this;
+  //   var allData = getApp().shareData;
+  //   console.log(getApp().shareData,'all');
+  //   let shareData = {
+  //     title: allData.shareTitle,
+  //     path: allData.sharePath,
+  //     imageUrl: allData.shareImage
+  //   }
 
-    return allData.shareFlag == 1 ? shareData : {
-      title: that.data.detail.eventName,
-      path: 'pages/index/index',
-    };
-  }
+  //   return allData.shareFlag == 1 ? shareData : {
+  //     title: that.data.detail.eventName,
+  //     path: 'pages/index/index',
+  //   };
+  // }
 })
   ;
 

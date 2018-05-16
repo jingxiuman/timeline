@@ -16,7 +16,7 @@
     <view class='detail-address' wx:if="{{detail.address}}">记录于{{detail.address}}</view>
     <view class='detail-create'>{{ detail.created_at}}</view>
   </view>
-  <view class='share'>
+  <view class='share' wx:if="{{isShare}}">
     <button type="primary" size="mini" plain="true" open-type="share"> 分享给好朋友 </button>
   </view>
   <view class='operation' wx:if="{{showEdit}}">

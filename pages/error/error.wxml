@@ -1,9 +1,19 @@
 <view class="error">
-    <image class="bg" mode="aspectFit" src="../../resources/error.png"/>
-    <view class="info">
-        <text>依赖用户信息，保存你的时间</text>
+  <image class="bg" mode="aspectFit" src="../../resources/error.png" />
+  <view class='btn-group'>
+    <view class='label'>点击以下才能永久保存你记录的时光</view>
+    <view class='group-area '>
+      <view class='form-group'>
+        <button class='userInfo' plain="true" type='primary' open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">点击获取个人用户信息</button>
+      </view>
     </view>
-    <button class="btn" type="primary" bindtap="userLogin">
-        点击获取用户信息
-    </button>
+  </view>
+  <view class='btn-group'>
+    <view class='label'>游客身份是临时，可能因为设备的更换等原因造成遗失</view>
+    <view class='group-area'>
+      <view class='form-group'>
+        <view class='visitor' bindtap='createUserRandom'>以游客身份登录</view>
+      </view>
+    </view>
+  </view>
 </view>

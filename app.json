@@ -10,8 +10,8 @@
   },
   "pages": [
     "pages/index/index",
-    "pages/box/box",
     "pages/error/error",
+    "pages/box/box",
     "pages/addBox/addBox",
     "pages/profile/profile",
     "pages/detail/detail",
