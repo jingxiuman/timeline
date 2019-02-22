@@ -1,8 +1,0 @@
-<scroll-view class="log" scroll-y="true">
-  <block  wx:for="{{list}}" wx:for-index="indexId" wx:key='id' wx:for-item="item">  
-    <view class="log-item">
-        <view class="log-title">{{item.time}}更新日志</view>
-        <view class="log-content">{{item.content}}</view>
-    </view>
-  </block>
-</scroll-view>

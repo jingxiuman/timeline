@@ -1,0 +1,35 @@
+.secure, page {
+  height: 100%;
+  position: relative
+}
+.header {
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  border-radius: 1200px;
+  background-color: #fa7298;
+  top: -800px;
+  left: 50%;
+  margin-left: -600px;
+}
+.header-content {
+  position: absolute;
+  bottom: 240px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 36px;
+}
+.container{
+  padding-top: 600px;
+  margin: 0 40px;
+}
+.secure-btn-save {
+  width: 50%;
+  margin: 60px auto;
+}
+.secure-btn-save .btn-save {
+  background-color: #fa7298;
+  color: #fff;
+}

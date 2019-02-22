@@ -1,0 +1,27 @@
+/* pages/log/log.wxss */
+.log, page{
+  height: 100%;
+}
+
+.log-item {
+  margin:20px;
+  font-size:32px;
+  min-height:300px;
+  background-color: #ffffff;
+  box-shadow: 0 0 18px #d6d1d1;
+  border-radius: 10px;
+  padding: 10px;
+  border-bottom:2px solid #fa7298;
+}
+
+.log-title {
+  text-align: center;
+  opacity: 0.8;
+}
+
+.log-content {
+  margin-top: 20px;
+  font-size: 28px;
+  line-height: 1.5;
+  opacity: 0.8;
+}

@@ -1,0 +1,44 @@
+.container {
+  height: 100%;
+}
+.timeLine-item {
+  border-radius: 30px;
+  box-shadow: 0 0 22px #B2ADAD;
+  height: 440px;
+  margin:30px 20px;
+  font-size: 28px;
+  color: #B0ACAC;
+}
+.timeLine-img {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  height: 290px;
+  background-color: #fa7298;
+}
+.timeLine-img .img {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  height: 100%;
+  width: 100%;
+}
+.timeLine-content {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.timeLine-title {
+  flex: 2;
+  line-height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.timeLine-date {
+  flex: 1;
+  text-align: right;
+  font-size: 20px;
+}
+.timeLine-day {
+  font-size: 48px;
+  color: #FC7097;
+}
