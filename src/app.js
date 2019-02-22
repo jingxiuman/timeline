@@ -66,10 +66,10 @@ class App extends Taro.Component {
       backgroundColor: 'rgba(255, 255, 255, 0.21)'
     },
     networkTimeout: {
-      connectSocket: '10000',
-      request: '10000',
-      downloadFile: '10000',
-      uploadFile: '10000'
+        connectSocket: 10000,
+        request: 10000,
+        downloadFile: 10000,
+        uploadFile: 10000
     }
   }
 

@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "./dist",
-  "projectname": "taroConvert",
+  "projectname": "timeline",
   "description": "",
-  "appid": "touristappid",
+  "appid": "wx94aaef79dd810fcb",
   "setting": {
     "urlCheck": true,
     "es6": false,
