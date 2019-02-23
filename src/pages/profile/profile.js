@@ -2,7 +2,7 @@ import { Block, View, Image, Text, Navigator } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './profile.scss'
-let common = require('../../utils/util.js')
+import common from './../../utils/util.js'
 const app = Taro.getApp()
 
 @withWeapp('Page')

@@ -2,7 +2,7 @@ import { Block, View, Image, Navigator, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './index.scss'
-let common = require('../../utils/util.js')
+import common from './../../utils/util.js'
 
 @withWeapp('Page')
 class _C extends Taro.Component {

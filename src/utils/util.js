@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
-var moment = require('./moment.min.js')
+import moment from 'moment'
 moment.locale('zh-cn')
-let commonFunc = {
+let common = {
   moment: moment,
   /**
    * ajax传送
@@ -287,4 +287,4 @@ let commonFunc = {
   }
 }
 
-module.exports = commonFunc
+export default common

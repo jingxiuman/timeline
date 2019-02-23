@@ -2,10 +2,9 @@ import { Block, View, Image, Button } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './error.scss'
-let common = require('../../utils/util.js')
+import common from './../../utils/util.js'
 
-@withWeapp('Page')
-class _C extends Taro.Component {
+export default class Error extends Taro.Component {
   name = 'error'
   state = {}
 
@@ -76,5 +75,3 @@ class _C extends Taro.Component {
     )
   }
 }
-
-export default _C

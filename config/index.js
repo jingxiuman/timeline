@@ -1,5 +1,5 @@
 const config = {
-  projectName: 'taroConvert',
+  projectName: 'timeline',
   date: '2019-2-22',
   designWidth: 750,
   deviceRatio: {

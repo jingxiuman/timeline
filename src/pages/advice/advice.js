@@ -2,10 +2,9 @@ import { Block, View, Textarea, Button, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './advice.scss'
-let common = require('../../utils/util.js')
+import common from './../../utils/util.js'
 
-@withWeapp('Page')
-class _C extends Taro.Component {
+export default class Advice extends Taro.Component {
   state = {
     content: '',
     list: []
@@ -18,7 +17,7 @@ class _C extends Taro.Component {
   getUserAdviceList = () => {
     let that = this
     common.getUserAdvice({}, function(res) {
-      that.setData({
+      that.setState({
         list: res || []
       })
       Taro.stopPullDownRefresh()
@@ -26,7 +25,7 @@ class _C extends Taro.Component {
   }
   bindTextAreaBlur = e => {
     let val = e.detail.value
-    this.setData({ content: val })
+    this.setState({ content: val })
   }
   formSaveData = () => {
     let that = this
@@ -39,7 +38,7 @@ class _C extends Taro.Component {
         Taro.showToast({
           title: '感谢您的反馈！'
         })
-        that.setData({ content: '' })
+        that.setState({ content: '' })
         that.getUserAdviceList()
       }
     )
@@ -96,5 +95,3 @@ class _C extends Taro.Component {
     )
   }
 }
-
-export default _C

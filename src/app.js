@@ -2,7 +2,7 @@ import { Block } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './app.scss'
-let common = require('utils/util.js')
+import common from './utils/util.js'
 
 class App extends Taro.Component {
   componentDidShow() {

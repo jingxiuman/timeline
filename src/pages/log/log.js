@@ -2,7 +2,7 @@ import { Block, ScrollView, View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './log.scss'
-let common = require('../../utils/util.js')
+import common from './../../utils/util.js'
 // pages/log/log.js
 
 @withWeapp('Page')

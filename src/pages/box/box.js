@@ -2,7 +2,7 @@ import { Block, ScrollView, View, Image } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './box.scss'
-let common = require('../../utils/util.js')
+import common from './../../utils/util.js'
 const app = Taro.getApp()
 
 @withWeapp('Page')
@@ -81,9 +81,8 @@ class _C extends Taro.Component {
     })
     return false
   }
-  goToDetail = e => {
+  goToDetail = (e, id) => {
     console.log('tap', e)
-    let id = e.currentTarget.dataset.id
     if (this.isLongTap) {
       this.isLongTap = false
       return
@@ -174,7 +173,7 @@ class _C extends Taro.Component {
               <View
                 className="timeLine-item"
                 data-id={item.id}
-                onClick={this.goToDetail}
+                onClick={(e)=>this.goToDetail(e, item.id)}
                 onLongtap={this.delBox}
               >
                 <View className="timeLine-img">
