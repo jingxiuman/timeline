@@ -20,7 +20,6 @@ class _C extends Taro.Component {
 
   componentDidShow() {
     let that = this
-    Taro.hideTabBar({})
     common.checkLogin(
       function() {
         Taro.getStorage({
