@@ -13,9 +13,7 @@ export default class Detail extends Taro.Component {
     isShare: 0
   }
   componentWillMount(e) {
-    var allData = Taro.getApp().shareData || {}
 	let  id = this.$router.params.id;
-	  console.log(id, allData)
     this.setState({
       id,
       isShare: false

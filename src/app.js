@@ -1,6 +1,4 @@
-import { Block } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import withWeapp from '@tarojs/with-weapp'
 import './app.scss'
 import common from './utils/util.js'
 
@@ -70,7 +68,13 @@ class App extends Taro.Component {
         request: 10000,
         downloadFile: 10000,
         uploadFile: 10000
-    }
+    },
+	"permission":{
+		'scope.userLocation':{
+			desc:'该地址仅用户用户填写记录的位置'
+		}
+	}
+	
   }
 
   componentWillMount() {

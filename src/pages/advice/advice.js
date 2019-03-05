@@ -32,7 +32,7 @@ export default class Advice extends Taro.Component {
     common.addAdvice(
       {
         title: '用户反馈',
-        content: this.data.content
+        content: this.state.content
       },
       function() {
         Taro.showToast({

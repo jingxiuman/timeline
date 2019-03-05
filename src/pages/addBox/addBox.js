@@ -11,10 +11,9 @@ import {
 import Taro from '@tarojs/taro'
 import withWeapp from '@tarojs/with-weapp'
 import './addBox.scss'
-var common = require('../../utils/util.js')
+import common from '../../utils/util'
 
-@withWeapp('Page')
-class _C extends Taro.Component {
+export default class addBox extends Taro.Component {
   name = 'addBox'
   state = {
     detail: {
@@ -31,7 +30,7 @@ class _C extends Taro.Component {
   componentWillMount(options) {
     console.info('url data', options)
     var time = this.getCurrentTime()
-    this.setData({
+    this.setState({
       'detail.time': new Date().getTime(),
       timeStr: time
     })
@@ -54,7 +53,7 @@ class _C extends Taro.Component {
             lng: res.longitude
           },
           function(res) {
-            that.setData({
+            that.setState({
               'detail.address': res.address.formatted_address
             })
           }
@@ -64,12 +63,12 @@ class _C extends Taro.Component {
   }
   titleChange = e => {
     var that = this
-    that.setData({
+    that.setState({
       'detail.title': e.detail.value
     })
   }
   contentFunc = e => {
-    this.setData({
+    this.setState({
       'detail.content': e.detail.value
     })
   }
@@ -77,11 +76,11 @@ class _C extends Taro.Component {
     console.log(e)
     var that = this
     var detail = {
-      title: that.data.detail.title,
-      time: that.data.detail.time,
-      content: that.data.detail.content,
-      address: that.data.detail.address,
-      img: that.data.detail.imgUrl
+      title: that.state.detail.title,
+      time: that.state.detail.time,
+      content: that.state.detail.content,
+      address: that.state.detail.address,
+      img: that.state.detail.imgUrl
     }
 
     if (detail.title == '') {
@@ -104,7 +103,7 @@ class _C extends Taro.Component {
             duration: 2000
           })
           Taro.hideToast()
-          that.setData({
+          that.setState({
             detail: {
               time: '',
               title: '',
@@ -123,7 +122,7 @@ class _C extends Taro.Component {
   }
   choosePic = () => {
     var that = this
-    if (this.data.detail.imgUrl.length < 9) {
+    if (this.state.detail.imgUrl.length < 9) {
       Taro.showLoading({
         title: '图片上传中'
       })
@@ -135,11 +134,11 @@ class _C extends Taro.Component {
           var tempFilePaths = res.tempFilePaths
           common.addPic(tempFilePaths, function(response) {
             Taro.hideLoading()
-            let realUrl = that.data.imgList
+            let realUrl = that.state.imgList
             realUrl.push(common.getImgUrl(response.key))
-            let pathUrl = that.data.detail.imgUrl
+            let pathUrl = that.state.detail.imgUrl
             pathUrl.push(response)
-            that.setData({
+            that.setState({
               imgList: realUrl,
               'detail.imgUrl': pathUrl
             })
@@ -161,7 +160,7 @@ class _C extends Taro.Component {
   }
   seePic = e => {
     var that = this
-    let urlImg = that.data.imgList
+    let urlImg = that.state.imgList
     let current = e.currentTarget.dataset.url
     Taro.previewImage({
       current: current,
@@ -174,11 +173,11 @@ class _C extends Taro.Component {
   deletePic = e => {
     console.log(e)
     let index = e.currentTarget.dataset.index
-    let imgUrl = this.data.detail.imgUrl
-    let imgList = this.data.imgList
+    let imgUrl = this.state.detail.imgUrl
+    let imgList = this.state.imgList
     imgUrl.splice(index, 1)
     imgList.splice(index, 1)
-    this.setData({
+    this.setState({
       'detail.imgUrl': imgUrl,
       imgList: imgList
     })
@@ -186,10 +185,10 @@ class _C extends Taro.Component {
   eventTimeChange = e => {
     let that = this
     let eventTime = e.detail.value
-    this.setData({
+    this.setState({
       'detail.time': new Date(eventTime).getTime()
     })
-    this.setData({
+    this.setState({
       timeStr: that.getCurrentTime(eventTime)
     })
   }
@@ -322,5 +321,3 @@ class _C extends Taro.Component {
     )
   }
 }
-
-export default _C
