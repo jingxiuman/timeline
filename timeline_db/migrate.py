@@ -221,7 +221,7 @@ def migarateBoxData():
 
 
 def init():
-    # migareUserData()
+    migareUserData()
     migarateBoxData()
     pass
 
