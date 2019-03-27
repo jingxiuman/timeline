@@ -6,7 +6,7 @@ let common = {
 	/**
 	 * ajax传送
 	 */
-	debug: "local",
+	debug: "release",
 	formatTimeToNow(timeStamps) {
 		var day = moment(timeStamps * 1000);
 		var now = moment();
@@ -43,7 +43,7 @@ let common = {
 		} else if (this.debug == "local") {
 			str = "http://api.xbpig.cn";
 		} else {
-			str = "https://api.xbpig.cn";
+			str = "https://api.daysnote.cn";
 		}
 		return str;
 	},

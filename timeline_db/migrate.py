@@ -113,26 +113,26 @@ def insertImage(imgArr):
         connection.close()
 
 
-def getBoxLast(arr_child, father_id, box_father):
+def getBoxLast(arr_child, box_father):
     flag = 0
     tmp = {}
+
     for childItem in arr_child:
-        item_data = childItem
-        if int(item_data['father']) == int(father_id):
+        if int(childItem['father']) == int(box_father['id']):
             flag = 1
-            tmp = item_data
+            tmp = childItem
 
     if flag == 1:
         arrHistory.append((
-            tmp['id'],
-            tmp['user_id'],
-            box_father,
-            tmp['eventName'],
-            tmp['eventContent'],
-            tmp['eventTime'],
-            tmp['address'],
-            tmp['created_at'],
-            tmp['updated_at']
+            box_father['id'],
+            box_father['user_id'],
+            box_father['father'],
+            box_father['eventName'],
+            box_father['eventContent'],
+            box_father['eventTime'],
+            box_father['address'],
+            box_father['created_at'],
+            box_father['updated_at']
         ))
         boxNewImgArr = splitImg(tmp['img'])
         for imgItem in boxNewImgArr:
@@ -145,7 +145,7 @@ def getBoxLast(arr_child, father_id, box_father):
                 tmp['created_at'],
                 tmp['updated_at']
             ))
-        result = getBoxLast(arr_child, tmp['id'], box_father)
+        result = getBoxLast(arr_child, tmp)
         if result['status'] == 1:
             tmp = result['data']
         return {
@@ -162,9 +162,10 @@ def getBoxLast(arr_child, father_id, box_father):
 def splitImg(str):
     resultArr = []
     if str:
-        strArr = re.split(r"-", str);
+        strArr = re.split(r"-", str)
         for item in strArr:
-            result = re.findall(r'http:\/\/7xlabr.com1.z0.glb.clouddn.com\/(.+)', item)
+            result = re.findall(
+                r'http:\/\/7xlabr.com1.z0.glb.clouddn.com\/(.+)', item)
             if len(result) > 0:
                 resultArr.append(result[0])
             else:
@@ -173,6 +174,7 @@ def splitImg(str):
     else:
         return resultArr
 
+
 def migarateBoxData():
     boxArrFather = getOriginDate(
         "select b.*,u.id as user_id from box as b,users as u where b.openid = u.openid and u.isWeixin != 0 and b.father = 0")
@@ -180,7 +182,7 @@ def migarateBoxData():
         "select b.*,u.id as user_id from box as b,users as u where b.openid = u.openid and u.isWeixin != 0 and b.father != 0")
     boxNewArr = []
     for oldItem in boxArrFather:
-        newItem = getBoxLast(boxArrChild, oldItem['id'], oldItem['id'])
+        newItem = getBoxLast(boxArrChild, oldItem)
         if (newItem['status'] == 0):
             item = oldItem
         else:
@@ -198,7 +200,7 @@ def migarateBoxData():
             item['created_at'],
             item['updated_at']
         ))
-        boxNewImgArr = splitImg(item['img']);
+        boxNewImgArr = splitImg(item['img'])
         for imgItem in boxNewImgArr:
             arrImage.append((
                 item['user_id'],
@@ -230,4 +232,3 @@ if __name__ == "__main__":
     msgShow('start:' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
     init()
     msgShow('end:' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-   
