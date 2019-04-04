@@ -1,13 +1,3 @@
-import {
-	Block,
-	View,
-	Text,
-	Input,
-	Picker,
-	Textarea,
-	Image,
-	Button
-} from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import common from "../utils/util";
 
@@ -72,61 +62,6 @@ export default class baseBoxAdd extends Taro.Component {
 		this.setState({
 			detail: detail
 		});
-	};
-	formSaveData = e => {
-		console.log(e);
-		var that = this;
-		var detail = {
-			title: that.state.detail.title,
-			time: that.state.detail.time,
-			content: that.state.detail.content,
-			address: that.state.detail.address,
-			img: that.state.detail.imgUrl
-		};
-
-		if (detail.title == "") {
-			Taro.showToast({
-				title: "标题不能为空"
-			});
-		} else {
-			Taro.showLoading({ title: "保存中" });
-			common.addBoxDetail(
-				{
-					eventName: detail.title,
-					eventTime: detail.time / 1000,
-					eventContent: detail.content,
-					eventImg: JSON.stringify(detail.img),
-					eventAddress: detail.address
-				},
-				function (response, code) {
-					if (code != 0) {
-						Taro.showToast({
-							title: response.msg,
-							duration: 2000
-						});
-						return;
-					}
-					Taro.showToast({
-						title: "保存成功",
-						duration: 2000
-					});
-					Taro.hideToast();
-					that.setState({
-						detail: {
-							time: "",
-							title: "",
-							content: " ",
-							address: detail.address,
-							imgUrl: []
-						},
-						imgList: []
-					});
-					Taro.switchTab({
-						url: "/pages/box/box"
-					});
-				}
-			);
-		}
 	};
 	choosePic = () => {
 		var that = this;
