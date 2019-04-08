@@ -1,6 +1,5 @@
 import { Block, View, Image, Text, Button, Navigator } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import withWeapp from '@tarojs/with-weapp'
 import './detail.scss'
 import common from './../../utils/util.js'
 

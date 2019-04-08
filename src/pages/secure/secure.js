@@ -1,10 +1,8 @@
 import { Block, View, Text, Input, Button } from '@tarojs/components'
 import Taro from '@tarojs/taro'
-import withWeapp from '@tarojs/with-weapp'
 import './secure.scss'
 
-@withWeapp('Page')
-class _C extends Taro.Component {
+class Secure extends Taro.Component {
   state = {}
 
   componentWillMount(options) {}
