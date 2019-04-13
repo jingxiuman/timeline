@@ -18,6 +18,11 @@ export default class Box extends Taro.Component {
 		that.setState({
 			baseImg: common.imgDefault
 		});
+		common.checkLogin(()=>{}, ()=>{
+			common.setUserInfo(()=>{
+				this.requestData()
+			})
+		})
 	}
 
 	componentDidShow() {
@@ -87,57 +92,6 @@ export default class Box extends Taro.Component {
 		}
 		Taro.navigateTo({
 			url: "../detail/detail?id=" + id
-		});
-	};
-	userLogin = () => {
-		let that = this;
-		Taro.login({
-			success: function(res_main) {
-				common.wxUserCode(
-					{
-						code: res_main.code
-						//  token:wx.getStorageSync('wx_token')
-					},
-					{
-						func: function(response_code) {
-							Taro.setStorageSync("wx_token", response_code.token);
-							that.setUserInfo();
-						},
-						context: that
-					}
-				);
-			}
-		});
-	};
-	setUserInfo = () => {
-		let that = this;
-		Taro.getUserInfo({
-			success: function(res) {
-				res.wx_token = Taro.getStorageSync("wx_token");
-				console.log("wx user info", JSON.stringify(res));
-				common.wxUserLogin(res, {
-					func: function(response) {
-						Taro.setStorageSync("token", response.token);
-						Taro.setStorageSync("info", response.info);
-						app.globalData.userInfo = res.userInfo;
-						that.requestData();
-					},
-					context: that
-				});
-			},
-			fail: function(e) {
-				common.createUser(
-					{},
-					{
-						func: function(response) {
-							Taro.setStorageSync("token", response.token);
-							Taro.setStorageSync("info", response.info);
-							app.globalData.userInfo = response.userInfo;
-							that.requestData();
-						}
-					}
-				);
-			}
 		});
 	};
 	onPullDownRefresh = () => {

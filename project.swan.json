@@ -1,8 +1,4 @@
 {
     "appid":"15450014",
-    "host": "timeline",
-    "compilation-args": {
-        "selected": 0,
-        "options": []
-    }
+    "host": "timeline"
 }

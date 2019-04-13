@@ -187,7 +187,6 @@ export default class updateBox extends baseBoxAdd {
                         onInput={this.contentFunc}
                         value={detail.content || ""}
                         placeholder="记录这一刻点点滴滴"
-                        type="textarea"
                     />
                 </View>
                 <View className="group-area">

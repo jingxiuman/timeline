@@ -1,24 +1,8 @@
-import { Block, View, Text, Input, Button } from '@tarojs/components'
+import { View, Text, Input, Button } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import './secure.scss'
 
-class Secure extends Taro.Component {
-  state = {}
-
-  componentWillMount(options) {}
-
-  componentDidMount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  componentWillUnmount() {}
-
-  onPullDownRefresh = () => {}
-  onReachBottom = () => {}
-  onShareAppMessage = () => {}
-  config = {}
+export default class Secure extends Taro.Component {
 
   render() {
     return (
@@ -61,4 +45,3 @@ class Secure extends Taro.Component {
   }
 } // pages/secure/secure.js
 
-export default _C

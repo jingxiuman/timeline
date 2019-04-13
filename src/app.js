@@ -82,7 +82,7 @@ class App extends Taro.Component {
     }
 
     render() {
-        return null
+        return <View>123 </View>
     }
 }
 

@@ -14,12 +14,12 @@ export default class baseBoxAdd extends Taro.Component {
 		timeStr: "",
 		imgList: []
 	};
+	
 
 	componentWillMount(options) {
-		console.info("url data", options);
 		var time = this.getCurrentTime();
-		let {detail}= this.state
-		detail.time = new Date().getTime()
+		let { detail } = this.state;
+		detail.time = new Date().getTime();
 		this.setState({
 			detail,
 			timeStr: time
@@ -27,46 +27,55 @@ export default class baseBoxAdd extends Taro.Component {
 		this.getPosition();
 	}
 
-	getPosition = () => {
+	getPosition() {
 		var that = this;
 		let data = this.state.detail;
+		swan.getLocation({
+			success(res) {
+				console.log(res);
+			}
+		});
 		Taro.getLocation({
-			type: "wgs84",
-			success: function (res) {
+			type: "wgs84"
+		})
+			.then(res => {
 				common.getAddress(
 					{
 						lat: res.latitude,
 						lng: res.longitude
 					},
-					function (res) {
+					function(res) {
 						data.address = res.address.formatted_address;
 						that.setState({
 							detail: data
 						});
 					}
 				);
-			}
-		});
-	};
-	titleChange = e => {
+			})
+			.catch(e => {
+				console.log(e);
+			});
+	}
+	titleChange(e) {
 		var that = this;
 		let detail = this.state.detail;
-		detail.title = e.detail.value
+		detail.title = e.detail.value;
 		that.setState({
 			detail: detail
 		});
-	};
+	}
 	contentFunc = e => {
 		let detail = this.state.detail;
-		detail.content = e.detail.value
+		detail.content = e.detail.value;
+		console.log(detail);
 		this.setState({
-			detail: detail
+			detail
 		});
 	};
 	choosePic = () => {
 		var that = this;
 		let { detail, imgList } = this.state;
-		let { imgUrl } = detail
+		let { imgUrl } = detail;
 		if (imgUrl.length < 9) {
 			Taro.showLoading({
 				title: "图片上传中"
@@ -75,10 +84,10 @@ export default class baseBoxAdd extends Taro.Component {
 				count: 1, // 默认9
 				sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
 				sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
-				success: function (res) {
+				success: function(res) {
 					var tempFilePaths = res.tempFilePaths;
-					common.addPic(tempFilePaths, function (response) {
-						console.log(response)
+					common.addPic(tempFilePaths, function(response) {
+						console.log(response);
 						Taro.hideLoading();
 						imgList.push(common.getImgUrl(response.key));
 						imgUrl.push(response);
@@ -89,7 +98,7 @@ export default class baseBoxAdd extends Taro.Component {
 						});
 					});
 				},
-				fail: function () {
+				fail: function() {
 					Taro.hideLoading();
 					Taro.showToast({
 						title: "您取消了上传图片",
@@ -103,19 +112,19 @@ export default class baseBoxAdd extends Taro.Component {
 			});
 		}
 	};
-	seePic = e => {
+	seePic(e) {
 		var that = this;
 		let urlImg = that.state.imgList;
 		let current = e.currentTarget.dataset.url;
 		Taro.previewImage({
 			current: current,
 			urls: urlImg,
-			complete: function (e) {
+			complete: function(e) {
 				console.log(e);
 			}
 		});
-	};
-	deletePic = e => {
+	}
+	deletePic(e) {
 		console.log(e);
 		let index = e.currentTarget.dataset.index;
 		let { imgList, detail } = this.state;
@@ -123,24 +132,23 @@ export default class baseBoxAdd extends Taro.Component {
 
 		imgUrl.splice(index, 1);
 		imgList.splice(index, 1);
-		detail.imgUrl = imgUrl
+		detail.imgUrl = imgUrl;
 		this.setState({
 			detail,
 			imgList
 		});
-	};
-	eventTimeChange = e => {
+	}
+	eventTimeChange(e) {
 		let that = this;
 		let eventTime = e.detail.value;
 		let { detail } = this.state;
-		detail.time = new Date(eventTime).getTime()
+		detail.time = new Date(eventTime).getTime();
 		this.setState({
 			detail,
 			timeStr: that.getCurrentTime(eventTime)
-
 		});
-	};
-	getCurrentTime = timeStamps => {
+	}
+	getCurrentTime(timeStamps) {
 		let time;
 		if (timeStamps) {
 			time = new Date(timeStamps);
@@ -158,9 +166,8 @@ export default class baseBoxAdd extends Taro.Component {
 		}
 		var str = year + "-" + month + "-" + day;
 		return str;
-	};
+	}
 	config = {
 		enablePullDownRefresh: false
 	};
-
 }
