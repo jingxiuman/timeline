@@ -9,7 +9,9 @@ export default class Box extends Taro.Component {
 	state = {
 		boxList: [],
 		boxCount: 0,
-		baseImg: ""
+		baseImg: "",
+		pageIndex: 1,
+		pageSize: 3
 	};
 	isLongTap = false;
 
@@ -18,11 +20,14 @@ export default class Box extends Taro.Component {
 		that.setState({
 			baseImg: common.imgDefault
 		});
-		common.checkLogin(()=>{}, ()=>{
-			common.setUserInfo(()=>{
-				this.requestData()
-			})
-		})
+		common.checkLogin(
+			() => {},
+			() => {
+				common.setUserInfo(() => {
+					this.requestData();
+				});
+			}
+		);
 	}
 
 	componentDidShow() {
@@ -31,11 +36,26 @@ export default class Box extends Taro.Component {
 
 	requestData = () => {
 		let that = this;
-		common.getOwnBox({}, function(response) {
-			that.makeData(response);
-		});
+		const { pageSize, pageIndex } = this.state;
+		common.getOwnBox(
+			{
+				pageSize,
+				pageIndex
+			},
+			response => {
+				that.makeData(response.data);
+				console.log(res);
+				this.setState({
+					pageIndex: response.pageIndex,
+					pageSize: response.pageSize
+				});
+			}
+		);
 	};
 	makeData = res => {
+		console.log("123123", res);
+		const { boxList } = this.state;
+		const arr = [];
 		res.forEach(function(item) {
 			item.img =
 				item.img.length > 0
@@ -46,8 +66,18 @@ export default class Box extends Taro.Component {
 			item.eventTime = common.formatTimeLine(item.eventTime, "date");
 			item.createTime = common.formatCreate(item.created_at, "time");
 			item.createDate = common.formatCreate(item.created_at, "date");
+			let flag = false;
+
+			boxs.forEach(function(item_box) {
+				if (item_box.id == item.id) {
+					flag = true;
+				}
+			});
+			if (!flag) {
+				arr.push(item);
+			}
 		});
-		this.setState({ boxList: res });
+		this.setState({ boxList: boxs.contact(arr) });
 	};
 	delBox = e => {
 		console.log("long", e);
@@ -109,7 +139,20 @@ export default class Box extends Taro.Component {
 	config = {
 		enablePullDownRefresh: true
 	};
+	onReachBottom(e) {
+		console.log(e);
+		const { pageSize, pageIndex } = this.state;
 
+		this.setState(
+			{
+				pageIndex: pageIndex + 1,
+				pageSize
+			},
+			() => {
+				this.requestData();
+			}
+		);
+	}
 	render() {
 		const { boxList: boxList } = this.state;
 		return (

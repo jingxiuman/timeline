@@ -30,11 +30,6 @@ export default class baseBoxAdd extends Taro.Component {
 	getPosition() {
 		var that = this;
 		let data = this.state.detail;
-		swan.getLocation({
-			success(res) {
-				console.log(res);
-			}
-		});
 		Taro.getLocation({
 			type: "wgs84"
 		})

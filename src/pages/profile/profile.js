@@ -7,7 +7,13 @@ export default class Profile extends Taro.Component {
 	state = {
 		userInfo: {}
 	};
-
+	constructor(){
+		super();
+		this.state = {
+			platform: process.env.TARO_ENV,
+			userInfo:{}
+		};
+	}
 	componentDidShow() {
 		let that = this,
 			userPic;
@@ -43,16 +49,24 @@ export default class Profile extends Taro.Component {
 	};
 
 	render() {
-		const { userInfo: userInfo } = this.state;
+		const { userInfo: userInfo, platform } = this.state;
 		return (
 			<View className="container">
 				<View className="profile_container">
 					<View className="profile_bg">
-						<Image className="img" mode="scaleToFill" src={userInfo.userPic} />
+						<Image
+							className="img"
+							mode="scaleToFill"
+							src={userInfo.userPic}
+						/>
 					</View>
 					<View className="profile_sq" />
 					<View className="profile_pic">
-						<Image className="img" mode="scaleToFill" src={userInfo.userPic} />
+						<Image
+							className="img"
+							mode="scaleToFill"
+							src={userInfo.userPic}
+						/>
 					</View>
 				</View>
 				<View className="profile_name">
@@ -90,17 +104,7 @@ export default class Profile extends Taro.Component {
 							</View>
 						</View>
 					</Navigator>
-					{/* <Navigator open-type="navigate" url="../secure/secure">
-						<view class="others_item">
-							<text>用户安全</text>
-							<view class="others_item_right">
-								<image
-									src="../../resources/profile/right.png"
-									mode="scaleToFill"
-								/>
-							</view>
-						</view>
-					</Navigator> */}
+
 					<Navigator openType="navigate" url="../log/log">
 						<View className="others_item">
 							<Text>更新日志</Text>
@@ -113,6 +117,9 @@ export default class Profile extends Taro.Component {
 						</View>
 					</Navigator>
 				</View>
+				{platform === "swan"?<ad appid="c06a3c90" apid="6207294" class="ad" type="banner" />:''}
+				{platform === "swan"?<ad unit-id="adunit-576dc800444db43e"></ad>:''}
+				
 			</View>
 		);
 	}

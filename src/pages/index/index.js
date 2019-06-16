@@ -48,7 +48,7 @@ export default class Index extends Taro.Component {
 				});
 			}
 		);
-	}
+	} 
 
 	requestData = () => {
 		console.log("get box");

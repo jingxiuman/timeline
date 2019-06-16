@@ -6,7 +6,7 @@ let common = {
 	/**
 	 * ajax传送
 	 */
-	debug: "release",
+	debug: "local",
 	formatTimeToNow(timeStamps) {
 		var day = moment(timeStamps * 1000);
 		var now = moment();
@@ -38,9 +38,7 @@ let common = {
 	},
 	url: function() {
 		let str = "";
-		if (this.debug == "test") {
-			str = "https://apit.xbpig.cn";
-		} else if (this.debug == "local") {
+		if (this.debug == "local") {
 			str = "http://api.xbpig.cn";
 		} else {
 			str = "https://api.daysnote.cn";
@@ -125,6 +123,7 @@ let common = {
 						cb && cb();
 					});
 				} else if (process.env.TARO_ENV === "swan") {
+					console.log(res)
 					that.bdUserLogin(res, function(response) {
 						Taro.setStorageSync("token", response.token);
 						Taro.setStorageSync("info", response.info);
@@ -206,7 +205,7 @@ let common = {
 					typeof callback == "function" &&
 					(response.code || response.code == 0)
 				) {
-					callback.call(null, response.data, response.code);
+					callback.call(null, response.data, response.code,response);
 				} else {
 					return;
 				}

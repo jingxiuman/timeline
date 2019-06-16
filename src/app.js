@@ -3,8 +3,15 @@ import './app.scss'
 import common from './utils/util.js'
 
 class App extends Taro.Component {
+	constructor(){
+		super();
+		this.state = {
+			platform: process.env.TARO_ENV,
+		};
+	}
     componentDidShow() {
         let that = this
+		let {platform} = this.state;
         common.getConfig(
             {
                 type: 'share'
@@ -13,6 +20,7 @@ class App extends Taro.Component {
                 that.shareData = res
             }
         )
+		
     }
 
     config = {
