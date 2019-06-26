@@ -118,7 +118,7 @@ export default class Profile extends Taro.Component {
 					</Navigator>
 				</View>
 				{platform === "swan"?<ad appid="c06a3c90" apid="6207294" class="ad" type="banner" />:''}
-				{platform === "swan"?<ad unit-id="adunit-576dc800444db43e"></ad>:''}
+				{platform !== "swan"?<ad unit-id="adunit-576dc800444db43e"></ad>:''}
 				
 			</View>
 		);

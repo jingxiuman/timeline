@@ -47,12 +47,16 @@ export default class Box extends Taro.Component {
                     pageIndex: response.pageIndex,
                     pageSize: response.pageSize
                 });
+                if (process.env.TARO_ENV === "swan") {
+                    swan.stopPullDownRefresh();
+                }
+               
             }
         );
     };
     makeData = list => {
         console.log("123123", list);
-        const {boxList=[]} = this.state;
+        const {boxList = []} = this.state;
         const arr = [];
         list.forEach(function (item) {
             item.img =
@@ -125,7 +129,11 @@ export default class Box extends Taro.Component {
     };
     onPullDownRefresh = () => {
         let that = this;
-        that.requestData();
+        this.setState({
+            pageSize: 3, pageIndex: 1
+        }, () => {
+            that.requestData();
+        })
     };
     imgLoadError = e => {
         let index = e.target.dataset.id;
@@ -161,9 +169,9 @@ export default class Box extends Taro.Component {
                 upperThreshold="50"
                 scrollWithAnimation="true"
             >
-                {boxList.map((item, indexId) => {
+                {boxList.map((item, index) => {
                     return (
-                        <Block key={indexId}>
+                        <Block key={index}>
                             <View
                                 className="timeLine-item"
                                 onClick={e => this.goToDetail(e, item.id)}

@@ -30,7 +30,7 @@ class App extends Taro.Component {
             navigationBarBackgroundColor: '#fa7298',
             navigationBarTitleText: '旧时光',
             backgroundColor: '#ffffff',
-            enablePullDownRefresh: true,
+            enablePullDownRefresh: false,
             backgroundTextStyle: 'dark'
         },
         pages: [

@@ -78,6 +78,14 @@ export default class Detail extends Taro.Component {
         }
     };
     config = {};
+    onShareAppMessage = () => {
+        const {eventName: title, id, img:imgList} = this.state;
+        return {
+            title,
+            path:`pages/detail/detail?id=${id}`,
+            imageUrl
+        }
+    }
 
     render() {
         const {
@@ -113,13 +121,11 @@ export default class Detail extends Taro.Component {
                     )}
                     <View className="detail-create">{detail.created_at}</View>
                 </View>
-                {isShare && (
-                    <View className="share">
-                        <Button type="primary" size="mini" plain="true" openType="share">
-                            分享给好朋友
+                <View className="share">
+                    <Button type="primary" size="mini" plain="true" openType="share">
+                        分享给好朋友
 						</Button>
-                    </View>
-                )}
+                </View>
                 {showEdit && (
                     <View className="operation">
                         <Navigator
