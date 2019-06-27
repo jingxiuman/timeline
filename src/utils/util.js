@@ -39,7 +39,7 @@ let common = {
     url: function () {
         let str = "";
         if (this.debug == "local") {
-            str = "http://api.xbpig.cn";
+            str = "http://127.0.0.1:8001";
         } else {
             str = "https://api.daysnote.cn";
         }
@@ -192,7 +192,8 @@ let common = {
                 } else if (response.code != 0) {
                     Taro.showToast({
                         title: response.msg || "接口异常 code:" + res.code,
-                        duration: 2000
+                        icon: 'none',
+                        duration: 3000
                     });
                     if (response.code == 1111) {
                         Taro.removeStorageSync("token");
@@ -200,6 +201,7 @@ let common = {
                         self.userLogin();
                     }
                 }
+                console.log(response)
                 if (
                     typeof callback == "function" &&
                     (response.code || response.code == 0)

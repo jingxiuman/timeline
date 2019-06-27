@@ -54,16 +54,18 @@ export default class addBox extends baseBoxAdd {
 					eventImg: JSON.stringify(detail.img),
 					eventAddress: detail.address
 				},
-				function(response, code) {
-					if (code != 0) {
+				function(data, code, res) {
+                    if (code != 0) {
 						Taro.showToast({
-							title: response.msg,
+                            title: res.msg,
+                            icon: 'none',
 							duration: 2000
 						});
 						return;
 					}
 					Taro.showToast({
-						title: "保存成功",
+                        title: "保存成功",
+                      
 						duration: 2000
 					});
 					Taro.hideToast();
