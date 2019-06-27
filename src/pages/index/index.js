@@ -24,7 +24,6 @@ export default class Index extends Taro.Component {
 					key: "launchIndex",
 					success: function(res) {
 						let num = res.data;
-						console.log(num);
 						if (num && num % 3 === 0) {
 							Taro.setStorageSync("launchIndex", ++num);
 							Taro.switchTab({
@@ -36,7 +35,6 @@ export default class Index extends Taro.Component {
 						}
 					},
 					fail: function() {
-						console.log("asd");
 						Taro.setStorageSync("launchIndex", 1);
 						that.requestData();
 					}
@@ -51,7 +49,6 @@ export default class Index extends Taro.Component {
 	} 
 
 	requestData = () => {
-		console.log("get box");
 		let that = this;
 		common.getRandomOne({}, function(res, code) {
 			if (code === 1111 || code == 10001) {
@@ -70,7 +67,6 @@ export default class Index extends Taro.Component {
 		});
 	};
 	imgLoadError = e => {
-		console.log(e);
 		const info = this.state
 		info.bgImg = common.defaultBg.index;
 		this.setState({
@@ -78,7 +74,8 @@ export default class Index extends Taro.Component {
 		});
 	};
 	config = {
-		disableScroll: true
+        disableScroll: true,
+        enablePullDownRefresh: false,
 	};
 
 	render() {

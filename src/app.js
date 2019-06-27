@@ -3,15 +3,14 @@ import './app.scss'
 import common from './utils/util.js'
 
 class App extends Taro.Component {
-	constructor(){
-		super();
-		this.state = {
-			platform: process.env.TARO_ENV,
-		};
-	}
+    constructor() {
+        super();
+        this.state = {
+            platform: process.env.TARO_ENV,
+        };
+    }
     componentDidShow() {
         let that = this
-		let {platform} = this.state;
         common.getConfig(
             {
                 type: 'share'
@@ -20,18 +19,19 @@ class App extends Taro.Component {
                 that.shareData = res
             }
         )
-		
+
     }
 
     config = {
-        debug: true,
+        debug: false,
         window: {
             navigationBarTextStyle: 'white',
             navigationBarBackgroundColor: '#fa7298',
             navigationBarTitleText: '旧时光',
             backgroundColor: '#ffffff',
-            enablePullDownRefresh: false,
-            backgroundTextStyle: 'dark'
+            enablePullDownRefresh: true,
+            backgroundTextStyle: 'dark',
+            backgroundColorBottom: '#ffffff'
         },
         pages: [
             'pages/index/index',
@@ -79,18 +79,13 @@ class App extends Taro.Component {
         },
         "permission": {
             'scope.userLocation': {
-                desc: '该地址仅用户用户填写记录的位置'
+                desc: '该地址仅用户填写记录的位置'
             }
         }
 
     }
-
-    componentWillMount() {
-        this.$app.globalData = this.globalData
-    }
-
     render() {
-        return <View>123 </View>
+        return null
     }
 }
 

@@ -1,86 +1,20 @@
 import {Block, ScrollView, View, Image} from "@tarojs/components";
-import Taro from "@tarojs/taro";
+import Taro, {Component} from "@tarojs/taro";
 import "./box.scss";
 import common from "./../../utils/util.js";
-const app = Taro.getApp();
 
-export default class Box extends Taro.Component {
-    name = "box";
-    state = {
-        boxList: [],
-        boxCount: 0,
-        baseImg: "",
-        pageIndex: 1,
-        pageSize: 3
-    };
-    isLongTap = false;
-
-    componentDidMount() {
-        let that = this;
-        that.setState({
-            baseImg: common.imgDefault
-        });
-        common.checkLogin(
-            () => {},
-            () => {
-                common.setUserInfo(() => {
-                    this.requestData();
-                });
-            }
-        );
+class BoxItem extends Component {
+    constructor(props) {
+        super(props)
+        console.log(props)
     }
-
-    componentDidShow() {
-        this.requestData();
-    }
-
-    requestData = () => {
-        const {pageSize, pageIndex} = this.state;
-        common.getOwnBox(
-            {
-                pageSize,
-                pageIndex
-            },
-            response => {
-                this.makeData(response.data);
-                this.setState({
-                    pageIndex: response.pageIndex,
-                    pageSize: response.pageSize
-                });
-                if (process.env.TARO_ENV === "swan") {
-                    swan.stopPullDownRefresh();
-                }
-               
-            }
-        );
-    };
-    makeData = list => {
-        console.log("123123", list);
-        const {boxList = []} = this.state;
-        const arr = [];
-        list.forEach(function (item) {
-            item.img =
-                item.img.length > 0
-                    ? common.getImgUrl(item.img[0].url)
-                    : common.imgDefault;
-            item.eventTimeStr = common.formatTimeLine(item.eventTime, "day");
-            item.eventTimeStr2 = common.formatTimeLine(item.eventTime, "time");
-            item.eventTime = common.formatTimeLine(item.eventTime, "date");
-            item.createTime = common.formatCreate(item.created_at, "time");
-            item.createDate = common.formatCreate(item.created_at, "date");
-            let flag = false;
-
-            boxList.forEach(function (item_box) {
-                if (item_box.id == item.id) {
-                    flag = true;
-                }
-            });
-            if (!flag) {
-                boxList.push(item);
-            }
+    imgLoadError = e => {
+        let index = e.target.dataset.id;
+        let keyName = "boxList[" + index + "].img";
+        console.log(keyName, common.defaultBg.item);
+        this.setState({
+            keyName: common.defaultBg.item
         });
-
-        this.setState({boxList});
     };
     delBox = e => {
         console.log("long", e);
@@ -127,27 +61,128 @@ export default class Box extends Taro.Component {
             url: "../detail/detail?id=" + id
         });
     };
+    componentDidShow() {
+        console.log(this)
+    }
+    render() {
+        console.log(this.props)
+        const {item} = this.props;
+        return (
+            <View
+                className="timeLine-item"
+                onClick={e => this.goToDetail(e, item.id)}
+                onLongtap={this.delBox}
+            >
+                <View className="timeLine-img">
+                    <Image
+                        className="img"
+                        mode="aspectFill"
+                        onError={this.imgLoadError}
+                        src={item.img}
+                    />
+                </View>
+                <View className="timeLine-content">
+                    <View className="timeLine-title">{item.eventName}</View>
+                    <View className="timeLine-date">
+                        <View className="timeLine-day">{item.eventTimeStr}</View>
+                        <View className="timeLine-time">{item.eventTime}</View>
+                    </View>
+                </View>
+            </View>
+        )
+    }
+}
+export default class Box extends Component {
+    name = "box";
+    state = {
+        boxList: [],
+        boxCount: 0,
+        baseImg: "",
+        pageIndex: 1,
+        pageSize: 3
+    };
+    isLongTap = false;
+
+    componentDidMount() {
+        let that = this;
+        that.setState({
+            baseImg: common.imgDefault
+        });
+        common.checkLogin(
+            () => {},
+            () => {
+                common.setUserInfo(() => {
+                    this.requestData();
+                });
+            }
+        );
+    }
+
+    componentDidShow() {
+        this.requestData();
+    }
+
+    requestData = () => {
+        const {pageSize, pageIndex} = this.state;
+        common.getOwnBox(
+            {
+                pageSize,
+                pageIndex
+            },
+            response => {
+                this.makeData(response.data);
+                this.setState({
+                    pageIndex: response.pageIndex,
+                    pageSize: response.pageSize
+                });
+                // if (process.env.TARO_ENV === "swan") {
+                //     swan.stopPullDownRefresh();
+                // }
+
+            }
+        );
+    };
+    makeData = list => {
+        const {boxList = []} = this.state;
+        list.forEach(function (item) {
+            item.img =
+                item.img.length > 0
+                    ? common.getImgUrl(item.img[0].url)
+                    : common.imgDefault;
+            item.eventTimeStr = common.formatTimeLine(item.eventTime, "day");
+            item.eventTimeStr2 = common.formatTimeLine(item.eventTime, "time");
+            item.eventTime = common.formatTimeLine(item.eventTime, "date");
+            item.createTime = common.formatCreate(item.created_at, "time");
+            item.createDate = common.formatCreate(item.created_at, "date");
+            let flag = false;
+
+            boxList.forEach(function (item_box) {
+                if (item_box.id == item.id) {
+                    flag = true;
+                }
+            });
+            if (!flag) {
+                boxList.push(item);
+            }
+        });
+
+        this.setState({boxList});
+    };
+
+
     onPullDownRefresh = () => {
         let that = this;
-        this.setState({
-            pageSize: 3, pageIndex: 1
-        }, () => {
-            that.requestData();
-        })
+        // this.setState({
+        //     pageSize: 3, pageIndex: 1
+        // }, () => {
+        //     that.requestData();
+        // })
     };
-    imgLoadError = e => {
-        let index = e.target.dataset.id;
-        let keyName = "boxList[" + index + "].img";
-        console.log(keyName, common.defaultBg.item);
-        this.setState({
-            keyName: common.defaultBg.item
-        });
-    };
+
     config = {
         enablePullDownRefresh: true
     };
     onReachBottom(e) {
-        console.log(e);
         const {pageSize, pageIndex} = this.state;
 
         this.setState(
@@ -168,32 +203,13 @@ export default class Box extends Taro.Component {
                 scrollY="true"
                 upperThreshold="50"
                 scrollWithAnimation="true"
+                enableBackToTop="true"
+                scrollWithAnimation="true"
             >
-                {boxList.map((item, index) => {
+                {boxList.map((item) => {
+                    console.log(item)
                     return (
-                        <Block key={index}>
-                            <View
-                                className="timeLine-item"
-                                onClick={e => this.goToDetail(e, item.id)}
-                                onLongtap={this.delBox}
-                            >
-                                <View className="timeLine-img">
-                                    <Image
-                                        className="img"
-                                        mode="aspectFill"
-                                        onError={this.imgLoadError}
-                                        src={item.img}
-                                    />
-                                </View>
-                                <View className="timeLine-content">
-                                    <View className="timeLine-title">{item.eventName}</View>
-                                    <View className="timeLine-date">
-                                        <View className="timeLine-day">{item.eventTimeStr}</View>
-                                        <View className="timeLine-time">{item.eventTime}</View>
-                                    </View>
-                                </View>
-                            </View>
-                        </Block>
+                        <BoxItem data={item} key={item.id} ></BoxItem>
                     );
                 })}
             </ScrollView>

@@ -163,6 +163,6 @@ export default class baseBoxAdd extends Taro.Component {
 		return str;
 	}
 	config = {
-		enablePullDownRefresh: false
+		enablePullDownRefresh: true
 	};
 }

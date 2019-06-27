@@ -123,7 +123,6 @@ let common = {
                         cb && cb();
                     });
                 } else if (process.env.TARO_ENV === "swan") {
-                    console.log(res)
                     that.bdUserLogin(res, function (response) {
                         Taro.setStorageSync("token", response.token);
                         Taro.setStorageSync("info", response.info);
@@ -132,7 +131,6 @@ let common = {
                 }
             },
             fail: function (e) {
-                console.log(e);
                 Taro.navigateTo({
                     url: "/pages/error/error"
                 });
@@ -201,7 +199,6 @@ let common = {
                         self.userLogin();
                     }
                 }
-                console.log(response)
                 if (
                     typeof callback == "function" &&
                     (response.code || response.code == 0)
@@ -212,7 +209,6 @@ let common = {
                 }
             },
             fail: function (e) {
-                console.error(e);
                 Taro.showToast({
                     title: "网络连接异常",
                     duration: 2000
@@ -253,7 +249,6 @@ let common = {
                 info: Taro.getStorageSync("info")
             },
             success: function (res) {
-                console.log(res);
                 let response;
                 if (process.env.TARO_ENV === "weapp") {
                     response = JSON.parse(res.data);
@@ -277,7 +272,6 @@ let common = {
                 }
             },
             fail: function (e) {
-                console.log(e);
             }
         });
     },
