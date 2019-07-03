@@ -1,12 +1,34 @@
-import {Block, ScrollView, View, Image} from "@tarojs/components";
+import {ScrollView, View, Image, Picker} from "@tarojs/components";
 import Taro, {Component} from "@tarojs/taro";
 import "./box.scss";
 import common from "./../../utils/util.js";
 
-class BoxItem extends Component {
-    constructor(props) {
-        super(props)
-        console.log(props)
+export default class Box extends Component {
+    name = "box";
+    state = {
+        boxList: [],
+        boxCount: 0,
+        baseImg: "",
+        pageIndex: 1,
+        pageSize: 3,
+        orderBy: 'count',
+        orderSort: 0 //0:desc 1"asc
+    };
+    isLongTap = false;
+
+    componentDidMount() {
+        let that = this;
+        that.setState({
+            baseImg: common.imgDefault
+        });
+        common.checkLogin(
+            () => {},
+            () => {
+                common.setUserInfo(() => {
+                    this.requestData();
+                });
+            }
+        );
     }
     imgLoadError = e => {
         let index = e.target.dataset.id;
@@ -61,73 +83,20 @@ class BoxItem extends Component {
             url: "../detail/detail?id=" + id
         });
     };
-    componentDidShow() {
-        console.log(this)
-    }
-    render() {
-        console.log(this.props)
-        const {item} = this.props;
-        return (
-            <View
-                className="timeLine-item"
-                onClick={e => this.goToDetail(e, item.id)}
-                onLongtap={this.delBox}
-            >
-                <View className="timeLine-img">
-                    <Image
-                        className="img"
-                        mode="aspectFill"
-                        onError={this.imgLoadError}
-                        src={item.img}
-                    />
-                </View>
-                <View className="timeLine-content">
-                    <View className="timeLine-title">{item.eventName}</View>
-                    <View className="timeLine-date">
-                        <View className="timeLine-day">{item.eventTimeStr}</View>
-                        <View className="timeLine-time">{item.eventTime}</View>
-                    </View>
-                </View>
-            </View>
-        )
-    }
-}
-export default class Box extends Component {
-    name = "box";
-    state = {
-        boxList: [],
-        boxCount: 0,
-        baseImg: "",
-        pageIndex: 1,
-        pageSize: 3
-    };
-    isLongTap = false;
-
-    componentDidMount() {
-        let that = this;
-        that.setState({
-            baseImg: common.imgDefault
-        });
-        common.checkLogin(
-            () => {},
-            () => {
-                common.setUserInfo(() => {
-                    this.requestData();
-                });
-            }
-        );
-    }
 
     componentDidShow() {
         this.requestData();
     }
 
     requestData = () => {
-        const {pageSize, pageIndex} = this.state;
+        const {pageSize, pageIndex, orderBy, orderSort} = this.state;
+
         common.getOwnBox(
             {
                 pageSize,
-                pageIndex
+                pageIndex,
+                orderBy,
+                orderSort: (orderSort == 0 ? 'desc' : 'asc')
             },
             response => {
                 this.makeData(response.data);
@@ -172,15 +141,15 @@ export default class Box extends Component {
 
     onPullDownRefresh = () => {
         let that = this;
-        // this.setState({
-        //     pageSize: 3, pageIndex: 1
-        // }, () => {
-        //     that.requestData();
-        // })
+        this.setState({
+            pageSize: 3, pageIndex: 1
+        }, () => {
+            that.requestData();
+        })
     };
 
     config = {
-        enablePullDownRefresh: true
+        enablePullDownRefresh: false
     };
     onReachBottom(e) {
         const {pageSize, pageIndex} = this.state;
@@ -195,24 +164,74 @@ export default class Box extends Component {
             }
         );
     }
+    changeNavHandle = (newOrderBy) => {
+        let {orderSort, orderBy} = this.state;
+        if (newOrderBy != orderBy) {
+            orderSort = 0
+        } else {
+            orderSort = !orderSort
+        }
+
+        this.setState({
+            orderBy: newOrderBy,
+            orderSort: orderSort
+        }, () => {
+            this.requestData()
+        })
+    }
     render() {
-        const {boxList} = this.state;
+        const {boxList, orderSort, orderBy} = this.state;
+
+        const sortDom = orderSort == 0 ? <View className="iconfont icon-down">&#xe6a1;</View> : <View className="iconfont icon-up">&#xe751;</View>
         return (
-            <ScrollView
-                className="container"
-                scrollY="true"
-                upperThreshold="50"
-                scrollWithAnimation="true"
-                enableBackToTop="true"
-                scrollWithAnimation="true"
-            >
-                {boxList.map((item) => {
-                    console.log(item)
-                    return (
-                        <BoxItem data={item} key={item.id} ></BoxItem>
-                    );
-                })}
-            </ScrollView>
+            <View>
+                <View className="operate-container">
+                    <View className={`operate-item ${orderBy == 'create' ? 'active' : ''}`} onClick={e => this.changeNavHandle('create')}>
+                        发布时间
+                        {sortDom}
+                    </View>
+                    <View className={`operate-item ${orderBy == 'count' ? 'active' : ''}`} onClick={e => this.changeNavHandle('count')}>倒计日
+                      {sortDom}
+                    </View>
+                    <View className="iconfont icon-refresh" onClick={e => this.onPullDownRefresh()}>&#xe631;</View>
+                </View>
+                <ScrollView
+                    className="container"
+                    scrollY="true"
+                    upperThreshold="50"
+                    scrollWithAnimation="true"
+                    enableBackToTop="true"
+                    scrollWithAnimation="true"
+                >
+                    {boxList.map((item) => {
+                        return (
+                            <View
+                                className="timeLine-item"
+                                onClick={e => this.goToDetail(e, item.id)}
+                                onLongtap={this.delBox}
+                                key={item.id}
+                            >
+                                <View className="timeLine-img">
+                                    <Image
+                                        className="img"
+                                        mode="aspectFill"
+                                        onError={this.imgLoadError}
+                                        src={item.img}
+                                    />
+                                </View>
+                                <View className="timeLine-content">
+                                    <View className="timeLine-title">{item.eventName}</View>
+                                    <View className="timeLine-date">
+                                        <View className="timeLine-day">{item.eventTimeStr}</View>
+                                        <View className="timeLine-time">{item.eventTime}</View>
+                                    </View>
+                                </View>
+                            </View>
+                        );
+                    })}
+                </ScrollView>
+
+            </View>
         );
     }
 }

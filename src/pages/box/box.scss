@@ -42,3 +42,25 @@
   font-size: 48px;
   color: #FC7097;
 }
+.operate-container {
+    display: flex;
+    padding: 10px 20px;
+}
+.operate-item {
+    font-size: 20px;
+    width: 150px;
+    margin-right: 20px;
+    padding: 10px;
+    text-align: center;
+    .iconfont {
+        display: none;
+    }
+    &.active {
+        background-color: #FC7097;
+        color: #fff;
+        border-radius: 10px;
+        .iconfont {
+            display: inline;
+        }
+    }
+}
