@@ -1,7 +1,9 @@
-import {ScrollView, View, Image, Picker} from "@tarojs/components";
+import {ScrollView, View, Image} from "@tarojs/components";
 import Taro, {Component} from "@tarojs/taro";
 import "./box.scss";
 import common from "./../../utils/util.js";
+
+const defaultPageSize = 10;
 
 export default class Box extends Component {
     name = "box";
@@ -10,7 +12,7 @@ export default class Box extends Component {
         boxCount: 0,
         baseImg: "",
         pageIndex: 1,
-        pageSize: 3,
+        pageSize: defaultPageSize,
         orderBy: 'count',
         orderSort: 0 //0:desc 1"asc
     };
@@ -38,17 +40,17 @@ export default class Box extends Component {
             keyName: common.defaultBg.item
         });
     };
-    delBox = e => {
+    delBox = (e) => {
         console.log("long", e);
         this.isLongTap = true;
         let that = this;
+        let id = e.currentTarget.dataset.id;
         //TODO 完成删除逻辑
         Taro.showModal({
             title: "提示",
             content: "确认删除当前的事件",
             success: function (res) {
                 if (res.confirm) {
-                    let id = e.currentTarget.dataset.id;
                     common.delBoxOne(
                         {
                             id: id
@@ -73,8 +75,9 @@ export default class Box extends Component {
         });
         return false;
     };
-    goToDetail = (e, id) => {
+    goToDetail = (e) => {
         console.log("tap", e);
+        let id = e.currentTarget.dataset.id;
         if (this.isLongTap) {
             this.isLongTap = false;
             return;
@@ -142,7 +145,8 @@ export default class Box extends Component {
     onPullDownRefresh = () => {
         let that = this;
         this.setState({
-            pageSize: 3, pageIndex: 1
+            pageSize: defaultPageSize, pageIndex: 1,
+            boxList: []
         }, () => {
             that.requestData();
         })
@@ -174,7 +178,10 @@ export default class Box extends Component {
 
         this.setState({
             orderBy: newOrderBy,
-            orderSort: orderSort
+            orderSort: orderSort,
+            pageIndex: 1,
+            pageSize: defaultPageSize,
+            boxList: []
         }, () => {
             this.requestData()
         })
@@ -207,7 +214,8 @@ export default class Box extends Component {
                         return (
                             <View
                                 className="timeLine-item"
-                                onClick={e => this.goToDetail(e, item.id)}
+                                data-id={item.id}
+                                onTap={this.goToDetail}
                                 onLongtap={this.delBox}
                                 key={item.id}
                             >

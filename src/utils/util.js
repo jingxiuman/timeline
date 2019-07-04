@@ -6,7 +6,7 @@ let common = {
 	/**
 	 * ajax传送
 	 */
-    debug: "release",
+    debug: "local",
     formatTimeToNow(timeStamps) {
         var day = moment(timeStamps * 1000);
         var now = moment();
@@ -39,7 +39,7 @@ let common = {
     url: function () {
         let str = "";
         if (this.debug == "local") {
-            str = "http://127.0.0.1:8001";
+            str = "http://127.0.0.1:8989";
         } else {
             str = "https://api.daysnote.cn";
         }
@@ -169,7 +169,7 @@ let common = {
         let self = this;
         data.token = Taro.getStorageSync("token");
         data.info = Taro.getStorageSync("info");
-        let urlStr = self.url() + url;
+        let urlStr = process.env.BaseUrl + url;
         Taro.showLoading({title: "加载中"});
         Taro.request({
             url: urlStr,
