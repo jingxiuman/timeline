@@ -7,7 +7,7 @@ import {
 } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import "./detail.scss";
-import common from "./../../utils/util.js";
+import common from "../../utils/util.js";
 
 export default class Detail extends Taro.Component {
     name = "detail";
@@ -79,10 +79,10 @@ export default class Detail extends Taro.Component {
     };
     config = {};
     onShareAppMessage = () => {
-        const {eventName: title, id, img:imgList} = this.state;
+        const {eventName: title, id, img: imgList} = this.state;
         return {
             title,
-            path:`pages/detail/detail?id=${id}`,
+            path: `pages/detail/detail?id=${id}`,
             imageUrl
         }
     }
@@ -106,9 +106,8 @@ export default class Detail extends Taro.Component {
                     <Text className="detail-eventType">dairy</Text>
                 </View>
                 <View className="detail-container">
-                    <View className="detail-content">
-                        {detail.eventContent ? detail.eventContent : "暂无内容"}
-                    </View>
+                    <rich-text className="detail-content" nodes={detail.eventContent ? detail.eventContent : "暂无内容"}>
+                    </rich-text>
                     {detail.imgList.map((item, index) => {
                         return (
                             <View className="detail-img-item" key="item">
@@ -129,7 +128,7 @@ export default class Detail extends Taro.Component {
                 {showEdit && (
                     <View className="operation">
                         <Navigator
-                            url={"/pages/updateBox/updateBox?id=" + id}
+                            url={`/pages/updateBox/updateBox?id=${id}`}
                             openType="navigate"
                         >
                             <Text>编辑</Text>

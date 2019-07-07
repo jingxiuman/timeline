@@ -238,7 +238,6 @@ export default class Box extends Component {
                         );
                     })}
                 </ScrollView>
-
             </View>
         );
     }

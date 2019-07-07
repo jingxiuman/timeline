@@ -9,7 +9,7 @@ import {
     Button
 } from "@tarojs/components";
 import Taro from "@tarojs/taro";
-import "./updateBox.scss";
+import "./../addBox/addBox.scss";
 import baseBoxAdd from "../../baseComponent/baseBox";
 import common from "../../utils/util";
 
@@ -43,10 +43,20 @@ export default class updateBox extends baseBoxAdd {
         } else {
             this.setState({
                 isUpload: false
-            });
+            }); å
         }
     }
+    componentDidMount() {
+        const {detail} = this.state;
+        const query = wx.createSelectorQuery();
+        query.select('#editor').context(res => {
+            this.editor = res.context;
+            this.editor.setContents({
+                html: detail.content
+            })
+        }).exec()
 
+    }
     getBoxDetail = () => {
         let that = this;
         let {id} = this.state
@@ -179,17 +189,43 @@ export default class updateBox extends baseBoxAdd {
                     </View>
                 </View>
                 <View className="group-area">
-                    <Textarea
-                        className="form-group-texterea"
-                        maxlength="-1"
-                        autoHeight="true"
-                        name="content"
-                        onInput={this.contentFunc}
-                        value={detail.content || ""}
+                    <View className="editor-tools-container">
+                        <View className="editor-tools-item" onClick={this.insertPic}>
+                            <View className="iconfont">&#xe652;</View>
+                        </View>
+                        <View className="editor-tools-item" onClick={this.insertDivider}>
+                            <View className="iconfont">&#xe6e5;</View>
+                        </View>
+                        <View className="right">
+                            <View className="editor-tools-item" onClick={this.clearHandle}>
+                                <View className="iconfont">&#xe60a;</View>
+                            </View>
+                            <View className="editor-tools-item" onClick={this.undoHandle}>
+                                <View className="iconfont">&#xe7f4;</View>
+                            </View>
+                        </View>
+
+                    </View>
+                    <Editor
+                        id="editor"
+                        class="form-group-texterea"
                         placeholder="记录这一刻点点滴滴"
-                    />
+                        showImgSize
+                        showImgToolbar
+                        showImgResize
+                        // onStatuschange={this.contentFunc}
+                        onInput={this.contentFunc}
+                        bindready="onEditorReady">
+                    </Editor>
+
                 </View>
                 <View className="group-area">
+                    <View className="">
+
+                    </View>
+                </View>
+                <View className="group-area">
+                    <View className="form-group-img-title">封面图片</View>
                     <View className="form-group-img-list">
                         {imgList.map((item, indexId) => {
                             return (
@@ -203,24 +239,27 @@ export default class updateBox extends baseBoxAdd {
                                             src={item}
                                         />
                                         <View
-                                            className="img-del"
+                                            className="img-del iconfont"
                                             onClick={this.deletePic}
                                             data-index={indexId}
                                         >
-                                            X
+                                            &#xe641;
 										</View>
                                     </View>
                                 </Block>
                             );
                         })}
-                        <View className="img-item">
-                            <Image
-                                className="img"
-                                mode="scaleToFill"
-                                onClick={this.choosePic}
-                                src={require("../../resources/addPic.png")}
-                            />
-                        </View>
+                        {
+                            imgList.length == 0 ? <View className="img-item">
+                                <Image
+                                    className="img"
+                                    mode="scaleToFill"
+                                    onClick={this.choosePic}
+                                    src={require("../../resources/addPic.png")}
+                                />
+                            </View> : ''
+                        }
+
                         <View className="clearfix" />
                     </View>
                 </View>

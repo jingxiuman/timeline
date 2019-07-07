@@ -34,8 +34,8 @@ class App extends Taro.Component {
             backgroundColorBottom: '#ffffff'
         },
         pages: [
-            'pages/index/index',
-            'pages/error/error',
+            // 'pages/index/index',
+            // 'pages/error/error',
             'pages/box/box',
             'pages/addBox/addBox',
             'pages/profile/profile',

@@ -47,7 +47,7 @@
     padding: 10px 20px;
 }
 .operate-item {
-    font-size: 20px;
+    font-size: 30px;
     width: 150px;
     margin-right: 20px;
     padding: 10px;
@@ -63,4 +63,13 @@
             display: inline;
         }
     }
+}
+.btn-add {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    font-size: 100px;
+    color: #fa7298;
+    background-color: #fff;
+    border-radius: 50%;
 }
