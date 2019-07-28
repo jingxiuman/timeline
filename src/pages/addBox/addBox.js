@@ -4,7 +4,6 @@ import {
     Text,
     Input,
     Picker,
-    Editor,
     Image,
     Button
 } from "@tarojs/components";

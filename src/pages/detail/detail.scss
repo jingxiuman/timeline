@@ -101,6 +101,9 @@
     color: #95989a;
     margin: 20px 40px 0;
     min-height: 400px;
+    p{
+        margin: 20px;
+    }
 }
 
 .detail-img-item {
@@ -144,6 +147,7 @@
 
 .share button {
     background: #fff !important;
+    margin: 0 5px;
 }
 
 .detail-create {

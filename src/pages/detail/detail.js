@@ -86,7 +86,12 @@ export default class Detail extends Taro.Component {
             imageUrl
         }
     }
-
+    sharePic() {
+        const {id} = this.state;
+        Taro.downloadFile({
+            url: common.getSharePic(id)
+        })
+    }
     render() {
         const {
             detail: detail,
@@ -123,6 +128,9 @@ export default class Detail extends Taro.Component {
                 <View className="share">
                     <Button type="primary" size="mini" plain="true" openType="share">
                         分享给好朋友
+						</Button>
+                    <Button type="primary" size="mini" plain="true" onTap={() => this.sharePic()}>
+                        下载海报图
 						</Button>
                 </View>
                 {showEdit && (
