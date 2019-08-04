@@ -8,6 +8,7 @@ import {
 import Taro from "@tarojs/taro";
 import "./detail.scss";
 import common from "../../utils/util.js";
+import _ from 'lodash'
 
 export default class Detail extends Taro.Component {
     name = "detail";
@@ -15,10 +16,12 @@ export default class Detail extends Taro.Component {
         detail: {},
         id: 0,
         showEdit: true,
-        isShare: 0
+        isShare: 0,
+        img:[]
     };
     componentWillMount(e) {
-        let id = this.$router.params.id;
+        let {id, scene} = this.$router.params;
+        id = id || scene
         this.setState({
             id,
             isShare: false
@@ -32,16 +35,18 @@ export default class Detail extends Taro.Component {
             function (response) {
                 let imgA = [];
                 let img = common.imgDefault;
-                response.img.forEach(function (item, index) {
-                    if (item.url) {
-                        let imgTmp = common.getImgUrl(item.url, 640, 360, 0);
-                        if (index === 0) {
-                            img = imgTmp;
-                        } else {
-                            imgA.push(imgTmp);
+                if (_.isArray(response.img)) {
+                    response.img.forEach(function (item, index) {
+                        if (item.url) {
+                            let imgTmp = common.getImgUrl(item.url, 640, 360, 0);
+                            if (index === 0) {
+                                img = imgTmp;
+                            } else {
+                                imgA.push(imgTmp);
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 Taro.setNavigationBarTitle({
                     title: response.eventName || "旧时光详情"
                 });
@@ -80,6 +85,10 @@ export default class Detail extends Taro.Component {
     config = {};
     onShareAppMessage = () => {
         const {eventName: title, id, img: imgList} = this.state;
+        let imageUrl = ''
+        if (imgList.length > 0) {
+            imageUrl = imgList[0]
+        }
         return {
             title,
             path: `pages/detail/detail?id=${id}`,
@@ -89,7 +98,24 @@ export default class Detail extends Taro.Component {
     sharePic() {
         const {id} = this.state;
         Taro.downloadFile({
-            url: common.getSharePic(id)
+            url: common.getSharePic(id),
+            success: res => {
+                Taro.authorize({
+                    scope: "scope.writePhotosAlbum",
+                    success: () => {
+                        Taro.saveImageToPhotosAlbum({
+                            filePath: res.tempFilePath,
+                            success: () => {
+                                Taro.showToast({
+                                    title:'保存成功'
+                                })
+                            }
+                        })
+                    }
+                })
+            },
+            fail: () => {
+            }
         })
     }
     render() {
