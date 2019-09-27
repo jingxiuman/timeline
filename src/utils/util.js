@@ -6,7 +6,7 @@ let common = {
 	/**
 	 * ajax传送
 	 */
-    debug: "local",
+    debug: "release",
     formatTimeToNow(timeStamps) {
         var day = moment(timeStamps * 1000);
         var now = moment();
