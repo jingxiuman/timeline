@@ -7,7 +7,8 @@ import {
 } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import "./detail.scss";
-import common from "./../../utils/util.js";
+import common from "../../utils/util.js";
+import _ from 'lodash'
 
 export default class Detail extends Taro.Component {
     name = "detail";
@@ -15,10 +16,12 @@ export default class Detail extends Taro.Component {
         detail: {},
         id: 0,
         showEdit: true,
-        isShare: 0
+        isShare: 0,
+        img:[]
     };
     componentWillMount(e) {
-        let id = this.$router.params.id;
+        let {id, scene} = this.$router.params;
+        id = id || scene
         this.setState({
             id,
             isShare: false
@@ -32,16 +35,18 @@ export default class Detail extends Taro.Component {
             function (response) {
                 let imgA = [];
                 let img = common.imgDefault;
-                response.img.forEach(function (item, index) {
-                    if (item.url) {
-                        let imgTmp = common.getImgUrl(item.url, 640, 360, 0);
-                        if (index === 0) {
-                            img = imgTmp;
-                        } else {
-                            imgA.push(imgTmp);
+                if (_.isArray(response.img)) {
+                    response.img.forEach(function (item, index) {
+                        if (item.url) {
+                            let imgTmp = common.getImgUrl(item.url, 640, 360, 0);
+                            if (index === 0) {
+                                img = imgTmp;
+                            } else {
+                                imgA.push(imgTmp);
+                            }
                         }
-                    }
-                });
+                    });
+                }
                 Taro.setNavigationBarTitle({
                     title: response.eventName || "旧时光详情"
                 });
@@ -79,14 +84,40 @@ export default class Detail extends Taro.Component {
     };
     config = {};
     onShareAppMessage = () => {
-        const {eventName: title, id, img:imgList} = this.state;
+        const {eventName: title, id, img: imgList} = this.state;
+        let imageUrl = ''
+        if (imgList.length > 0) {
+            imageUrl = imgList[0]
+        }
         return {
             title,
-            path:`pages/detail/detail?id=${id}`,
+            path: `pages/detail/detail?id=${id}`,
             imageUrl
         }
     }
-
+    sharePic() {
+        const {id} = this.state;
+        Taro.downloadFile({
+            url: common.getSharePic(id),
+            success: res => {
+                Taro.authorize({
+                    scope: "scope.writePhotosAlbum",
+                    success: () => {
+                        Taro.saveImageToPhotosAlbum({
+                            filePath: res.tempFilePath,
+                            success: () => {
+                                Taro.showToast({
+                                    title:'保存成功'
+                                })
+                            }
+                        })
+                    }
+                })
+            },
+            fail: () => {
+            }
+        })
+    }
     render() {
         const {
             detail: detail,
@@ -106,9 +137,8 @@ export default class Detail extends Taro.Component {
                     <Text className="detail-eventType">dairy</Text>
                 </View>
                 <View className="detail-container">
-                    <View className="detail-content">
-                        {detail.eventContent ? detail.eventContent : "暂无内容"}
-                    </View>
+                    <rich-text className="detail-content" nodes={detail.eventContent ? detail.eventContent : "暂无内容"}>
+                    </rich-text>
                     {detail.imgList.map((item, index) => {
                         return (
                             <View className="detail-img-item" key="item">
@@ -125,11 +155,14 @@ export default class Detail extends Taro.Component {
                     <Button type="primary" size="mini" plain="true" openType="share">
                         分享给好朋友
 						</Button>
+                    <Button type="primary" size="mini" plain="true" onTap={() => this.sharePic()}>
+                        下载海报图
+						</Button>
                 </View>
                 {showEdit && (
                     <View className="operation">
                         <Navigator
-                            url={"/pages/updateBox/updateBox?id=" + id}
+                            url={`/pages/updateBox/updateBox?id=${id}`}
                             openType="navigate"
                         >
                             <Text>编辑</Text>

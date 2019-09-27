@@ -1,13 +1,14 @@
 @font-face {
     font-family: 'iconfont';
     /* project id 609040 */
-    src: url('//at.alicdn.com/t/font_609040_s9uk6swnj6.eot');
-    src: url('//at.alicdn.com/t/font_609040_s9uk6swnj6.eot?#iefix') format('embedded-opentype'),
-        url('//at.alicdn.com/t/font_609040_s9uk6swnj6.woff2') format('woff2'),
-        url('//at.alicdn.com/t/font_609040_s9uk6swnj6.woff') format('woff'),
-        url('//at.alicdn.com/t/font_609040_s9uk6swnj6.ttf') format('truetype'),
-        url('//at.alicdn.com/t/font_609040_s9uk6swnj6.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_609040_m57xrkbsvza.eot');
+    src: url('//at.alicdn.com/t/font_609040_m57xrkbsvza.eot?#iefix') format('embedded-opentype'),
+        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.woff2') format('woff2'),
+        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.woff') format('woff'),
+        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.ttf') format('truetype'),
+        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.svg#iconfont') format('svg');
 }
+
 .iconfont {
     font-family: "iconfont" !important;
     font-size: 16px;
@@ -17,78 +18,110 @@
     -moz-osx-font-smoothing: grayscale;
     display: inline;
 }
-view, scroll-view, swiper, swiper-item, icon, text, progress, button,
-checkbox-group, checkbox, form, input, label, picker, radio-group, radio, slider,
-switch, action-sheet, action-sheet-item, action-sheet-cancel, modal, toast,
-loading, navigator, audio, image, video, map, canvas {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+
+view,
+scroll-view,
+swiper,
+swiper-item,
+icon,
+text,
+progress,
+button,
+checkbox-group,
+checkbox,
+form,
+input,
+label,
+picker,
+radio-group,
+radio,
+slider,
+switch,
+action-sheet,
+action-sheet-item,
+action-sheet-cancel,
+modal,
+toast,
+loading,
+navigator,
+audio,
+image,
+video,
+map,
+canvas {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 .img {
-  width: 100%;
+    width: 100%;
 }
 
 .seeMore {
-  width: 96px;
-  height: 96px;
-  position: absolute;
-  right: 5%;
-  bottom: -8%;
+    width: 96px;
+    height: 96px;
+    position: absolute;
+    right: 5%;
+    bottom: -8%;
 }
+
 .clearfix {
-  clear: both;
+    clear: both;
 }
 
 
 .group-area {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 0 18px #d6d1d1;
-  margin: 20px 0;
-  padding: 0 10px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 0 18px #d6d1d1;
+    margin: 20px 0;
+    padding: 0 10px;
 }
 
 .form-group {
-  display: flex;
-  line-height: 80px;
+    display: flex;
+    line-height: 80px;
 }
 
 .form-group:not(:last-child) {
-  border-bottom: 2px solid #e3dddd;
+    border-bottom: 2px solid #e3dddd;
 }
+
 .form-group-secure {
-  flex-direction: column;
+    flex-direction: column;
 }
+
 .group-secure .form-group-label {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 .form-group-label {
-  flex: 1;
-  text-align: center;
+    flex: 1;
+    text-align: center;
 }
 
 .form-group-input-container {
-  flex: 4;
+    flex: 4;
 }
 
 .form-group-input {
-  line-height: 80px;
-  height: 80px;
-  padding: 0 10px;
-  color: #838080;
+    line-height: 80px;
+    height: 80px;
+    padding: 0 10px;
+    color: #838080;
 }
 
 .form-group-title {
-  color: #bfbfbf;
+    color: #bfbfbf;
 }
 
 .form-group-texterea {
-  min-height: 300px;
-  color: #838080;
-  padding: 20px;
+    min-height: 300px;
+    color: #838080;
+    padding: 20px;
 }
+
 .icon-refresh {
     font-size: 36px;
     color: #838080;

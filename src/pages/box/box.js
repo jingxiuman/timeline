@@ -2,6 +2,7 @@ import {ScrollView, View, Image} from "@tarojs/components";
 import Taro, {Component} from "@tarojs/taro";
 import "./box.scss";
 import common from "./../../utils/util.js";
+import _ from 'lodash'
 
 const defaultPageSize = 10;
 
@@ -102,7 +103,9 @@ export default class Box extends Component {
                 orderSort: (orderSort == 0 ? 'desc' : 'asc')
             },
             response => {
-                this.makeData(response.data);
+                if (_.isArray(response.data)) {
+                    this.makeData(response.data);
+                }
                 this.setState({
                     pageIndex: response.pageIndex,
                     pageSize: response.pageSize
@@ -238,7 +241,6 @@ export default class Box extends Component {
                         );
                     })}
                 </ScrollView>
-
             </View>
         );
     }

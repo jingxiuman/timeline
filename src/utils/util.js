@@ -239,7 +239,7 @@ let common = {
     },
     addPic: function (data, callback) {
         let self = this;
-        let urlStr = self.url() + "/api2/pic/add";
+        let urlStr = process.env.BaseUrl + "/api2/pic/add";
         Taro.uploadFile({
             url: urlStr,
             filePath: data[0],
@@ -307,6 +307,9 @@ let common = {
     },
     getConfig: function (data, callback) {
         this.ajaxFunc("/api2/system/config", data, callback);
+    },
+    getSharePic(id) {
+        return process.env.BaseUrl + `/api2/share/pic?id=${id}`
     }
 };
 

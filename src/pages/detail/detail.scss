@@ -1,143 +1,157 @@
 .detail {
-  height: 100%;
-  background-color: #fff;
+    height: 100%;
+    background-color: #fff;
 }
 
 .detail-img-main {
-  position: relative;
-  background-color: #fa7298;
+    position: relative;
+    background-color: #fa7298;
 }
 
 .detail-img {
-  width: 100%;
-  height: 500px;
-  display: block;
+    width: 100%;
+    height: 500px;
+    display: block;
 }
 
 .detail-eventType {
-  position: absolute;
-  left: -54px;
-  font-size: 20px;
-  top: 50%;
-  color: #fff;
-  letter-spacing: 8px;
-  transform: rotate(-90deg);
-  width: 200px;
-  margin-top: -100px;
-  text-align: left;
+    position: absolute;
+    left: -54px;
+    font-size: 20px;
+    top: 50%;
+    color: #fff;
+    letter-spacing: 8px;
+    transform: rotate(-90deg);
+    width: 200px;
+    margin-top: -100px;
+    text-align: left;
 }
 
 .detail-img-cover {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background: -webkit-radial-gradient(50% 50%, farthest-corner, #000 66%, #8a8888 157%);
-  opacity: 0.2;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: -webkit-radial-gradient(50% 50%, farthest-corner, #000 66%, #8a8888 157%);
+    opacity: 0.2;
 }
 
 .detail-day {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  color: #fff;
-  font-size: 24px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #fff;
+    font-size: 24px;
 }
 
 .detail-time {
-  position: absolute;
-  left: 50px;
-  right: 0;
-  top: 300px;
-  text-align: left;
-  color: #fa7298;
-  font-size: 96px;
-  font-weight: bolder;
-  line-height: 1.5;
-  letter-spacing: 20px;
+    position: absolute;
+    left: 50px;
+    right: 0;
+    top: 300px;
+    text-align: left;
+    color: #fa7298;
+    font-size: 96px;
+    font-weight: bolder;
+    line-height: 1.5;
+    letter-spacing: 20px;
 }
 
 .detail-eventName {
-  position: absolute;
-  left: 50px;
-  right: 0;
-  top: 420px;
-  text-align: left;
-  letter-spacing: 8px;
-  color: #fff;
-  font-size: 48px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    position: absolute;
+    left: 50px;
+    right: 0;
+    top: 420px;
+    text-align: left;
+    letter-spacing: 8px;
+    color: #fff;
+    font-size: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .detail-container {
-  background-color: #fff;
-  font-size: 24px;
-  color: #95989a;
-  text-align: center;
-  margin-bottom: 200px;
+    background-color: #fff;
+    font-size: 24px;
+    color: #95989a;
+    text-align: center;
+    margin-bottom: 200px;
+    padding: 20px;
+
+    p {
+        margin: 10px 0;
+    }
+
 }
+
 .detail-createTime {
-  color: #fff;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 20px;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
 }
 
 .detail-content {
-  font-size: 28px;
-  line-height: 1.5;
-  text-align: left;
-  color: #95989a;
-  margin: 20px 40px 0;
-  padding: 20px 0;
-  min-height:400px;
+    font-size: 28px;
+    line-height: 1.5;
+    text-align: left;
+    color: #95989a;
+    margin: 20px 40px 0;
+    min-height: 400px;
+    p{
+        margin: 20px;
+    }
 }
 
 .detail-img-item {
-  margin: 20px;
-  border-radius: 10px;
-  border: 2px solid #eee;
+    margin: 20px;
+    border-radius: 10px;
+    border: 2px solid #eee;
 }
 
 .detail-img-item image {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .operation {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  width: 100px;
-  height: 100px;
-  border-radius: 200px;
-  background-color: #95989a;
-  text-align: center;
-  line-height: 100px;
-  color: #fff;
-  font-size: 40px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 200px;
+    background-color: #95989a;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 40px;
 }
-.detail-address{
-  text-align: right;
-  margin-top: 40px;
-  font-size: 24px;
-  margin-right: 40px;
+
+.detail-address {
+    text-align: right;
+    margin-top: 40px;
+    font-size: 24px;
+    margin-right: 40px;
 }
+
 .share {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
-.share button{
-  background: #fff !important;
+
+.share button {
+    background: #fff !important;
+    margin: 0 5px;
 }
+
 .detail-create {
-  text-align: right;
-  font-size: 20px;
-  margin-right: 40px;
+    text-align: right;
+    font-size: 20px;
+    margin-right: 40px;
 }
