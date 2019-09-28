@@ -101,7 +101,8 @@
     color: #95989a;
     margin: 20px 40px 0;
     min-height: 400px;
-    p{
+
+    p {
         margin: 20px;
     }
 }
@@ -143,6 +144,15 @@
     left: 0;
     right: 0;
     text-align: center;
+
+    .btn {
+        width: 200px;
+        padding: 0;
+    }
+
+    navigator {
+        display: inline-block;
+    }
 }
 
 .share button {

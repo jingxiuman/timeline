@@ -74,8 +74,8 @@ class App extends Taro.Component {
         networkTimeout: {
             connectSocket: 10000,
             request: 10000,
-            downloadFile: 10000,
-            uploadFile: 10000
+            downloadFile: 100000,
+            uploadFile: 100000
         },
         "permission": {
             'scope.userLocation': {

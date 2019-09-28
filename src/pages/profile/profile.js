@@ -16,34 +16,41 @@ export default class Profile extends Taro.Component {
 	}
 	componentDidShow() {
 		let that = this,
-			userPic;
-		common.getWxUser({}, function(response) {
-			if (!response.userPic) {
-				userPic = common.imgDefault;
-			} else {
-				userPic = response.userPic;
-			}
-			that.setState({
-				userInfo: {
-					userPic: userPic,
-					username: response.username,
-					eventNums: response.eventNum,
-					create_time: common
-						.moment(response.create_time * 1000)
-						.format("YYYY-MM-DD"),
-					adviceNum: response.adviceNum
-				}
-			});
-		});
+            userPic;
+         let userInfoLocal =Taro.getStorageSync({
+            key:'userInfo'
+         })
+        if (userInfoLocal) {
+            that.setState({
+                userInfo: JSON.parse(userInfoLocal)
+            });
+        }
+        common.getWxUser({}, function (response) {
+            if (!response.userPic) {
+                userPic = common.imgDefault;
+            } else {
+                userPic = response.userPic;
+            }
+            const userInfo = {
+                userPic: userPic,
+                username: response.username,
+                eventNums: response.eventNum,
+                create_time: common
+                    .moment(response.create_time * 1000)
+                    .format("YYYY-MM-DD"),
+                adviceNum: response.adviceNum
+            }
+            Taro.setStorage({
+                key: 'userInfo',
+                data: JSON.stringify(userInfo)
+            })
+            if (!userInfoLocal) {
+                that.setState({
+                    userInfo
+                });
+            }
+        });
 	}
-
-	onPullDownRefresh = () => {
-		try {
-			Taro.stopPullDownRefresh();
-		} catch (e) {
-			console.log(e);
-		}
-	};
 	config = {
 		enablePullDownRefresh: false
 	};

@@ -17,14 +17,17 @@ export default class Detail extends Taro.Component {
         id: 0,
         showEdit: true,
         isShare: 0,
-        img:[]
+        scene:'',
+        img: [],
     };
     componentWillMount(e) {
         let {id, scene} = this.$router.params;
-        id = id || scene
+        id = id || scene;
+       
         this.setState({
             id,
-            isShare: false
+            isShare: false,
+            scene
         });
         Taro.showLoading({title: "加载中"});
         let that = this;
@@ -66,21 +69,19 @@ export default class Detail extends Taro.Component {
                     }
                 });
                 Taro.hideToast();
-                if (response.isDefault) {
+                if (response.isDefault || scene) {
                     that.setState({
                         showEdit: false
                     });
                 }
             }
         );
+
     }
 
     onPullDownRefresh = () => {
-        try {
-            Taro.stopPullDownRefresh();
-        } catch (e) {
-            console.log(e);
-        }
+        Taro.stopPullDownRefresh();
+
     };
     config = {};
     onShareAppMessage = () => {
@@ -97,9 +98,15 @@ export default class Detail extends Taro.Component {
     }
     sharePic() {
         const {id} = this.state;
+        Taro.showLoading({
+            title: '生成图片中'
+        })
         Taro.downloadFile({
             url: common.getSharePic(id),
             success: res => {
+                Taro.showLoading({
+                    title: '下载完成'
+                })
                 Taro.authorize({
                     scope: "scope.writePhotosAlbum",
                     success: () => {
@@ -107,7 +114,7 @@ export default class Detail extends Taro.Component {
                             filePath: res.tempFilePath,
                             success: () => {
                                 Taro.showToast({
-                                    title:'保存成功'
+                                    title:'保存至相册中'
                                 })
                             }
                         })
@@ -115,6 +122,10 @@ export default class Detail extends Taro.Component {
                 })
             },
             fail: () => {
+                Taro.hideLoading();
+                Taro.showToast({
+                     title: '下载失败'
+                })
             }
         })
     }
@@ -123,6 +134,7 @@ export default class Detail extends Taro.Component {
             detail: detail,
             isShare: isShare,
             showEdit: showEdit,
+            scene,
             id: id
         } = this.state;
         return (
@@ -152,10 +164,18 @@ export default class Detail extends Taro.Component {
                     <View className="detail-create">{detail.created_at}</View>
                 </View>
                 <View className="share">
-                    <Button type="primary" size="mini" plain="true" openType="share">
+                    {scene && (
+                        <navigator url="/pages/index/index" hover-class="navigator-hover" className="btn">
+                            <Button type="primary" size="mini" plain="true" className="btn">
+                                回到首页
+						</Button>
+                        </navigator>
+                    )}
+                 
+                    <Button type="primary" size="mini" plain="true" openType="share" className="btn">
                         分享给好朋友
 						</Button>
-                    <Button type="primary" size="mini" plain="true" onTap={() => this.sharePic()}>
+                    <Button type="primary" size="mini" plain="true" onTap={() => this.sharePic()} className="btn">
                         下载海报图
 						</Button>
                 </View>
