@@ -17,13 +17,13 @@ export default class Detail extends Taro.Component {
         id: 0,
         showEdit: true,
         isShare: 0,
-        scene:'',
+        scene: '',
         img: [],
     };
     componentWillMount(e) {
         let {id, scene} = this.$router.params;
         id = id || scene;
-       
+
         this.setState({
             id,
             isShare: false,
@@ -114,7 +114,7 @@ export default class Detail extends Taro.Component {
                             filePath: res.tempFilePath,
                             success: () => {
                                 Taro.showToast({
-                                    title:'保存至相册中'
+                                    title: '保存至相册中'
                                 })
                             }
                         })
@@ -124,7 +124,7 @@ export default class Detail extends Taro.Component {
             fail: () => {
                 Taro.hideLoading();
                 Taro.showToast({
-                     title: '下载失败'
+                    title: '下载失败'
                 })
             }
         })
@@ -137,6 +137,7 @@ export default class Detail extends Taro.Component {
             scene,
             id: id
         } = this.state;
+
         return (
             <View className="detail">
                 <View className="detail-img-main">
@@ -171,13 +172,12 @@ export default class Detail extends Taro.Component {
 						</Button>
                         </navigator>
                     )}
-                 
-                    <Button type="primary" size="mini" plain="true" openType="share" className="btn">
+                    {process.env.TARO_ENV === 'weapp' && <Button type="primary" size="mini" plain="true" openType="share" className="btn">
                         分享给好朋友
-						</Button>
-                    <Button type="primary" size="mini" plain="true" onTap={() => this.sharePic()} className="btn">
+						</Button>}
+                    {process.env.TARO_ENV === 'weapp' && <Button type="primary" size="mini" plain="true" onTap={() => this.sharePic()} className="btn">
                         下载海报图
-						</Button>
+						</Button>}
                 </View>
                 {showEdit && (
                     <View className="operation">
