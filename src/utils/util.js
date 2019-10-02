@@ -314,3 +314,121 @@ let common = {
 };
 
 export default common;
+
+
+export const fetch = (url, data, type, postType = 'data') => {
+    return new Promise((resolve, reject) => {
+        const token = Taro.getStorageSync("token");
+        const info = Taro.getStorageSync("info");
+        const urlStr = process.env.BaseUrl + url;
+        Taro.showLoading({title: "加载中"});
+        if (postType === 'data') {
+            Taro.request({
+                url: urlStr,
+                data: Object.assign(data, {
+                    info,
+                    token
+                }),
+                method: type || "POST",
+                header: {
+                    "Content-Type": "application/json"
+                },
+                success: function (res) {
+                    Taro.hideLoading();
+                    let response = res.data;
+
+                    switch (response.code) {
+                        case 0:
+                            resolve(response)
+                            break;
+                        case 1111:
+                            Taro.removeStorageSync("token");
+                            Taro.removeStorageSync("info");
+                            common.userLogin();
+                            break;
+                        case 10001:
+                            Taro.clearStorage();
+                            Taro.showToast({
+                                title: response.msg || "接口异常 code:10001",
+                                duration: 2000
+                            });;
+                            break;
+                        default:
+                            Taro.showToast({
+                                title: response.msg || "接口异常 code:" + res.code,
+                                icon: 'none',
+                                duration: 3000
+                            });
+                            reject(response.data)
+                            break;
+                    }
+                },
+                fail: function (e) {
+                    Taro.showToast({
+                        title: "网络连接异常",
+                        duration: 2000
+                    });
+                }
+            });
+        } else if (postType === 'file') {
+            Taro.uploadFile({
+                url: urlStr,
+                filePath: data.img,
+                name: "img",
+                formData: {
+                    token,
+                    info,
+                    type: data.path
+                },
+                success: function (res) {
+                    let response;
+                    if (process.env.TARO_ENV === "weapp") {
+                        response = JSON.parse(res.data);
+                    } else if (process.env.TARO_ENV === "swan") {
+                        response = res.data;
+                    }
+
+                    switch (response.code) {
+                        case 0:
+                            resolve(response)
+                            break;
+                        case 1111:
+                            Taro.removeStorageSync("token");
+                            Taro.removeStorageSync("info");
+                            common.userLogin();
+                            break;
+
+                        default:
+                            Taro.showToast({
+                                title: response.msg || "接口异常 code:" + res.code,
+                                icon: 'none',
+                                duration: 3000
+                            });
+                            reject(response.data)
+                            break;
+                    }
+                },
+                fail: function (e) {
+                    Taro.showToast({
+                        title: '上传失败',
+                        duration: 2000
+                    });
+                }
+            });
+        }
+    })
+}
+
+export const uploadPic = (data) => {
+    return fetch('/api2/pic/add', data, 'post', 'file')
+}
+export const updateUserPic = (data) => {
+    return fetch('/api2/user/updatePic', data)
+}
+
+export const getWxUser = (data = {}) => {
+    return fetch('/api2/user/detail', data)
+}
+export const cancelLover = (data = {}) => {
+    return fetch('/api2/user/cancelLover', data)
+}

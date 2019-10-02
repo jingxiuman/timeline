@@ -101,33 +101,40 @@ export default class Detail extends Taro.Component {
         Taro.showLoading({
             title: '生成图片中'
         })
-        Taro.downloadFile({
-            url: common.getSharePic(id),
-            success: res => {
-                Taro.showLoading({
-                    title: '下载完成'
-                })
-                Taro.authorize({
-                    scope: "scope.writePhotosAlbum",
-                    success: () => {
-                        Taro.saveImageToPhotosAlbum({
-                            filePath: res.tempFilePath,
-                            success: () => {
-                                Taro.showToast({
-                                    title: '保存至相册中'
-                                })
-                            }
-                        })
-                    }
-                })
-            },
-            fail: () => {
-                Taro.hideLoading();
-                Taro.showToast({
-                    title: '下载失败'
-                })
-            }
+        Taro.previewImage({
+            current: common.getSharePic(id), 
+            urls: [common.getSharePic(id)],
+        }).then(res => {
+            Taro.hideLoading();
         })
+        // Taro.downloadFile({
+        //     url: common.getSharePic(id),
+        //     success: res => {
+        //         Taro.showLoading({
+        //             title: '下载完成'
+        //         });
+        //         Taro.
+        //         Taro.authorize({
+        //             scope: "scope.writePhotosAlbum",
+        //             success: () => {
+        //                 Taro.saveImageToPhotosAlbum({
+        //                     filePath: res.tempFilePath,
+        //                     success: () => {
+        //                         Taro.showToast({
+        //                             title: '保存至相册中' ji
+        //                         })
+        //                     }
+        //                 })
+        //             }
+        //         })
+        //     },
+        //     fail: () => {
+        //         Taro.hideLoading();
+        //         Taro.showToast({
+        //             title: '下载失败'
+        //         })
+        //     }
+        // })
     }
     render() {
         const {

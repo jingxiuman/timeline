@@ -1,22 +1,22 @@
 @font-face {
     font-family: 'iconfont';
     /* project id 609040 */
-    src: url('//at.alicdn.com/t/font_609040_m57xrkbsvza.eot');
-    src: url('//at.alicdn.com/t/font_609040_m57xrkbsvza.eot?#iefix') format('embedded-opentype'),
-        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.woff2') format('woff2'),
-        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.woff') format('woff'),
-        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.ttf') format('truetype'),
-        url('//at.alicdn.com/t/font_609040_m57xrkbsvza.svg#iconfont') format('svg');
+    src: url('https://at.alicdn.com/t/font_609040_pvz63x03iwo.eot');
+    src: url('https://at.alicdn.com/t/font_609040_pvz63x03iwo.eot?#iefix') format('embedded-opentype'),
+        url('https://at.alicdn.com/t/font_609040_pvz63x03iwo.woff2') format('woff2'),
+        url('https://at.alicdn.com/t/font_609040_pvz63x03iwo.woff') format('woff'),
+        url('https://at.alicdn.com/t/font_609040_pvz63x03iwo.ttf') format('truetype'),
+        url('https://at.alicdn.com/t/font_609040_pvz63x03iwo.svg#iconfont') format('svg');
 }
 
 .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
+    font-family              : "iconfont" !important;
+    font-size                : 16px;
+    font-style               : normal;
+    -webkit-font-smoothing   : antialiased;
     -webkit-text-stroke-width: 0.2px;
-    -moz-osx-font-smoothing: grayscale;
-    display: inline;
+    -moz-osx-font-smoothing  : grayscale;
+    display                  : inline;
 }
 
 view,
@@ -50,8 +50,12 @@ video,
 map,
 canvas {
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    -moz-box-sizing   : border-box;
+    box-sizing        : border-box;
+}
+
+page {
+    min-height: 100%;
 }
 
 .img {
@@ -59,11 +63,11 @@ canvas {
 }
 
 .seeMore {
-    width: 96px;
-    height: 96px;
+    width   : 96px;
+    height  : 96px;
     position: absolute;
-    right: 5%;
-    bottom: -8%;
+    right   : 5%;
+    bottom  : -8%;
 }
 
 .clearfix {
@@ -72,15 +76,15 @@ canvas {
 
 
 .group-area {
-    background: #fff;
+    background   : #fff;
     border-radius: 16px;
-    box-shadow: 0 0 18px #d6d1d1;
-    margin: 20px 0;
-    padding: 0 10px;
+    box-shadow   : 0 0 18px #d6d1d1;
+    margin       : 20px 0;
+    padding      : 0 10px;
 }
 
 .form-group {
-    display: flex;
+    display    : flex;
     line-height: 80px;
 }
 
@@ -97,7 +101,7 @@ canvas {
 }
 
 .form-group-label {
-    flex: 1;
+    flex      : 1;
     text-align: center;
 }
 
@@ -107,9 +111,9 @@ canvas {
 
 .form-group-input {
     line-height: 80px;
-    height: 80px;
-    padding: 0 10px;
-    color: #838080;
+    height     : 80px;
+    padding    : 0 10px;
+    color      : #838080;
 }
 
 .form-group-title {
@@ -118,14 +122,14 @@ canvas {
 
 .form-group-texterea {
     min-height: 300px;
-    color: #838080;
-    padding: 20px;
+    color     : #838080;
+    padding   : 20px;
 }
 
 .icon-refresh {
-    font-size: 36px;
-    color: #838080;
-    display: block;
-    flex: 1;
+    font-size : 36px;
+    color     : #838080;
+    display   : block;
+    flex      : 1;
     text-align: right;
 }

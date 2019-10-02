@@ -43,7 +43,8 @@ class App extends Taro.Component {
             'pages/advice/advice',
             'pages/log/log',
             'pages/updateBox/updateBox',
-            'pages/secure/secure'
+            'pages/secure/secure',
+            'pages/lover/index'
         ],
         tabBar: {
             color: '#fa7298',

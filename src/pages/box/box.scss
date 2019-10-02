@@ -1,75 +1,113 @@
 .container {
-  height: 100%;
+    height: 100%;
 }
+
 .timeLine-item {
-  border-radius: 30px;
-  box-shadow: 0 0 22px #B2ADAD;
-  height: 440px;
-  margin:30px 20px;
-  font-size: 28px;
-  color: #B0ACAC;
+    position     : relative;
+    border-radius: 30px;
+    box-shadow   : 0 0 22px #B2ADAD;
+    height       : 440px;
+    margin       : 30px 20px;
+    font-size    : 28px;
+    color        : #B0ACAC;
 }
+
 .timeLine-img {
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  height: 290px;
-  background-color: #fa7298;
+    border-top-left-radius : 30px;
+    border-top-right-radius: 30px;
+    height                 : 290px;
+    background-color       : #fa7298;
 }
+
 .timeLine-img .img {
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  height: 100%;
-  width: 100%;
+    border-top-left-radius : 30px;
+    border-top-right-radius: 30px;
+    height                 : 100%;
+    width                  : 100%;
 }
+
 .timeLine-content {
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+    padding        : 20px;
+    display        : flex;
+    justify-content: center;
 }
+
 .timeLine-title {
-  flex: 2;
-  line-height: 150px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    flex         : 2;
+    line-height  : 150px;
+    overflow     : hidden;
+    text-overflow: ellipsis;
+    white-space  : nowrap;
 }
+
 .timeLine-date {
-  flex: 1;
-  text-align: right;
-  font-size: 20px;
+    flex      : 1;
+    text-align: right;
+    font-size : 20px;
 }
+
 .timeLine-day {
-  font-size: 48px;
-  color: #FC7097;
+    font-size: 48px;
+    color    : #FC7097;
 }
+
 .operate-container {
     display: flex;
     padding: 10px 20px;
 }
+
 .operate-item {
-    font-size: 30px;
-    width: 200px;
+    font-size   : 30px;
+    width       : 200px;
     margin-right: 20px;
-    padding: 10px;
-    text-align: center;
+    padding     : 10px;
+    text-align  : center;
+
     .iconfont {
         display: none;
     }
+
     &.active {
         background-color: #FC7097;
-        color: #fff;
-        border-radius: 10px;
+        color           : #fff;
+        border-radius   : 10px;
+
         .iconfont {
             display: inline;
         }
     }
 }
+
 .btn-add {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    font-size: 100px;
-    color: #fa7298;
+    position        : fixed;
+    bottom          : 40px;
+    right           : 40px;
+    font-size       : 100px;
+    color           : #fa7298;
     background-color: #fff;
-    border-radius: 50%;
+    border-radius   : 50%;
+}
+
+.timeline-pic-container {
+    width   : 200rpx;
+    height  : 64rpx;
+    position: absolute;
+    left    : 10rpx;
+    top     : 10rpx;
+}
+
+.timeline-pic-item {
+    width       : 64rpx;
+    height      : 64rpx;
+    float       : left;
+    margin-right: 10rpx;
+    padding     : 2rpx;
+
+
+    image {
+        width        : 100%;
+        height       : 100%;
+        border-radius: 64rpx;
+        border       : 2rpx solid #fa7298;
+    }
 }

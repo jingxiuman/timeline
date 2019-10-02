@@ -222,6 +222,19 @@ export default class Box extends Component {
                                 onLongtap={this.delBox}
                                 key={item.id}
                             >
+
+                                <View className="timeline-pic-container">
+                                    {item.pic.map(picItem => {
+                                        return <View className="timeline-pic-item">
+                                            <Image
+                                                className="img"
+                                                mode="aspectFill"
+                                                src={picItem}
+                                            />
+                                        </View>
+                                    })}
+
+                                </View>
                                 <View className="timeLine-img">
                                     <Image
                                         className="img"
